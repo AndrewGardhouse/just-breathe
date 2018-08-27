@@ -1,17 +1,22 @@
 <template>
   <div id="app">
+    <h1>Just Breathe</h1>
     <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <button class="btn btn-outline">Options</button>
+    <Timer />
+    <TimerOptions />
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue';
+import Timer from './components/Timer.vue';
+import TimerOptions from './components/TimerOptions.vue';
 
 export default {
   name: 'app',
   components: {
-    HelloWorld,
+    Timer,
+    TimerOptions,
   },
 };
 </script>
