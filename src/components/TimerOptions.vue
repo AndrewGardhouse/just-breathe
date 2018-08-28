@@ -3,26 +3,44 @@
     <div class="timer-options flex flex-column p2">
       <p class="h1 m0">Settings</p>
       <div class="my1">
-        <label for="">Total Time</label>
-        <vue-slider ref="slider-one" v-model="valOne"></vue-slider>
+        <label for="slider-two">
+          Inhale: {{ valTwo }} {{ secondPluralFilter(valTwo) }}
+        </label>
+        <vue-slider ref="slider-two"
+                    v-model="valTwo"
+                    :min="1"
+                    :max="12"
+                    :tooltip="false"></vue-slider>
       </div>
       <div class="my1">
-        <label for="">Inhale</label>
-        <vue-slider ref="slider-two" v-model="valTwo"></vue-slider>
+        <label for="slider-three">
+          Exhale: {{ valThree }} {{ secondPluralFilter(valThree) }}
+        </label>
+        <vue-slider ref="slider-three"
+                    v-model="valThree"
+                    :min="1"
+                    :max="12"
+                    :tooltip="false"></vue-slider>
       </div>
       <div class="my1">
-        <label for="">Exhale</label>
-        <vue-slider ref="slider-three" v-model="valThree"></vue-slider>
+        <label for="slider-four">
+          Hold Inhale: {{ valFour }} {{ secondPluralFilter(valFour) }}
+        </label>
+        <vue-slider ref="slider-four"
+                    v-model="valFour"
+                    :max="12"
+                    :tooltip="false"></vue-slider>
       </div>
       <div class="my1">
-        <label for="">Hold Inhale</label>
-        <vue-slider ref="slider-four" v-model="valFour"></vue-slider>
+        <label for="slider-five">
+          Hold Exhale: {{ valFive }} {{ secondPluralFilter(valFive) }}
+        </label>
+        <vue-slider ref="slider-five"
+                    v-model="valFive"
+                    :max="12"
+                    :tooltip="false"></vue-slider>
       </div>
-      <div class="my1">
-        <label for="">Hold Exhale</label>
-        <vue-slider ref="slider-five" v-model="valFive"></vue-slider>
-      </div>
-      <div class="my1">
+      <div class="my1 flex">
         <button class="btn btn-outline" v-on:click="closeModal">Close</button>
       </div>
     </div>
@@ -30,15 +48,14 @@
 </template>
 
 <script>
-import vueSlider from 'vue-slider-component'
+import vueSlider from 'vue-slider-component';
 
 export default {
   components: {
-    vueSlider
+    vueSlider,
   },
   data() {
     return {
-      valOne: 3,
       valTwo: 4,
       valThree: 5,
       valFour: 1,
@@ -48,6 +65,15 @@ export default {
   methods: {
     closeModal() {
       this.$modal.hide('timer-options');
+    },
+    secondPluralFilter(time) {
+      let label = '';
+      if (time === 1) {
+        label = 'second';
+      } else if (time > 1) {
+        label = 'seconds';
+      }
+      return label;
     },
   },
 };
