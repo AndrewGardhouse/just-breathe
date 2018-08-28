@@ -4,39 +4,39 @@
       <p class="h1 m0">Settings</p>
       <div class="my1">
         <label for="slider-two">
-          Inhale: {{ valTwo }} {{ secondPluralFilter(valTwo) }}
+          Inhale: {{ inhale }} {{ secondPluralFilter(inhale) }}
         </label>
         <vue-slider ref="slider-two"
-                    v-model="valTwo"
+                    :value.sync="inhale"
                     :min="1"
                     :max="12"
                     :tooltip="false"></vue-slider>
       </div>
       <div class="my1">
         <label for="slider-three">
-          Exhale: {{ valThree }} {{ secondPluralFilter(valThree) }}
+          Exhale: {{ exhale }} {{ secondPluralFilter(exhale) }}
         </label>
         <vue-slider ref="slider-three"
-                    v-model="valThree"
+                    :value.sync="exhale"
                     :min="1"
                     :max="12"
                     :tooltip="false"></vue-slider>
       </div>
       <div class="my1">
         <label for="slider-four">
-          Hold Inhale: {{ valFour }} {{ secondPluralFilter(valFour) }}
+          Hold Inhale: {{ heldInhale }} {{ secondPluralFilter(heldInhale) }}
         </label>
         <vue-slider ref="slider-four"
-                    v-model="valFour"
+                    :value.sync="heldInhale"
                     :max="12"
                     :tooltip="false"></vue-slider>
       </div>
       <div class="my1">
         <label for="slider-five">
-          Hold Exhale: {{ valFive }} {{ secondPluralFilter(valFive) }}
+          Hold Exhale: {{ heldExhale }} {{ secondPluralFilter(heldExhale) }}
         </label>
         <vue-slider ref="slider-five"
-                    v-model="valFive"
+                    :value.sync="heldExhale"
                     :max="12"
                     :tooltip="false"></vue-slider>
       </div>
@@ -49,6 +49,7 @@
 
 <script>
 import vueSlider from 'vue-slider-component';
+import { mapState } from 'vuex';
 
 export default {
   components: {
@@ -61,6 +62,14 @@ export default {
       valFour: 1,
       valFive: 2,
     };
+  },
+  computed: {
+    ...mapState([
+      'inhale',
+      'exhale',
+      'heldInhale',
+      'heldExhale',
+    ])
   },
   methods: {
     closeModal() {
