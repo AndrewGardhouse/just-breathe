@@ -55,14 +55,6 @@ export default {
   components: {
     vueSlider,
   },
-  data() {
-    return {
-      valTwo: 4,
-      valThree: 5,
-      valFour: 1,
-      valFive: 2,
-    };
-  },
   computed: {
     ...mapState([
       'inhale',
