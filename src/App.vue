@@ -1,9 +1,11 @@
 <template>
   <div id="app">
-    <p class="h1">Just Breathe</p>
-    <button class="btn btn-outline open-options" v-on:click="openOptions">Options</button>
-    <Timer />
-    <TimerOptions />
+    <div class="flex flex-column">
+      <p class="h1">Just Breathe</p>
+      <button class="btn btn-outline open-options" v-on:click="openOptions">Options</button>
+      <Timer />
+      <TimerOptions />
+    </div>
   </div>
 </template>
 
@@ -20,8 +22,8 @@ export default {
   methods: {
     openOptions() {
       this.$modal.show('timer-options');
-    }
-  }
+    },
+  },
 };
 </script>
 
