@@ -1,5 +1,5 @@
 export default {
-  updateTimerValue(context) {
-    console.log(context);
+  updateTimerValue(context, obj) {
+    context.commit(`update${obj.fieldProperty}`, obj.timeAmount);
   },
 };

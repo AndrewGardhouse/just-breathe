@@ -1,7 +1,8 @@
 import { shallowMount, createLocalVue } from '@vue/test-utils';
 import Vuex from 'vuex';
-import state from '@/store/state'
-import actions from '@/store/actions'
+import state from '@/store/state';
+import actions from '@/store/actions';
+import mutations from '@/store/mutations';
 import Option from '@/components/Option';
 
 const fakePropsData = {
@@ -94,5 +95,117 @@ describe('Option.vue', () => {
     slider.vm.$emit('callback', 4);
 
     expect(localActions.updateTimerValue).toHaveBeenCalled()
+  });
+
+  it('updateTimerValue action updates holdInhale state attribute', () => {
+    const localVue = createLocalVue();
+    localVue.use(Vuex);
+
+    const store = new Vuex.Store({
+      state,
+      actions,
+      mutations,
+    });
+
+    const wrapper = shallowMount(Option, {
+      propsData: {
+        value: state.holdInhale,
+        minTime: 0,
+        maxTime: 12,
+        fieldName: 'Hold Inhale',
+      },
+      store,
+      localVue,
+    });
+
+    const slider = wrapper.find('vueslider-stub');
+
+    slider.vm.$emit('callback', 4);
+
+    expect(state.holdInhale).toBe(4)
+  });
+
+  it('updateTimerValue action updates the holdExhale state attribute', () => {
+    const localVue = createLocalVue();
+    localVue.use(Vuex);
+
+    const store = new Vuex.Store({
+      state,
+      actions,
+      mutations,
+    });
+
+    const wrapper = shallowMount(Option, {
+      propsData: {
+        value: state.holdExhale,
+        minTime: 0,
+        maxTime: 12,
+        fieldName: 'Hold Exhale',
+      },
+      store,
+      localVue,
+    });
+
+    const slider = wrapper.find('vueslider-stub');
+
+    slider.vm.$emit('callback', 4);
+
+    expect(state.holdExhale).toBe(4)
+  });
+
+  it('updateTimerValue action updates the inhale state attribute', () => {
+    const localVue = createLocalVue();
+    localVue.use(Vuex);
+
+    const store = new Vuex.Store({
+      state,
+      actions,
+      mutations,
+    });
+
+    const wrapper = shallowMount(Option, {
+      propsData: {
+        value: state.inhale,
+        minTime: 0,
+        maxTime: 12,
+        fieldName: 'Inhale',
+      },
+      store,
+      localVue,
+    });
+
+    const slider = wrapper.find('vueslider-stub');
+
+    slider.vm.$emit('callback', 4);
+
+    expect(state.inhale).toBe(4)
+  });
+
+  it('updateTimerValue action updates the exhale state attribute', () => {
+    const localVue = createLocalVue();
+    localVue.use(Vuex);
+
+    const store = new Vuex.Store({
+      state,
+      actions,
+      mutations,
+    });
+
+    const wrapper = shallowMount(Option, {
+      propsData: {
+        value: state.exhale,
+        minTime: 0,
+        maxTime: 12,
+        fieldName: 'Exhale',
+      },
+      store,
+      localVue,
+    });
+
+    const slider = wrapper.find('vueslider-stub');
+
+    slider.vm.$emit('callback', 4);
+
+    expect(state.exhale).toBe(4)
   });
 });

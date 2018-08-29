@@ -69,11 +69,14 @@ export default {
       return label;
     },
     updateValue(value) {
-      this.updateTimerValue(value);
+      this.updateTimerValue({
+        timeAmount: value,
+        fieldProperty: this.fieldNameCapitalized,
+      });
     },
   }
 }
 </script>
 
-<style lang="css">
+<style lang="less">
 </style>
