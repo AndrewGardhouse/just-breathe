@@ -35,15 +35,6 @@ export default {
     closeModal() {
       this.$modal.hide('timer-options');
     },
-    secondPluralFilter(time) {
-      let label = '';
-      if (time === 1) {
-        label = 'second';
-      } else if (time > 1) {
-        label = 'seconds';
-      }
-      return label;
-    },
   },
 };
 </script>
