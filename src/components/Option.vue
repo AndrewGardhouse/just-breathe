@@ -7,7 +7,8 @@
                 :value.sync="value"
                 :min="minTime"
                 :max="maxTime"
-                :tooltip="false"></vue-slider>
+                :tooltip="false"
+                @callback="updateValue"></vue-slider>
   </div>
 </template>
 
@@ -59,6 +60,9 @@ export default {
         label = 'seconds';
       }
       return label;
+    },
+    updateValue(value) {
+      console.log(value);
     },
   }
 }

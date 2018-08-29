@@ -42,4 +42,16 @@ describe('Option.vue', () => {
 
     expect(renderedLabel.text()).toMatch('Hold Inhale: 5 seconds');
   });
+
+  it('should trigger updateValue() on slider change', () => {
+    const wrapper = shallowMount(Option, {
+      propsData: fakePropsData,
+    });
+    const slider = wrapper.find('vueslider-stub');
+    wrapper.setMethods({ updateValue: jest.fn() });
+
+    slider.vm.$emit('callback');
+
+    expect(wrapper.vm.updateValue).toBeCalled();
+  });
 });
