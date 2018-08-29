@@ -8,6 +8,9 @@
                 :min="minTime"
                 :max="maxTime"
                 :tooltip="false"
+                :piecewise="true"
+                :piecewiseStyle="piecewiseStyle"
+                :piecewiseActiveStyle="piecewiseActiveStyle"
                 @callback="updateValue"></vue-slider>
   </div>
 </template>
@@ -33,6 +36,19 @@ export default {
     fieldName: {
       required: true,
       type: String,
+    }
+  },
+  data() {
+    return {
+      piecewiseStyle: {
+        backgroundColor: "#ccc",
+        visibility: "visible",
+        width: "12px",
+        height: "12px",
+      },
+      piecewiseActiveStyle: {
+        backgroundColor: "#3498db"
+      },
     }
   },
   components: {

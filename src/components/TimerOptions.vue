@@ -15,7 +15,7 @@
 
 <script>
 import vueSlider from 'vue-slider-component';
-import Option from '@/components/Option';
+import Option from '@/components/Option.vue';
 import { mapState } from 'vuex';
 
 export default {
@@ -29,7 +29,7 @@ export default {
       'exhale',
       'holdInhale',
       'holdExhale',
-    ])
+    ]),
   },
   methods: {
     closeModal() {
