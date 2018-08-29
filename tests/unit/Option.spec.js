@@ -61,12 +61,12 @@ describe('Option.vue', () => {
     const localVue = createLocalVue();
     localVue.use(Vuex);
 
-    const actions = {
+    const localActions = {
       updateTimerValue: jest.fn(),
     }
     const store = new Vuex.Store({
       state,
-      actions,
+      localActions,
     });
 
     const wrapper = shallowMount(Option, {
@@ -79,6 +79,6 @@ describe('Option.vue', () => {
 
     slider.vm.$emit('callback', 4);
 
-    expect(actions.updateTimerValue).toHaveBeenCalled()
+    expect(localActions.updateTimerValue).toHaveBeenCalled()
   });
 });
