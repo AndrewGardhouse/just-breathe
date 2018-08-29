@@ -1,6 +1,7 @@
 import { shallowMount, createLocalVue } from '@vue/test-utils';
 import Vuex from 'vuex';
 import state from '@/store/state'
+import actions from '@/store/actions'
 import Option from '@/components/Option';
 
 const fakePropsData = {
@@ -57,7 +58,7 @@ describe('Option.vue', () => {
     expect(wrapper.vm.updateValue).toBeCalled();
   });
 
-  it('triggers actions on updateValue()', () => {
+  it('triggers updateTimerValue action on updateValue()', () => {
     const localVue = createLocalVue();
     localVue.use(Vuex);
 
@@ -66,7 +67,7 @@ describe('Option.vue', () => {
     }
     const store = new Vuex.Store({
       state,
-      localActions,
+      actions: localActions,
     });
 
     const wrapper = shallowMount(Option, {
