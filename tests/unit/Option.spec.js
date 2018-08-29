@@ -1,4 +1,6 @@
-import { shallowMount } from '@vue/test-utils';
+import { shallowMount, createLocalVue } from '@vue/test-utils';
+import Vuex from 'vuex';
+import state from '@/store/state'
 import Option from '@/components/Option';
 
 const fakePropsData = {
@@ -53,5 +55,30 @@ describe('Option.vue', () => {
     slider.vm.$emit('callback');
 
     expect(wrapper.vm.updateValue).toBeCalled();
+  });
+
+  it('triggers actions on updateValue()', () => {
+    const localVue = createLocalVue();
+    localVue.use(Vuex);
+
+    const actions = {
+      updateTimerValue: jest.fn(),
+    }
+    const store = new Vuex.Store({
+      state,
+      actions,
+    });
+
+    const wrapper = shallowMount(Option, {
+      propsData: fakePropsData,
+      store,
+      localVue,
+    });
+
+    const slider = wrapper.find('vueslider-stub');
+
+    slider.vm.$emit('callback', 4);
+
+    expect(actions.updateTimerValue).toHaveBeenCalled()
   });
 });

@@ -14,6 +14,7 @@
 
 <script>
 import vueSlider from 'vue-slider-component';
+import { mapActions } from 'vuex';
 
 export default {
   props: {
@@ -52,6 +53,9 @@ export default {
     }
   },
   methods: {
+    ...mapActions([
+      'updateTimerValue',
+    ]),
     secondPluralFilter(time) {
       let label = '';
       if (time === 1) {
@@ -62,7 +66,7 @@ export default {
       return label;
     },
     updateValue(value) {
-      console.log(value);
+      this.updateTimerValue(value);
     },
   }
 }
