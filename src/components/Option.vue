@@ -50,6 +50,9 @@ export default {
     },
     labelText() {
       return `${this.fieldName}: ${this.value} ${this.secondPluralFilter(this.value)}`
+    },
+    fieldNameCapitalized() {
+      return this.fieldName.toString().charAt(0).toUpperCase() + this.fieldName.toString().slice(1).replace(/[^\w\-]+/g, '')
     }
   },
   methods: {

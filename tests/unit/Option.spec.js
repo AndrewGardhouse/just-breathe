@@ -37,6 +37,19 @@ describe('Option.vue', () => {
     expect(label.attributes().for).toBe('hold-inhale')
   });
 
+  it('fieldNameCapitalized should return a string without spaces and first letter capitalized', () => {
+    const wrapper = shallowMount(Option, {
+      propsData: {
+        value: 5,
+        minTime: 1,
+        maxTime: 12,
+        fieldName: 'Hold Inhale Test',
+      }
+    });
+
+    expect(wrapper.vm.fieldNameCapitalized).toBe('HoldInhaleTest');
+  });
+
   it('slider label displays the correct text', () => {
     const wrapper = shallowMount(Option, {
       propsData: fakePropsData
