@@ -1,6 +1,13 @@
 import { shallowMount } from '@vue/test-utils';
 import Option from '@/components/Option';
 
+const fakePropsData = {
+  value: 5,
+  minTime: 1,
+  maxTime: 12,
+  fieldName: 'Hold Inhale',
+}
+
 describe('Option.vue', () => {
   it('should required props', () => {
     // https://github.com/vuejs/vue-test-utils/issues/704
@@ -20,15 +27,19 @@ describe('Option.vue', () => {
 
   it('fieldNameSlugified should return a slugified fieldName prop', () => {
     const wrapper = shallowMount(Option, {
-      propsData: {
-        value: 0,
-        minTime: 1,
-        maxTime: 12,
-        fieldName: 'Hold Inhale',
-      }
+      propsData: fakePropsData
     });
     const label = wrapper.find('label')
 
     expect(label.attributes().for).toBe('hold-inhale')
+  });
+
+  it('slider label displays the correct text', () => {
+    const wrapper = shallowMount(Option, {
+      propsData: fakePropsData
+    });
+    const renderedLabel = wrapper.find('label');
+
+    expect(renderedLabel.text()).toMatch('Hold Inhale: 5 seconds');
   });
 });

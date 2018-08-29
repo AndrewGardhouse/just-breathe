@@ -1,7 +1,7 @@
 <template>
   <div class="option my1">
     <label :for="fieldNameSlugified">
-      {{ fieldName }}: {{ value }} {{ secondPluralFilter(value) }}
+      {{ labelText }}
     </label>
     <vue-slider :ref="fieldNameSlugified"
                 :value.sync="value"
@@ -46,6 +46,9 @@ export default {
         .replace(/^-+/, '')             // Trim - from start of text
         .replace(/-+$/, '');            // Trim - from end of text
     },
+    labelText() {
+      return `${this.fieldName}: ${this.value} ${this.secondPluralFilter(this.value)}`
+    }
   },
   methods: {
     secondPluralFilter(time) {
