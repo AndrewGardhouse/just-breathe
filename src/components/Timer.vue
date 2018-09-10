@@ -1,13 +1,26 @@
 <template>
   <div class="timer">
     <p class="h1">Timer</p>
+    <button class="btn btn-outline start-stop" v-on:click="toggleTimer">{{ buttonText }}</button>
   </div>
 </template>
 
 <script>
+import { mapState, mapMutations } from 'vuex';
+
 export default {
+  computed: {
+    ...mapState([
+      'isTimerRunning',
+    ]),
+    buttonText() {
+      return this.isTimerRunning ? 'Stop' : 'Start';
+    },
+  },
+  methods: {
+    ...mapMutations([
+      'toggleTimer',
+    ]),
+  },
 };
 </script>
-
-<style lang="less">
-</style>

@@ -11,4 +11,7 @@ export default {
   updateExhale(state, value) {
     state.exhale = value;
   },
+  toggleTimer(state) {
+    state.isTimerRunning = !state.isTimerRunning;
+  }
 };
