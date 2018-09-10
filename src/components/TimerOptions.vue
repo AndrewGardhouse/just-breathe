@@ -14,13 +14,11 @@
 </template>
 
 <script>
-import vueSlider from 'vue-slider-component';
 import Option from '@/components/Option.vue';
 import { mapState } from 'vuex';
 
 export default {
   components: {
-    vueSlider,
     Option,
   },
   computed: {
