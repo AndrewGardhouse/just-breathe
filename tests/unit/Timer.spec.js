@@ -13,6 +13,7 @@ describe('Timer.vue', () => {
     const store = new Vuex.Store({
       state,
       mutations,
+      getters
     });
 
     const wrapper = shallowMount(Timer, {
@@ -52,7 +53,6 @@ describe('Timer.vue', () => {
       localVue,
     });
 
-    expect(wrapper.vm.$store.getters.breathingRoundTime).toBe(10);
+    expect(wrapper.vm.$store.getters.breathingCycleTime).toBe(10);
   });
-
 });
