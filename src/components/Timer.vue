@@ -1,7 +1,7 @@
 <template>
   <div class="timer">
     <p class="h1">Timer</p>
-    <p>Total time per round: {{ breathRoundTime }} seconds</p>
+    <p>Total time per round: {{ breathingRoundTime }} seconds</p>
     <button class="btn btn-outline start-stop" v-on:click="toggleTimer">{{ buttonText }}</button>
   </div>
 </template>
@@ -15,7 +15,7 @@ export default {
       'isTimerRunning',
     ]),
     ...mapGetters([
-      'breathRoundTime',
+      'breathingRoundTime',
     ]),
     buttonText() {
       return this.isTimerRunning ? 'Stop' : 'Start';

@@ -52,7 +52,7 @@ describe('Timer.vue', () => {
       localVue,
     });
 
-    expect(wrapper.vm.$store.getters.breathRoundTime).toBe(10);
+    expect(wrapper.vm.$store.getters.breathingRoundTime).toBe(10);
   });
 
 });
