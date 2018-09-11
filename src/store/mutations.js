@@ -1,3 +1,4 @@
+/* eslint-disable */
 export default {
   updateHoldInhale(state, value) {
     state.holdInhale = value;
@@ -13,5 +14,5 @@ export default {
   },
   toggleTimer(state) {
     state.isTimerRunning = !state.isTimerRunning;
-  }
+  },
 };
