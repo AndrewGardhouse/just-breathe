@@ -13,7 +13,7 @@ describe('Timer.vue', () => {
     const store = new Vuex.Store({
       state,
       mutations,
-      getters
+      getters,
     });
 
     const wrapper = shallowMount(Timer, {
@@ -54,5 +54,29 @@ describe('Timer.vue', () => {
     });
 
     expect(wrapper.vm.$store.getters.breathingCycleTime).toBe(10);
+  });
+
+  it('should have the total time it has been running', () => {
+    const localVue = createLocalVue();
+    localVue.use(Vuex);
+
+    const store = new Vuex.Store({
+      state,
+      mutations,
+      getters,
+    });
+
+    const wrapper = shallowMount(Timer, {
+      store,
+      localVue,
+    });
+
+    const startButton = wrapper.find('.start-stop');
+
+    expect(wrapper.vm.interval).toBeNull();
+
+    startButton.trigger('click');
+    
+    expect(wrapper.vm.interval).toBeDefined();
   });
 });
