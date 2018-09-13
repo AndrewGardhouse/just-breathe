@@ -6,23 +6,37 @@ import getters from '@/store/getters';
 import Timer from '@/components/Timer';
 
 describe('Timer.vue', () => {
-  it('will start and stop the timer when start/stop button is clicked', () => {
-    const localVue = createLocalVue();
+  let localVue;
+  let store;
+  let wrapper;
+  let startButton;
+
+  beforeEach(() => {
+    localVue = createLocalVue();
     localVue.use(Vuex);
 
-    const store = new Vuex.Store({
+    store = new Vuex.Store({
       state,
-      mutations,
+      // state = {
+      //   inhale: 5,
+      //   exhale: 5,
+      //   holdInhale: 0,
+      //   holdExhale: 0,
+      //   isTimerRunning: false,
+      // };
       getters,
+      mutations,
     });
 
-    const wrapper = shallowMount(Timer, {
+    wrapper = shallowMount(Timer, {
       store,
       localVue,
     });
 
-    const startButton = wrapper.find('.start-stop');
+    startButton = wrapper.find('.start-stop');
+  });
 
+  it('will start and stop the timer when start/stop button is clicked', () => {
     startButton.trigger('click');
     expect(state.isTimerRunning).toBe(true);
     expect(startButton.text()).toMatch('Stop');
@@ -33,50 +47,14 @@ describe('Timer.vue', () => {
   });
 
   it('has the total time of a inhale and exhale breath count', () => {
-    const localVue = createLocalVue();
-    localVue.use(Vuex);
-
-    const localState = {
-      inhale: 5,
-      exhale: 5,
-      holdInhale: 0,
-      holdExhale: 0,
-    };
-
-    const store = new Vuex.Store({
-      state: localState,
-      getters,
-    });
-
-    const wrapper = shallowMount(Timer, {
-      store,
-      localVue,
-    });
-
     expect(wrapper.vm.$store.getters.breathingCycleTime).toBe(10);
   });
 
   it('should have the total time it has been running', () => {
-    const localVue = createLocalVue();
-    localVue.use(Vuex);
-
-    const store = new Vuex.Store({
-      state,
-      mutations,
-      getters,
-    });
-
-    const wrapper = shallowMount(Timer, {
-      store,
-      localVue,
-    });
-
-    const startButton = wrapper.find('.start-stop');
-
     expect(wrapper.vm.interval).toBeNull();
 
     startButton.trigger('click');
-    
+
     expect(wrapper.vm.interval).toBeDefined();
   });
 });
