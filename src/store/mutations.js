@@ -1,3 +1,5 @@
+import moment from 'moment';
+
 /* eslint-disable */
 export default {
   updateHoldInhale(state, value) {
@@ -14,5 +16,16 @@ export default {
   },
   toggleIsTimerRunning(state) {
     state.isTimerRunning = !state.isTimerRunning;
+  },
+  startTimer(state, obj) {
+    state.startTime = moment();
+    state.currentTime = moment();
+    state.interval = setInterval(() => {
+      state.currentTime = moment();
+    }, 1000);
+  },
+  stopTimer(state) {
+    clearInterval(state.interval);
+    state.interval = null;
   },
 };

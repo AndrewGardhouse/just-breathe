@@ -3,7 +3,7 @@ import Vuex from 'vuex';
 import state from '@/store/state';
 import mutations from '@/store/mutations';
 import getters from '@/store/getters';
-import Timer from '@/components/Timer';
+import TimerToggle from '@/components/TimerToggle';
 
 describe('Timer.vue', () => {
   let localVue;
@@ -23,12 +23,15 @@ describe('Timer.vue', () => {
       //   holdInhale: 0,
       //   holdExhale: 0,
       //   isTimerRunning: false,
+      //   interval: null,
+      //   startTime: null,
+      //   currentTime: null,
       // };
       getters,
       mutations,
     });
 
-    wrapper = shallowMount(Timer, {
+    wrapper = shallowMount(TimerToggle, {
       store,
       localVue,
     });
@@ -46,15 +49,11 @@ describe('Timer.vue', () => {
     expect(startButton.text()).toMatch('Start');
   });
 
-  it('has the total time of a inhale and exhale breath count', () => {
-    expect(wrapper.vm.$store.getters.breathingCycleTime).toBe(10);
-  });
-
   it('should have the total time it has been running', () => {
-    expect(wrapper.vm.interval).toBeNull();
+    expect(state.interval).toBeNull();
 
     startButton.trigger('click');
 
-    expect(wrapper.vm.interval).toBeDefined();
+    expect(state.interval).toBeDefined();
   });
 });

@@ -4,4 +4,7 @@ export default {
   holdInhale: 0,
   holdExhale: 0,
   isTimerRunning: false,
+  interval: null,
+  startTime: null,
+  currentTime: null,
 };
