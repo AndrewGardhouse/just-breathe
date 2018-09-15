@@ -1,11 +1,19 @@
 <template lang="html">
-  <button class="btn btn-outline start-stop" v-on:click="toggleTimer">{{ buttonText }}</button>
+  <button class="btn btn-outline start-stop"
+          v-on:click="toggleTimer"
+          v-bind:class="{ 'hide-button' : !showButton }">{{ buttonText }}</button>
 </template>
 
 <script>
 import { mapState, mapMutations } from 'vuex';
 
 export default {
+  data() {
+    return {
+      showButton: true,
+      timeout: null,
+    };
+  },
   computed: {
     ...mapState([
       'isTimerRunning',
@@ -23,17 +31,22 @@ export default {
     toggleTimer() {
       this.toggleIsTimerRunning();
       if (this.isTimerRunning) {
-        this.startTimer()
+        this.startTimer();
+        this.showButton = !this.showButton;
+        this.timeout = setTimeout(() => {
+          this.showButton = !this.showButton;
+          clearTimout(this.timeout);
+        }, 6000);
       } else {
-        this.stopTimer()
+        this.stopTimer();
       }
     },
   },
 };
 </script>
 
-<style lang="less" scoped>
-button {
+<style lang="less">
+.start-stop {
   @button-position: 5vw;
   @button-size: 25vw;
 
@@ -44,5 +57,10 @@ button {
   height: @button-size;
   width: @button-size;
   border-radius: 100%;
+  transition: opacity 0.5s;
+  opacity: 1;
+  &.hide-button {
+    opacity: 0;
+  }
 }
 </style>
