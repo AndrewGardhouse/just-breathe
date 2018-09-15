@@ -17,6 +17,7 @@ export default {
 <style lang="less">
 .time {
   position: absolute;
+  z-index: 1;
   top: 5vw;
   right: 5vw;
 }
