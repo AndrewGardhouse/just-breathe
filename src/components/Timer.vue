@@ -6,34 +6,46 @@
       </p>
     </div>
     <div class="my-auto" v-else>
-      <p class="h1 inhale" v-if="inhaleInterval">
-        Inhale
-        <br>
-        <span v-show="inhaleCount !== 0">
-          {{ inhaleCount }}
-        </span>
-      </p>
-      <p class="h1 hold-inhale" v-if="holdInhaleInterval">
-        Hold
-        <br>
-        <span v-show="holdInhaleCount !== 0">
-          {{ holdInhaleCount }}
-        </span>
-      </p>
-      <p class="h1 exhale" v-if="exhaleInterval">
-        Exhale
-        <br>
-        <span v-show="exhaleCount !== 0">
-          {{ exhaleCount }}
-        </span>
-      </p>
-      <p class="h1 hold-exhale" v-if="holdExhaleInterval">
-        Hold
-        <br>
-        <span v-show="holdExhaleCount !== 0">
-          {{ holdExhaleCount }}
-        </span>
-      </p>
+      <div class="inhale" v-if="inhaleInterval">
+        <p class="h1 mb0">
+          Inhale
+        </p>
+        <p class="h1 mt0">
+          <span v-show="inhaleCount !== 0">
+            {{ inhaleCount }}
+          </span>
+        </p>
+      </div>
+      <div class="hold-inhale" v-if="holdInhaleInterval">
+        <p class="h1 mb0">
+          Hold
+        </p>
+        <p class="h1 mt0">
+          <span v-show="holdInhaleCount !== 0">
+            {{ holdInhaleCount }}
+          </span>
+        </p>
+      </div>
+      <div class="exhale" v-if="exhaleInterval">
+        <p class="h1 mb0">
+          Exhale
+        </p>
+        <p class="h1 mt0">
+          <span v-show="exhaleCount !== 0">
+            {{ exhaleCount }}
+          </span>
+        </p>
+      </div>
+      <div class="hold-exhale" v-if="holdExhaleInterval">
+        <p class="h1 mb0">
+          Hold
+        </p>
+        <p class="h1 mt0">
+          <span v-show="holdExhaleCount !== 0">
+            {{ holdExhaleCount }}
+          </span>
+        </p>
+      </div>
     </div>
   </div>
 </template>
@@ -71,7 +83,7 @@ export default {
   },
   mounted() {
     this.countDownInterval = setInterval(() => {
-      this.countDown = this.countDown - 1;
+      this.countDown--;
     }, 1000);
   },
   watch: {
@@ -80,7 +92,7 @@ export default {
         clearInterval(this.countDownInterval);
         this.showCountDown = !this.showCountDown;
         this.inhaleInterval = setInterval(() => {
-          this.inhaleCount = this.inhaleCount + 1;
+          this.inhaleCount++;
         }, 1000);
       }
     },
@@ -88,16 +100,16 @@ export default {
       if (newVal === this.inhale + 1) {
         clearInterval(this.inhaleInterval);
         this.inhaleInterval = null;
-        this.inhaleCount = 0;
+        this.inhaleCount = 1;
         // if holdInhale is 0, start the exhaleInterval
         // else start holdInhaleInterval
         if (this.holdInhale === 0) {
           this.exhaleInterval = setInterval(() => {
-            this.exhaleCount = this.exhaleCount + 1;
+            this.exhaleCount++;
           }, 1000);
         } else {
           this.holdInhaleInterval = setInterval(() => {
-            this.holdInhaleCount = this.holdInhaleCount + 1;
+            this.holdInhaleCount++;
           }, 1000);
         }
       }
@@ -106,9 +118,9 @@ export default {
       if (newVal === this.holdInhale + 1) {
         clearInterval(this.holdInhaleInterval);
         this.holdInhaleInterval = null;
-        this.holdInhaleCount = 0;
+        this.holdInhaleCount = 1;
         this.exhaleInterval = setInterval(() => {
-          this.exhaleCount = this.exhaleCount + 1;
+          this.exhaleCount++;
         }, 1000);
       }
     },
@@ -116,16 +128,16 @@ export default {
       if (newVal === this.exhale + 1) {
         clearInterval(this.exhaleInterval);
         this.exhaleInterval = null;
-        this.exhaleCount = 0;
+        this.exhaleCount = 1;
         // if holdExhale is 0, start the inhaleInterval
         // else start holdExhaleInterval
         if (this.holdExhale === 0) {
           this.inhaleInterval = setInterval(() => {
-            this.inhaleCount = this.inhaleCount + 1;
+            this.inhaleCount++;
           }, 1000);
         } else {
           this.holdExhaleInterval = setInterval(() => {
-            this.holdExhaleCount = this.holdExhaleCount + 1;
+            this.holdExhaleCount++;
           }, 1000);
         }
       }
@@ -134,9 +146,9 @@ export default {
       if (newVal === this.holdExhale + 1) {
         clearInterval(this.holdExhaleInterval);
         this.holdExhaleInterval = null;
-        this.holdExhaleCount = 0;
+        this.holdExhaleCount = 1;
         this.inhaleInterval = setInterval(() => {
-          this.inhaleCount = this.inhaleCount + 1;
+          this.inhaleCount++;
         }, 1000);
       }
     }
@@ -146,8 +158,10 @@ export default {
 
 <style lang="less">
 .timer {
+  background-color: rgba(69,179,224,0); // #45b3e0
   position: absolute;
   height: 100vh;
   width: 100vw;
+  transition: background-color 1s;
 }
 </style>
