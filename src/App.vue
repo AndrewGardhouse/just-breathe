@@ -2,7 +2,7 @@
   <div id="app">
     <div class="wrapper flex flex-column">
       <Clock />
-      <Timer class="my-auto" v-if="isTimerRunning" />
+      <Timer v-if="isTimerRunning" />
       <div class="my-auto" v-else>
         <p class="h1 mt0">Just Breathe</p>
         <button class="btn btn-outline open-options" v-on:click="openOptions">Settings</button>
