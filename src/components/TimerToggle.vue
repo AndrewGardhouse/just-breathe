@@ -1,7 +1,8 @@
 <template lang="html">
   <button class="btn btn-outline start-stop"
           v-on:click="toggleTimer"
-          v-bind:class="{ 'hide-button' : !showButton }">{{ buttonText }}</button>
+          v-bind:class="{ 'hide-button' : !showButton }"
+          v-bind:disabled="!showButton">{{ buttonText }}</button>
 </template>
 
 <script>
