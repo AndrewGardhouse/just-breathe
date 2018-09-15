@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <div class="wrapper flex flex-column">
+    <div class="wrapper flex flex-column" v-bind:class="{ 'timer-is-running' : isTimerRunning}">
       <Clock />
       <Timer v-if="isTimerRunning" />
       <div class="my-auto" v-else>
@@ -43,7 +43,6 @@ export default {
 
 <style lang="less">
 body {
-  background-color: #faf5ef;
   margin: 0;
   position: absolute;
   height: 100%;
@@ -65,5 +64,10 @@ body {
 
 .wrapper {
   height: 100vh;
+  background-color: #faf5ef;
+  transition: background-color 3s;
+  &.timer-is-running {
+    background-color: #7FD9F1;
+  }
 }
 </style>
