@@ -18,11 +18,13 @@ export default {
     state.isTimerRunning = !state.isTimerRunning;
   },
   startTimer(state, obj) {
-    state.startTime = moment();
-    state.currentTime = moment();
-    state.interval = setInterval(() => {
+    setTimeout(() => {
+      state.startTime = moment();
       state.currentTime = moment();
-    }, 1000);
+      state.interval = setInterval(() => {
+        state.currentTime = moment();
+      }, 1000);
+    }, 5000);
   },
   stopTimer(state) {
     clearInterval(state.interval);
