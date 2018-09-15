@@ -35,7 +35,7 @@ export default {
         this.showButton = !this.showButton;
         this.timeout = setTimeout(() => {
           this.showButton = !this.showButton;
-          clearTimout(this.timeout);
+          clearTimeout(this.timeout);
         }, 6000);
       } else {
         this.stopTimer();
