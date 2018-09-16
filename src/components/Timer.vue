@@ -1,5 +1,7 @@
 <template>
-  <div class="timer flex flex-column">
+  <div class="timer flex flex-column"
+       v-bind:class="{ 'inhale': inhaleInterval || holdInhaleInterval }"
+       v-bind:style="{ transitionDuration: `${transitionSpeed}s` }">
     <div class="my-auto" v-if="showCountDown">
       <p class="h1">
         {{ countDown }}
@@ -7,43 +9,23 @@
     </div>
     <div class="my-auto" v-else>
       <div class="inhale" v-if="inhaleInterval">
-        <p class="h1 mb0">
-          Inhale
-        </p>
-        <p class="h1 mt0">
-          <span v-show="inhaleCount !== 0">
-            {{ inhaleCount }}
-          </span>
+        <p class="h1">
+          {{ inhaleCount === 0 ? 'Inhale' : inhaleCount }}
         </p>
       </div>
       <div class="hold-inhale" v-if="holdInhaleInterval">
-        <p class="h1 mb0">
-          Hold
-        </p>
-        <p class="h1 mt0">
-          <span v-show="holdInhaleCount !== 0">
-            {{ holdInhaleCount }}
-          </span>
+        <p class="h1">
+          {{ holdInhaleCount === 0 ? 'Hold' : holdInhaleCount }}
         </p>
       </div>
       <div class="exhale" v-if="exhaleInterval">
-        <p class="h1 mb0">
-          Exhale
-        </p>
-        <p class="h1 mt0">
-          <span v-show="exhaleCount !== 0">
-            {{ exhaleCount }}
-          </span>
+        <p class="h1">
+          {{ exhaleCount === 0 ? 'Exhale' : exhaleCount }}
         </p>
       </div>
       <div class="hold-exhale" v-if="holdExhaleInterval">
-        <p class="h1 mb0">
-          Hold
-        </p>
-        <p class="h1 mt0">
-          <span v-show="holdExhaleCount !== 0">
-            {{ holdExhaleCount }}
-          </span>
+        <p class="h1">
+          {{ holdExhaleCount === 0 ? 'Hold' : holdExhaleCount }}
         </p>
       </div>
     </div>
@@ -59,13 +41,13 @@ export default {
       showCountDown: true,
       countDown: 5,
       countDownInterval: null,
-      inhaleCount: 1,
+      inhaleCount: 0,
       inhaleInterval: null,
-      holdInhaleCount: 1,
+      holdInhaleCount: 0,
       holdInhaleInterval: null,
-      exhaleCount: 1,
+      exhaleCount: 0,
       exhaleInterval: null,
-      holdExhaleCount: 1,
+      holdExhaleCount: 0,
       holdExhaleInterval: null,
     };
   },
@@ -80,6 +62,15 @@ export default {
       'breathingCycleTime',
       'timeRunning',
     ]),
+    transitionSpeed() {
+      let speed;
+      if (this.inhaleInterval) {
+        speed = this.inhale;
+      } else {
+        speed = this.exhale;
+      }
+      return speed;
+    }
   },
   mounted() {
     this.countDownInterval = setInterval(() => {
@@ -100,7 +91,7 @@ export default {
       if (newVal === this.inhale + 1) {
         clearInterval(this.inhaleInterval);
         this.inhaleInterval = null;
-        this.inhaleCount = 1;
+        this.inhaleCount = 0;
         // if holdInhale is 0, start the exhaleInterval
         // else start holdInhaleInterval
         if (this.holdInhale === 0) {
@@ -118,7 +109,7 @@ export default {
       if (newVal === this.holdInhale + 1) {
         clearInterval(this.holdInhaleInterval);
         this.holdInhaleInterval = null;
-        this.holdInhaleCount = 1;
+        this.holdInhaleCount = 0;
         this.exhaleInterval = setInterval(() => {
           this.exhaleCount++;
         }, 1000);
@@ -128,7 +119,7 @@ export default {
       if (newVal === this.exhale + 1) {
         clearInterval(this.exhaleInterval);
         this.exhaleInterval = null;
-        this.exhaleCount = 1;
+        this.exhaleCount = 0;
         // if holdExhale is 0, start the inhaleInterval
         // else start holdExhaleInterval
         if (this.holdExhale === 0) {
@@ -146,7 +137,7 @@ export default {
       if (newVal === this.holdExhale + 1) {
         clearInterval(this.holdExhaleInterval);
         this.holdExhaleInterval = null;
-        this.holdExhaleCount = 1;
+        this.holdExhaleCount = 0;
         this.inhaleInterval = setInterval(() => {
           this.inhaleCount++;
         }, 1000);
@@ -158,10 +149,13 @@ export default {
 
 <style lang="less">
 .timer {
-  background-color: rgba(69,179,224,0); // #45b3e0
   position: absolute;
   height: 100vh;
   width: 100vw;
-  transition: background-color 1s;
+  transition-timing-function: ease;
+  transition: background-color;
+  &.inhale {
+    background-color: rgba(35,206,235,1);
+  }
 }
 </style>

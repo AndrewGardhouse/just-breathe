@@ -65,9 +65,9 @@ body {
 .wrapper {
   height: 100vh;
   background-color: #faf5ef;
-  transition: background-color 3s;
+  transition: background-color 1s;
   &.timer-is-running {
-    background-color: #7FD9F1;
+    background-color: rgba(35,206,235,0.1);
   }
 }
 </style>
