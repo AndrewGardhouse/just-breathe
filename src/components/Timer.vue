@@ -1,6 +1,6 @@
 <template>
   <div class="timer flex flex-column"
-       v-bind:class="{ 'inhale': inhaleInterval || holdInhaleInterval }"
+       v-bind:class="{ 'inhale-background': inhaleInterval || holdInhaleInterval }"
        v-bind:style="{ transitionDuration: `${transitionSpeed}s` }">
     <div class="my-auto" v-if="showCountDown">
       <p class="h1">
@@ -154,7 +154,7 @@ export default {
   width: 100vw;
   transition-timing-function: ease;
   transition: background-color;
-  &.inhale {
+  &.inhale-background {
     background-color: rgba(35,206,235,1);
   }
 }
