@@ -5,6 +5,9 @@
     <div class="breath-circle my-auto absolute"
          v-bind:class="{ 'grow': inhaleInterval || holdInhaleInterval }"
          v-bind:style="{ transitionDuration: `${transitionSpeed}s` }"></div>
+    <audio class="click" ref="click">
+      <source src="@/assets/click-2.mp3" type="audio/mpeg">
+    </audio>
     <div class="my-auto" v-if="showCountDown">
       <p class="h1">
         {{ countDown }}
@@ -80,10 +83,17 @@ export default {
       this.countDown -= 1;
     }, 1000);
   },
+  methods: {
+    playClick() {
+      this.$refs.click.play();
+      this.$refs.click.volume = 0.1;
+    }
+  },
   watch: {
     countDown(newVal) {
       if (newVal === 0) {
         clearInterval(this.countDownInterval);
+        this.playClick();
         this.showCountDown = !this.showCountDown;
         this.inhaleInterval = setInterval(() => {
           this.inhaleCount += 1;
@@ -93,6 +103,7 @@ export default {
     inhaleCount(newVal) {
       if (newVal === this.inhale + 1) {
         clearInterval(this.inhaleInterval);
+        this.playClick();
         this.inhaleInterval = null;
         this.inhaleCount = 0;
         // if holdInhale is 0, start the exhaleInterval
@@ -111,6 +122,7 @@ export default {
     holdInhaleCount(newVal) {
       if (newVal === this.holdInhale + 1) {
         clearInterval(this.holdInhaleInterval);
+        this.playClick();
         this.holdInhaleInterval = null;
         this.holdInhaleCount = 0;
         this.exhaleInterval = setInterval(() => {
@@ -121,6 +133,7 @@ export default {
     exhaleCount(newVal) {
       if (newVal === this.exhale + 1) {
         clearInterval(this.exhaleInterval);
+        this.playClick();
         this.exhaleInterval = null;
         this.exhaleCount = 0;
         // if holdExhale is 0, start the inhaleInterval
@@ -139,6 +152,7 @@ export default {
     holdExhaleCount(newVal) {
       if (newVal === this.holdExhale + 1) {
         clearInterval(this.holdExhaleInterval);
+        this.playClick();
         this.holdExhaleInterval = null;
         this.holdExhaleCount = 0;
         this.inhaleInterval = setInterval(() => {
@@ -163,7 +177,8 @@ export default {
   .breath-circle {
     border-radius: 50%;
     border: 1px solid #2c3e50;
-    box-shadow: inset 0px 0px 2px 0px rgba(44,62,80,1), 0px 0px 2px 0px rgba(44,62,80,1);
+    box-shadow: inset 0px 0px 2px 0px rgba(44,62,80,1),
+                0px 0px 2px 0px rgba(44,62,80,1);
     height: 35vw;
     width: 35vw;
     top: 0;
