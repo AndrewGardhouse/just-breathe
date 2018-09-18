@@ -13,5 +13,13 @@ export default new Vuex.Store({
   getters,
   mutations,
   actions,
-  plugins: [createPersistedState()],
+  plugins: [createPersistedState({
+    key: 'just-breathe',
+    paths: [
+      'inhale',
+      'exhale',
+      'holdInhale',
+      'holdExhale',
+    ],
+  })],
 });
