@@ -2,6 +2,9 @@
   <div class="timer flex flex-column"
        v-bind:class="{ 'inhale-background': inhaleInterval || holdInhaleInterval }"
        v-bind:style="{ transitionDuration: `${transitionSpeed}s` }">
+    <div class="breath-circle my-auto absolute"
+         v-bind:class="{ 'grow': inhaleInterval || holdInhaleInterval }"
+         v-bind:style="{ transitionDuration: `${transitionSpeed}s` }"></div>
     <div class="my-auto" v-if="showCountDown">
       <p class="h1">
         {{ countDown }}
@@ -69,7 +72,7 @@ export default {
       } else {
         speed = this.exhale;
       }
-      return speed;
+      return speed + 1;
     },
   },
   mounted() {
@@ -156,6 +159,24 @@ export default {
   transition-property: background-color;
   &.inhale-background {
     background-color: rgba(35,206,235,1);
+  }
+  .breath-circle {
+    border-radius: 50%;
+    border: 1px solid #2c3e50;
+    box-shadow: inset 0px 0px 2px 0px rgba(44,62,80,1), 0px 0px 2px 0px rgba(44,62,80,1);
+    height: 35vw;
+    width: 35vw;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    transition-property: all;
+    transition-timing-function: linear;
+    transform: scale(1);
+    &.grow {
+      transform: scale(1.6);
+    }
   }
 }
 </style>
