@@ -70,24 +70,24 @@ export default {
         speed = this.exhale;
       }
       return speed;
-    }
+    },
   },
   mounted() {
     this.countDownInterval = setInterval(() => {
-      this.countDown--;
+      this.countDown -= 1;
     }, 1000);
   },
   watch: {
-    countDown(newVal, oldVal) {
+    countDown(newVal) {
       if (newVal === 0) {
         clearInterval(this.countDownInterval);
         this.showCountDown = !this.showCountDown;
         this.inhaleInterval = setInterval(() => {
-          this.inhaleCount++;
+          this.inhaleCount += 1;
         }, 1000);
       }
     },
-    inhaleCount(newVal, oldVal) {
+    inhaleCount(newVal) {
       if (newVal === this.inhale + 1) {
         clearInterval(this.inhaleInterval);
         this.inhaleInterval = null;
@@ -96,26 +96,26 @@ export default {
         // else start holdInhaleInterval
         if (this.holdInhale === 0) {
           this.exhaleInterval = setInterval(() => {
-            this.exhaleCount++;
+            this.exhaleCount += 1;
           }, 1000);
         } else {
           this.holdInhaleInterval = setInterval(() => {
-            this.holdInhaleCount++;
+            this.holdInhaleCount += 1;
           }, 1000);
         }
       }
     },
-    holdInhaleCount(newVal, oldVal) {
+    holdInhaleCount(newVal) {
       if (newVal === this.holdInhale + 1) {
         clearInterval(this.holdInhaleInterval);
         this.holdInhaleInterval = null;
         this.holdInhaleCount = 0;
         this.exhaleInterval = setInterval(() => {
-          this.exhaleCount++;
+          this.exhaleCount += 1;
         }, 1000);
       }
     },
-    exhaleCount(newVal, oldVal) {
+    exhaleCount(newVal) {
       if (newVal === this.exhale + 1) {
         clearInterval(this.exhaleInterval);
         this.exhaleInterval = null;
@@ -124,25 +124,25 @@ export default {
         // else start holdExhaleInterval
         if (this.holdExhale === 0) {
           this.inhaleInterval = setInterval(() => {
-            this.inhaleCount++;
+            this.inhaleCount += 1;
           }, 1000);
         } else {
           this.holdExhaleInterval = setInterval(() => {
-            this.holdExhaleCount++;
+            this.holdExhaleCount += 1;
           }, 1000);
         }
       }
     },
-    holdExhaleCount(newVal, oldVal) {
+    holdExhaleCount(newVal) {
       if (newVal === this.holdExhale + 1) {
         clearInterval(this.holdExhaleInterval);
         this.holdExhaleInterval = null;
         this.holdExhaleCount = 0;
         this.inhaleInterval = setInterval(() => {
-          this.inhaleCount++;
+          this.inhaleCount += 1;
         }, 1000);
       }
-    }
+    },
   },
 };
 </script>
@@ -152,8 +152,8 @@ export default {
   position: absolute;
   height: 100vh;
   width: 100vw;
-  transition-timing-function: ease;
-  transition: background-color;
+  transition-timing-function: linear;
+  transition-property: background-color;
   &.inhale-background {
     background-color: rgba(35,206,235,1);
   }

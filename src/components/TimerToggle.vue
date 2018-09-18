@@ -60,6 +60,7 @@ export default {
   border-radius: 100%;
   transition: opacity 0.5s;
   opacity: 1;
+  user-select: none;
   &.hide-button {
     opacity: 0;
   }
