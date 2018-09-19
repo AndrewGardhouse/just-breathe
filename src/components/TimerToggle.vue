@@ -3,8 +3,8 @@
           v-on:click="toggleTimer"
           v-bind:class="{ 'hide-button' : !showButton }"
           v-bind:disabled="!showButton">
-    <font-awesome-icon icon="pause" size="5x" v-if="this.isTimerRunning" />
-    <font-awesome-icon icon="play" size="5x" v-else />
+    <font-awesome-icon icon="pause" size="3x" v-if="this.isTimerRunning" />
+    <font-awesome-icon icon="play" size="3x" v-else />
   </button>
 </template>
 

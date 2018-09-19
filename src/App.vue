@@ -6,7 +6,7 @@
       <div class="my-auto" v-else>
         <p class="h1 mt0">Just Breathe</p>
         <button class="open-options" v-on:click="openOptions">
-          <font-awesome-icon icon="cog" size="5x" />
+          <font-awesome-icon icon="cog" size="3x" />
         </button>
       </div>
       <TimerOptions />
@@ -59,7 +59,26 @@ body {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: @dark;
-  button:focus {
+}
+
+button {
+  border: none;
+  margin: 0;
+  padding: 0;
+  width: auto;
+  overflow: visible;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  line-height: normal;
+  -webkit-font-smoothing: inherit;
+  -moz-osx-font-smoothing: inherit;
+  -webkit-appearance: none;
+  &::-moz-focus-inner {
+    border: 0;
+    padding: 0;
+  }
+  &:focus {
     outline:0;
   }
   svg > path {
