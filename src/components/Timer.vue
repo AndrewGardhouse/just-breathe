@@ -6,7 +6,7 @@
          v-bind:class="{ 'grow': inhaleInterval || holdInhaleInterval }"
          v-bind:style="{ transitionDuration: `${transitionSpeed}s` }"></div>
     <audio class="click" ref="click">
-      <source src="@/assets/click-2.mp3" type="audio/mpeg">
+      <source src="@/assets/click.mp3" type="audio/mpeg">
     </audio>
     <div class="my-auto" v-if="showCountDown">
       <p class="h1">
