@@ -5,7 +5,9 @@
       <Timer v-if="isTimerRunning" />
       <div class="my-auto" v-else>
         <p class="h1 mt0">Just Breathe</p>
-        <button class="btn btn-outline open-options" v-on:click="openOptions">Settings</button>
+        <button class="open-options" v-on:click="openOptions">
+          <font-awesome-icon icon="cog" size="5x" />
+        </button>
       </div>
       <TimerOptions />
       <TimerToggle />
@@ -42,6 +44,8 @@ export default {
 </script>
 
 <style lang="less">
+@import  './assets/variables';
+
 body {
   margin: 0;
   position: absolute;
@@ -54,7 +58,13 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color: #2c3e50;
+  color: @dark;
+  button:focus {
+    outline:0;
+  }
+  svg > path {
+    fill: @dark;
+  }
 }
 
 .my-auto {
@@ -68,6 +78,13 @@ body {
   transition: background-color 1s;
   &.timer-is-running {
     background-color: rgba(35,206,235,0.1);
+  }
+  .open-options {
+    position: absolute;
+    padding: 0;
+    bottom: @button-position;
+    left: @button-position;
+    user-select: none;
   }
 }
 </style>

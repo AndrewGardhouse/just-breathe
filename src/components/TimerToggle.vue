@@ -1,8 +1,11 @@
 <template lang="html">
-  <button class="btn btn-outline start-stop"
+  <button class="start-stop"
           v-on:click="toggleTimer"
           v-bind:class="{ 'hide-button' : !showButton }"
-          v-bind:disabled="!showButton">{{ buttonText }}</button>
+          v-bind:disabled="!showButton">
+    <font-awesome-icon icon="pause" size="5x" v-if="this.isTimerRunning" />
+    <font-awesome-icon icon="play" size="5x" v-else />
+  </button>
 </template>
 
 <script>
@@ -47,17 +50,13 @@ export default {
 </script>
 
 <style lang="less">
-.start-stop {
-  @button-position: 5vw;
-  @button-size: 25vw;
+@import  '../assets/variables';
 
+.start-stop {
   position: absolute;
   padding: 0;
   bottom: @button-position;
   right: @button-position;
-  height: @button-size;
-  width: @button-size;
-  border-radius: 100%;
   transition: opacity 0.5s;
   opacity: 1;
   user-select: none;

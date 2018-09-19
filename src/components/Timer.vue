@@ -165,6 +165,8 @@ export default {
 </script>
 
 <style lang="less">
+@import  '../assets/variables';
+
 .timer {
   position: absolute;
   height: 100vh;
@@ -176,7 +178,7 @@ export default {
   }
   .breath-circle {
     border-radius: 50%;
-    border: 1px solid #2c3e50;
+    border: 1px solid @dark;
     box-shadow: inset 0px 0px 2px 0px rgba(44,62,80,1),
                 0px 0px 2px 0px rgba(44,62,80,1);
     height: 35vw;
