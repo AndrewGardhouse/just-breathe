@@ -1,5 +1,5 @@
 <template lang="html">
-  <p class="h1 time m0">{{ timeRunning }}</p>
+  <p class="h2 time m0">{{ timeRunning }}</p>
 </template>
 
 <script>
