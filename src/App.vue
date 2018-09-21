@@ -1,16 +1,26 @@
 <template>
   <div id="app">
-    <div class="wrapper flex flex-column" v-bind:class="{ 'timer-is-running' : isTimerRunning}">
+    <div class="wrapper flex flex-column"
+         v-bind:class="{
+          'timer-is-running': isTimerRunning,
+          'inhale-background': isInhale && isTimerRunning,
+         }"
+         v-bind:style="{ transitionDuration: `${transitonSpeed}s` }">
       <Clock />
-      <Timer v-if="isTimerRunning" />
-      <div class="my-auto" v-else>
-        <p class="h1 mt0">Just Breathe</p>
-        <button class="open-options" v-on:click="openOptions">
-          <font-awesome-icon icon="cog" size="3x" />
-        </button>
-      </div>
+      <transition name="fade">
+        <Timer v-if="isTimerRunning"
+               v-on:updateTransition="updateTransition"
+               v-on:toggleInhaleOrExhale="toggleInhale" />
+        <div class="my-auto" v-else>
+          <p class="h1 mt0">Just Breathe</p>
+          <button class="open-options" v-on:click="openOptions">
+            <font-awesome-icon icon="cog" size="3x" />
+          </button>
+        </div>
+      </transition>
       <TimerOptions />
-      <TimerToggle />
+      <TimerToggle v-on:resetTransitionSpeed="updateTransition"
+                   v-on:setIsInhaleFalse="toggleInhale" />
     </div>
   </div>
 </template>
@@ -30,6 +40,12 @@ export default {
     TimerToggle,
     Clock,
   },
+  data() {
+    return {
+      transitonSpeed: 1,
+      isInhale: false,
+    };
+  },
   computed: {
     ...mapState([
       'isTimerRunning',
@@ -38,6 +54,12 @@ export default {
   methods: {
     openOptions() {
       this.$modal.show('timer-options');
+    },
+    updateTransition(speed) {
+      this.transitonSpeed = speed;
+    },
+    toggleInhale(isInhale) {
+      this.isInhale = isInhale;
     },
   },
 };
@@ -94,9 +116,13 @@ button {
 .wrapper {
   height: 100vh;
   background-color: #faf5ef;
-  transition: background-color 1s;
+  transition-timing-function: linear;
+  transition-property: background-color;
   &.timer-is-running {
     background-color: rgba(35,206,235,0.1);
+  }
+  &.inhale-background {
+    background-color: rgba(35,206,235,1);
   }
   .open-options {
     position: absolute;
@@ -105,5 +131,12 @@ button {
     left: @button-position;
     user-select: none;
   }
+}
+
+.fade-enter-active, .fade-leave-active {
+  transition: opacity 0.5s;
+}
+.fade-enter, .fade-leave-to {
+  opacity: 0;
 }
 </style>

@@ -43,6 +43,8 @@ export default {
         }, 6000);
       } else {
         this.stopTimer();
+        this.$emit('resetTransitionSpeed', 1);
+        this.$emit('setIsInhaleFalse', false);
       }
     },
   },

@@ -1,7 +1,5 @@
 <template>
-  <div class="timer flex flex-column"
-       v-bind:class="{ 'inhale-background': inhaleInterval || holdInhaleInterval }"
-       v-bind:style="{ transitionDuration: `${transitionSpeed}s` }">
+  <div class="timer flex flex-column">
     <div class="breath-circle my-auto absolute"
          v-bind:class="{ 'grow': inhaleInterval || holdInhaleInterval }"
          v-bind:style="{ transitionDuration: `${transitionSpeed}s` }"></div>
@@ -85,9 +83,9 @@ export default {
   },
   methods: {
     playClick() {
-      this.$refs.click.play();
       this.$refs.click.volume = 0.1;
-    }
+      this.$refs.click.play();
+    },
   },
   watch: {
     countDown(newVal) {
@@ -95,6 +93,8 @@ export default {
         clearInterval(this.countDownInterval);
         this.playClick();
         this.showCountDown = !this.showCountDown;
+        this.$emit('updateTransition', this.inhale + 1);
+        this.$emit('toggleInhaleOrExhale', true);
         this.inhaleInterval = setInterval(() => {
           this.inhaleCount += 1;
         }, 1000);
@@ -109,6 +109,8 @@ export default {
         // if holdInhale is 0, start the exhaleInterval
         // else start holdInhaleInterval
         if (this.holdInhale === 0) {
+          this.$emit('updateTransition', this.exhale + 1);
+          this.$emit('toggleInhaleOrExhale', false);
           this.exhaleInterval = setInterval(() => {
             this.exhaleCount += 1;
           }, 1000);
@@ -125,6 +127,8 @@ export default {
         this.playClick();
         this.holdInhaleInterval = null;
         this.holdInhaleCount = 0;
+        this.$emit('updateTransition', this.exhale + 1);
+        this.$emit('toggleInhaleOrExhale', false);
         this.exhaleInterval = setInterval(() => {
           this.exhaleCount += 1;
         }, 1000);
@@ -139,6 +143,8 @@ export default {
         // if holdExhale is 0, start the inhaleInterval
         // else start holdExhaleInterval
         if (this.holdExhale === 0) {
+          this.$emit('updateTransition', this.inhale + 1);
+          this.$emit('toggleInhaleOrExhale', true);
           this.inhaleInterval = setInterval(() => {
             this.inhaleCount += 1;
           }, 1000);
@@ -155,6 +161,8 @@ export default {
         this.playClick();
         this.holdExhaleInterval = null;
         this.holdExhaleCount = 0;
+        this.$emit('updateTransition', this.inhale + 1);
+        this.$emit('toggleInhaleOrExhale', true);
         this.inhaleInterval = setInterval(() => {
           this.inhaleCount += 1;
         }, 1000);
@@ -171,11 +179,6 @@ export default {
   position: absolute;
   height: 100vh;
   width: 100vw;
-  transition-timing-function: linear;
-  transition-property: background-color;
-  &.inhale-background {
-    background-color: rgba(35,206,235,1);
-  }
   .breath-circle {
     border-radius: 50%;
     border: 1px solid @dark;
