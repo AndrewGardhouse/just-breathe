@@ -196,8 +196,6 @@ export default {
   .breath-circle {
     border-radius: 50%;
     border: 1px solid @dark;
-    box-shadow: inset 0px 0px 2px 0px rgba(44,62,80,1),
-                0px 0px 2px 0px rgba(44,62,80,1);
     height: 35vw;
     width: 35vw;
     top: 0;
