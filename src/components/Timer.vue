@@ -86,86 +86,100 @@ export default {
       this.$refs.click.volume = 0.1;
       this.$refs.click.play();
     },
+    clearCountDown() {
+      clearInterval(this.countDownInterval);
+      this.showCountDown = !this.showCountDown;
+    },
+    startInhaleCount() {
+      this.$emit('updateTransition', this.inhale + 1);
+      this.$emit('toggleInhaleOrExhale', true);
+      this.inhaleInterval = setInterval(() => {
+        this.inhaleCount += 1;
+      }, 1000);
+    },
+    clearInhale() {
+      clearInterval(this.inhaleInterval);
+      this.inhaleInterval = null;
+      this.inhaleCount = 0;
+    },
+    startHoldInhaleCount() {
+      this.holdInhaleInterval = setInterval(() => {
+        this.holdInhaleCount += 1;
+      }, 1000);
+    },
+    clearHoldInhale() {
+      clearInterval(this.holdInhaleInterval);
+      this.holdInhaleInterval = null;
+      this.holdInhaleCount = 0;
+    },
+    startExhaleCount() {
+      this.$emit('updateTransition', this.exhale + 1);
+      this.$emit('toggleInhaleOrExhale', false);
+      this.exhaleInterval = setInterval(() => {
+        this.exhaleCount += 1;
+      }, 1000);
+    },
+    clearExhale() {
+      clearInterval(this.exhaleInterval);
+      this.exhaleInterval = null;
+      this.exhaleCount = 0;
+    },
+    startHoldExhaleCount() {
+      this.holdExhaleInterval = setInterval(() => {
+        this.holdExhaleCount += 1;
+      }, 1000);
+    },
+    clearHoldExhale() {
+      clearInterval(this.holdExhaleInterval);
+      this.holdExhaleInterval = null;
+      this.holdExhaleCount = 0;
+    },
   },
   watch: {
+    // For all of these watchers,
+    // we are watching for when the countdowns are finished
+    // so we can start new ones
     countDown(newVal) {
       if (newVal === 0) {
-        clearInterval(this.countDownInterval);
         this.playClick();
-        this.showCountDown = !this.showCountDown;
-        this.$emit('updateTransition', this.inhale + 1);
-        this.$emit('toggleInhaleOrExhale', true);
-        this.inhaleInterval = setInterval(() => {
-          this.inhaleCount += 1;
-        }, 1000);
+        this.clearCountDown();
+        this.startInhaleCount();
       }
     },
     inhaleCount(newVal) {
       if (newVal === this.inhale + 1) {
-        clearInterval(this.inhaleInterval);
         this.playClick();
-        this.inhaleInterval = null;
-        this.inhaleCount = 0;
-        // if holdInhale is 0, start the exhaleInterval
-        // else start holdInhaleInterval
+        this.clearInhale();
         if (this.holdInhale === 0) {
-          this.$emit('updateTransition', this.exhale + 1);
-          this.$emit('toggleInhaleOrExhale', false);
-          this.exhaleInterval = setInterval(() => {
-            this.exhaleCount += 1;
-          }, 1000);
+          this.startExhaleCount();
         } else {
-          this.holdInhaleInterval = setInterval(() => {
-            this.holdInhaleCount += 1;
-          }, 1000);
+          this.startHoldInhaleCount();
         }
       }
     },
     holdInhaleCount(newVal) {
       if (newVal === this.holdInhale + 1) {
-        clearInterval(this.holdInhaleInterval);
         this.playClick();
-        this.holdInhaleInterval = null;
-        this.holdInhaleCount = 0;
-        this.$emit('updateTransition', this.exhale + 1);
-        this.$emit('toggleInhaleOrExhale', false);
-        this.exhaleInterval = setInterval(() => {
-          this.exhaleCount += 1;
-        }, 1000);
+        this.clearHoldInhale();
+        this.startExhaleCount();
       }
     },
     exhaleCount(newVal) {
       if (newVal === this.exhale + 1) {
-        clearInterval(this.exhaleInterval);
         this.playClick();
-        this.exhaleInterval = null;
-        this.exhaleCount = 0;
-        // if holdExhale is 0, start the inhaleInterval
-        // else start holdExhaleInterval
+        this.clearExhale();
         if (this.holdExhale === 0) {
-          this.$emit('updateTransition', this.inhale + 1);
-          this.$emit('toggleInhaleOrExhale', true);
-          this.inhaleInterval = setInterval(() => {
-            this.inhaleCount += 1;
-          }, 1000);
+          this.startInhaleCount();
         } else {
-          this.holdExhaleInterval = setInterval(() => {
-            this.holdExhaleCount += 1;
-          }, 1000);
+          this.startHoldExhaleCount();
         }
       }
     },
     holdExhaleCount(newVal) {
       if (newVal === this.holdExhale + 1) {
-        clearInterval(this.holdExhaleInterval);
         this.playClick();
-        this.holdExhaleInterval = null;
-        this.holdExhaleCount = 0;
-        this.$emit('updateTransition', this.inhale + 1);
-        this.$emit('toggleInhaleOrExhale', true);
-        this.inhaleInterval = setInterval(() => {
-          this.inhaleCount += 1;
-        }, 1000);
+        this.clearHoldExhale();
+        this.startInhaleCount();
       }
     },
   },
