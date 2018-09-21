@@ -1,5 +1,6 @@
 import { shallowMount, createLocalVue } from '@vue/test-utils';
 import Vuex from 'vuex';
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import state from '@/store/state';
 import mutations from '@/store/mutations';
 import getters from '@/store/getters';
@@ -14,6 +15,7 @@ describe('Timer.vue', () => {
   beforeEach(() => {
     localVue = createLocalVue();
     localVue.use(Vuex);
+    localVue.component('font-awesome-icon', FontAwesomeIcon);
 
     store = new Vuex.Store({
       state,
@@ -37,16 +39,6 @@ describe('Timer.vue', () => {
     });
 
     startButton = wrapper.find('.start-stop');
-  });
-
-  it('will start and stop the timer when start/stop button is clicked', () => {
-    startButton.trigger('click');
-    expect(state.isTimerRunning).toBe(true);
-    expect(startButton.text()).toMatch('Stop');
-
-    startButton.trigger('click');
-    expect(state.isTimerRunning).toBe(false);
-    expect(startButton.text()).toMatch('Start');
   });
 
   it('should have the total time it has been running', () => {
