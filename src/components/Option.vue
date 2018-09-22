@@ -1,17 +1,19 @@
 <template>
-  <div class="option my1">
-    <label :for="fieldNameSlugified">
-      {{ labelText }}
+  <div class="option my2 px2">
+    <label class="flex justify-between mb1" :for="fieldNameSlugified">
+      <span class="bold">{{ fieldName }}:</span>
+      <span>{{ value }} {{ secondPluralFilter(value) }}</span>
     </label>
     <vue-slider :ref="fieldNameSlugified"
                 :value.sync="value"
                 :min="minTime"
                 :max="maxTime"
                 :tooltip="false"
-                :piecewise="true"
-                :piecewiseStyle="piecewiseStyle"
-                :piecewiseActiveStyle="piecewiseActiveStyle"
-                @callback="updateValue"></vue-slider>
+                :sliderStyle="sliderStyle"
+                :bgStyle="bgStyle"
+                :processStyle="processStyle"
+                @callback="updateValue"
+                @drag-end="emitShowSaved"></vue-slider>
   </div>
 </template>
 
@@ -40,14 +42,16 @@ export default {
   },
   data() {
     return {
-      piecewiseStyle: {
-        backgroundColor: '#ccc',
-        visibility: 'visible',
-        width: '12px',
-        height: '12px',
+      bgStyle: {
+        height: '2px',
       },
-      piecewiseActiveStyle: {
-        backgroundColor: '#3498db',
+      processStyle: {
+        backgroundColor: '#0F3C7B',
+      },
+      sliderStyle: {
+        boxShadow: 'none',
+        backgroundColor: '#0F3C7B',
+        top: '-7px',
       },
     };
   },
@@ -66,9 +70,6 @@ export default {
         .replace(/^-+/, '') // Trim - from start of text
         .replace(/-+$/, ''); // Trim - from end of text
     },
-    labelText() {
-      return `${this.fieldName}: ${this.value} ${this.secondPluralFilter(this.value)}`;
-    },
     fieldNameCapitalized() {
       return this.fieldName.toString().charAt(0).toUpperCase() + this.fieldName.toString().slice(1).replace(/[^\w]+/g, '');
     },
@@ -81,7 +82,7 @@ export default {
       let label = '';
       if (time === 1) {
         label = 'second';
-      } else if (time > 1) {
+      } else if (time > 1 || time === 0) {
         label = 'seconds';
       }
       return label;
@@ -92,6 +93,9 @@ export default {
         fieldProperty: this.fieldNameCapitalized,
       });
     },
+    emitShowSaved() {
+      this.$emit('showSavedMessage');
+    }
   },
 };
 </script>

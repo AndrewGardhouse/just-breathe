@@ -119,10 +119,12 @@ button {
   transition-timing-function: linear;
   transition-property: background-color;
   &.timer-is-running {
-    background-color: rgba(35,206,235,0.1);
+    // background-color: rgba(35,206,235,0.1);
+    background-color: #f3fafd;
   }
   &.inhale-background {
-    background-color: rgba(35,206,235,1);
+    // background-color: rgba(35,206,235,1);
+    background-color: #45b3e0;
   }
   .open-options {
     position: absolute;
