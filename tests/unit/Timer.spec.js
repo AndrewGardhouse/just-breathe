@@ -355,7 +355,7 @@ describe('Timer.vue Methods', () => {
   });
 
 
-  it('startHoldExhaleCount sets holdInhaleInterval', () => {
+  it('startHoldExhaleCount sets holdExhaleInterval', () => {
     wrapper.vm.startHoldExhaleCount();
 
     expect(wrapper.vm.holdExhaleInterval).toBeDefined();
@@ -364,5 +364,16 @@ describe('Timer.vue Methods', () => {
 
     jest.runTimersToTime(1000);
     expect(wrapper.vm.holdExhaleCount).toBe(1);
+  });
+
+  it('clearHoldExhale sets holdExhaleCount to 0 and clears holdExhaleInterval', () => {
+    wrapper.vm.startHoldExhaleCount();
+
+    expect(wrapper.vm.exhaleInterval).toBeDefined();
+
+    wrapper.vm.clearHoldExhale();
+
+    expect(wrapper.vm.holdExhaleInterval).toBeNull();
+    expect(wrapper.vm.holdExhaleCount).toBe(0);
   });
 });
