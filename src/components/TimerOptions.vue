@@ -32,8 +32,9 @@
               :minTime="0"
               :maxTime="12"
               v-on:showSavedMessage="showSavedMessage" />
-      <div class="p2 flex relative save-message" v-if="showSaved">
-        <p class="text h3 bold">Saved</p>
+      <div class="p2 flex save-message" :class="{ saved: showSaved }">
+        <p class="text h3 bold" v-if="showSaved">Saved</p>
+        <p class="text h3 no-message" v-else></p>
       </div>
     </div>
   </modal>
@@ -70,7 +71,7 @@ export default {
       this.timeout = setTimeout(() => {
         this.showSaved = false;
         this.timeout = null;
-      }, 1500);
+      }, 2000);
     },
   },
 };
@@ -90,11 +91,17 @@ export default {
     }
   }
   .save-message {
-    border-top: 1px solid #0F3C7B;
-    background-color: rgba(255, 255, 255, 0.8);
+    border-top: 1px solid transparent;
+    &.saved {
+      border-top: 1px solid #0F3C7B;
+      background-color: rgba(255, 255, 255, 0.6);
+    }
     .text {
       margin: auto;
       color: #0F3C7B;
+      &.no-message {
+        height: 27px;
+      }
     }
   }
 }

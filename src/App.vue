@@ -12,7 +12,7 @@
                v-on:updateTransition="updateTransition"
                v-on:toggleInhaleOrExhale="toggleInhale" />
         <div class="my-auto" v-else>
-          <p class="h1 mt0">Just Breathe</p>
+          <p class="h1 m0">Just Breathe</p>
           <button class="open-options" v-on:click="openOptions">
             <font-awesome-icon icon="cog" size="3x" />
           </button>
