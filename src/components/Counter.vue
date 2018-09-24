@@ -1,5 +1,7 @@
 <template>
-  <div class="counter"></div>
+  <div class="counter">
+    <span v-for="n in total"></span>
+  </div>
 </template>
 
 <script>

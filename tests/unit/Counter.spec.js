@@ -5,7 +5,7 @@ import getters from '@/store/getters';
 import Counter from '@/components/Counter';
 
 describe('Counter.vue', () => {
-  const fakePropsData = {
+  const propsData = {
     count: 1,
     total: 12,
     name: 'Hold Inhale',
@@ -20,5 +20,15 @@ describe('Counter.vue', () => {
     expect(spy).toBeCalled();
     expect(spy.mock.calls[0][0]).toContain('[Vue warn]: Missing required prop');
     spy.mockRestore();
+  });
+
+  it('number of <span>s should be the same as `total` props', () => {
+    const wrapper = shallowMount(Counter, {
+      propsData,
+    });
+
+    const spans = wrapper.findAll('span');
+
+    expect(spans.length).toBe(propsData.total);
   });
 });
