@@ -88,6 +88,7 @@ export default {
     },
     clearCountDown() {
       clearInterval(this.countDownInterval);
+      this.countDownInterval = null;
       this.showCountDown = !this.showCountDown;
     },
     startInhaleCount() {

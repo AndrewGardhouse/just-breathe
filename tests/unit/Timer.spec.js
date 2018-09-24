@@ -6,8 +6,6 @@ import Timer from '@/components/Timer';
 
 describe('Timer.vue', () => {
   let localVue;
-  // let store;
-  // let wrapper;
 
   beforeEach(() => {
     // Stub for click sound being played
@@ -16,25 +14,31 @@ describe('Timer.vue', () => {
     localVue = createLocalVue();
     localVue.use(Vuex);
     localVue.component('font-awesome-icon', FontAwesomeIcon);
-    //
-    // const store = new Vuex.Store({
-    //   state: {
-    //     inhale: 5,
-    //     exhale: 5,
-    //     holdInhale: 5,
-    //     holdExhale: 5,
-    //   },
-    //   getters,
-    // });
-    //
-    // const wrapper = mount(Timer, {
-    //   store,
-    //   localVue,
-    // });
-    //
-    // wrapper.setMethods({
-    //   playClick: jest.fn(),
-    // });
+  });
+
+  it('clearCountDown will clear the countDown interval and toggles showCountDown', () => {
+    const store = new Vuex.Store({
+      state: {
+        inhale: 5,
+        exhale: 5,
+        holdInhale: 5,
+        holdExhale: 5,
+      },
+      getters,
+    });
+
+    const wrapper = mount(Timer, {
+      store,
+      localVue,
+    });
+
+    expect(wrapper.vm.showCountDown).toBe.true;
+    expect(wrapper.vm.countDownInterval).toBeDefined();
+
+    wrapper.vm.clearCountDown();
+
+    expect(wrapper.vm.showCountDown).toBe.false;
+    expect(wrapper.vm.countDownInterval).toBeNull();
   });
 
   it('when the countDown is done, the correct methods should be called', () => {
