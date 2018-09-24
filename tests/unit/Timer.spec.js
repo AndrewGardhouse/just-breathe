@@ -73,6 +73,32 @@ describe('Timer.vue', () => {
     expect(wrapper.emitted().toggleInhaleOrExhale[0]).toEqual([true]);
   });
 
+  it('clearInhale sets inhaleCount to 0 and clears inhaleInterval', () => {
+    const store = new Vuex.Store({
+      state: {
+        inhale: 5,
+        exhale: 5,
+        holdInhale: 5,
+        holdExhale: 5,
+      },
+      getters,
+    });
+
+    const wrapper = mount(Timer, {
+      store,
+      localVue,
+    });
+
+    wrapper.vm.startInhaleCount();
+
+    expect(wrapper.vm.inhaleInterval).toBeDefined();
+
+    wrapper.vm.clearInhale();
+
+    expect(wrapper.vm.inhaleInterval).toBeNull();
+    expect(wrapper.vm.inhaleCount).toBe(0);
+  });
+
   it('when the countDown is done, the correct methods should be called', () => {
     const store = new Vuex.Store({
       state: {
