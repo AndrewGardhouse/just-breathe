@@ -95,7 +95,7 @@ export default {
     },
     emitShowSaved() {
       this.$emit('showSavedMessage');
-    }
+    },
   },
 };
 </script>
