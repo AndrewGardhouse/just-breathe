@@ -41,6 +41,35 @@ describe('Timer.vue', () => {
     expect(wrapper.vm.countDownInterval).toBeNull();
   });
 
+  it('startInhaleCount will set the inhale interval and trigger events in the App component', () => {
+    const store = new Vuex.Store({
+      state: {
+        inhale: 5,
+        exhale: 5,
+        holdInhale: 5,
+        holdExhale: 5,
+      },
+      getters,
+    });
+
+    const wrapper = mount(Timer, {
+      store,
+      localVue,
+    });
+
+    expect(wrapper.vm.inhaleInterval).toBeNull();
+
+    wrapper.vm.startInhaleCount();
+
+    expect(wrapper.vm.inhaleInterval).toBeDefined();
+
+    expect(wrapper.emitted().updateTransition).toBeTruthy();
+    expect(wrapper.emitted().updateTransition[0]).toEqual([store.state.inhale + 1]);
+
+    expect(wrapper.emitted().toggleInhaleOrExhale).toBeTruthy();
+    expect(wrapper.emitted().toggleInhaleOrExhale[0]).toEqual([true]);
+  });
+
   it('when the countDown is done, the correct methods should be called', () => {
     const store = new Vuex.Store({
       state: {
