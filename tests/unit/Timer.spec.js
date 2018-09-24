@@ -342,4 +342,15 @@ describe('Timer.vue Methods', () => {
     expect(wrapper.emitted().toggleInhaleOrExhale).toBeTruthy();
     expect(wrapper.emitted().toggleInhaleOrExhale[0]).toEqual([false]);
   });
+
+  it('clearExhale sets exhaleCount to 0 and clears exhaleInterval', () => {
+    wrapper.vm.startExhaleCount();
+
+    expect(wrapper.vm.exhaleInterval).toBeDefined();
+
+    wrapper.vm.clearExhale();
+
+    expect(wrapper.vm.exhaleInterval).toBeNull();
+    expect(wrapper.vm.exhaleCount).toBe(0);
+  });
 });
