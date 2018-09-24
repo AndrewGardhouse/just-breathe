@@ -6,9 +6,9 @@ import Counter from '@/components/Counter';
 
 describe('Counter.vue', () => {
   const propsData = {
-    count: 1,
+    count: 4,
     total: 12,
-    name: 'Hold Inhale',
+    name: 'Inhale',
   };
 
   it('should required props', () => {
@@ -22,13 +22,13 @@ describe('Counter.vue', () => {
     spy.mockRestore();
   });
 
-  it('number of <span>s should be the same as `total` props', () => {
+  it('should show the correct <span>s that matches the `count` prop', () => {
     const wrapper = shallowMount(Counter, {
       propsData,
     });
 
     const spans = wrapper.findAll('span');
 
-    expect(spans.length).toBe(propsData.total);
+    expect(spans.length).toBe(1);
   });
 });

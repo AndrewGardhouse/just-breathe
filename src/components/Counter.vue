@@ -1,6 +1,8 @@
 <template>
   <div class="counter">
-    <span v-for="n in total"></span>
+    <span v-for="n in total" v-if="n === count">
+      {{ n }}
+    </span>
   </div>
 </template>
 
