@@ -92,6 +92,7 @@ export default {
   }
   .save-message {
     border-top: 1px solid transparent;
+    transition: background-color 0.5s linear;
     &.saved {
       border-top: 1px solid #0F3C7B;
       background-color: rgba(255, 255, 255, 0.6);
