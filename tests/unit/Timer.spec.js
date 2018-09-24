@@ -325,4 +325,21 @@ describe('Timer.vue Methods', () => {
     expect(wrapper.vm.holdInhaleInterval).toBeNull();
     expect(wrapper.vm.holdInhaleCount).toBe(0);
   });
+
+  it('startExhaleCount will set the exhale interval and trigger events in the App component', () => {
+    expect(wrapper.vm.exhaleInterval).toBeNull();
+
+    wrapper.vm.startExhaleCount();
+
+    expect(wrapper.vm.exhaleInterval).toBeDefined();
+
+    jest.runTimersToTime(1000);
+    expect(wrapper.vm.exhaleCount).toBe(1);
+
+    expect(wrapper.emitted().updateTransition).toBeTruthy();
+    expect(wrapper.emitted().updateTransition[0]).toEqual([store.state.exhale + 1]);
+
+    expect(wrapper.emitted().toggleInhaleOrExhale).toBeTruthy();
+    expect(wrapper.emitted().toggleInhaleOrExhale[0]).toEqual([false]);
+  });
 });
