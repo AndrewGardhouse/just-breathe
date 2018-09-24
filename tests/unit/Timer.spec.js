@@ -99,6 +99,31 @@ describe('Timer.vue', () => {
     expect(wrapper.vm.inhaleCount).toBe(0);
   });
 
+  it('startHoldInhaleCount sets holdInhaleInterval', () => {
+    const store = new Vuex.Store({
+      state: {
+        inhale: 5,
+        exhale: 5,
+        holdInhale: 5,
+        holdExhale: 5,
+      },
+      getters,
+    });
+
+    const wrapper = mount(Timer, {
+      store,
+      localVue,
+    });
+
+    wrapper.vm.startHoldInhaleCount();
+    expect(wrapper.vm.holdInhaleInterval).toBeDefined();
+
+    expect(wrapper.vm.holdInhaleCount).toBe(0);
+
+    jest.runTimersToTime(1000);
+    expect(wrapper.vm.holdInhaleCount).toBe(1);
+  });
+
   it('when the countDown is done, the correct methods should be called', () => {
     const store = new Vuex.Store({
       state: {
