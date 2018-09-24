@@ -63,6 +63,9 @@ describe('Timer.vue', () => {
 
     expect(wrapper.vm.inhaleInterval).toBeDefined();
 
+    jest.runTimersToTime(1000);
+    expect(wrapper.vm.inhaleCount).toBe(1);
+
     expect(wrapper.emitted().updateTransition).toBeTruthy();
     expect(wrapper.emitted().updateTransition[0]).toEqual([store.state.inhale + 1]);
 
