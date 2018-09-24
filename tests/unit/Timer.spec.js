@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import getters from '@/store/getters';
 import Timer from '@/components/Timer';
 
-describe('Timer.vue', () => {
+describe('Timer.vue Watchers', () => {
   let localVue;
 
   beforeEach(() => {
@@ -14,140 +14,6 @@ describe('Timer.vue', () => {
     localVue = createLocalVue();
     localVue.use(Vuex);
     localVue.component('font-awesome-icon', FontAwesomeIcon);
-  });
-
-  it('clearCountDown will clear the countDown interval and toggles showCountDown', () => {
-    const store = new Vuex.Store({
-      state: {
-        inhale: 5,
-        exhale: 5,
-        holdInhale: 5,
-        holdExhale: 5,
-      },
-      getters,
-    });
-
-    const wrapper = mount(Timer, {
-      store,
-      localVue,
-    });
-
-    expect(wrapper.vm.showCountDown).toBe.true;
-    expect(wrapper.vm.countDownInterval).toBeDefined();
-
-    wrapper.vm.clearCountDown();
-
-    expect(wrapper.vm.showCountDown).toBe.false;
-    expect(wrapper.vm.countDownInterval).toBeNull();
-  });
-
-  it('startInhaleCount will set the inhale interval and trigger events in the App component', () => {
-    const store = new Vuex.Store({
-      state: {
-        inhale: 5,
-        exhale: 5,
-        holdInhale: 5,
-        holdExhale: 5,
-      },
-      getters,
-    });
-
-    const wrapper = mount(Timer, {
-      store,
-      localVue,
-    });
-
-    expect(wrapper.vm.inhaleInterval).toBeNull();
-
-    wrapper.vm.startInhaleCount();
-
-    expect(wrapper.vm.inhaleInterval).toBeDefined();
-
-    jest.runTimersToTime(1000);
-    expect(wrapper.vm.inhaleCount).toBe(1);
-
-    expect(wrapper.emitted().updateTransition).toBeTruthy();
-    expect(wrapper.emitted().updateTransition[0]).toEqual([store.state.inhale + 1]);
-
-    expect(wrapper.emitted().toggleInhaleOrExhale).toBeTruthy();
-    expect(wrapper.emitted().toggleInhaleOrExhale[0]).toEqual([true]);
-  });
-
-  it('clearInhale sets inhaleCount to 0 and clears inhaleInterval', () => {
-    const store = new Vuex.Store({
-      state: {
-        inhale: 5,
-        exhale: 5,
-        holdInhale: 5,
-        holdExhale: 5,
-      },
-      getters,
-    });
-
-    const wrapper = mount(Timer, {
-      store,
-      localVue,
-    });
-
-    wrapper.vm.startInhaleCount();
-
-    expect(wrapper.vm.inhaleInterval).toBeDefined();
-
-    wrapper.vm.clearInhale();
-
-    expect(wrapper.vm.inhaleInterval).toBeNull();
-    expect(wrapper.vm.inhaleCount).toBe(0);
-  });
-
-  it('startHoldInhaleCount sets holdInhaleInterval', () => {
-    const store = new Vuex.Store({
-      state: {
-        inhale: 5,
-        exhale: 5,
-        holdInhale: 5,
-        holdExhale: 5,
-      },
-      getters,
-    });
-
-    const wrapper = mount(Timer, {
-      store,
-      localVue,
-    });
-
-    wrapper.vm.startHoldInhaleCount();
-    expect(wrapper.vm.holdInhaleInterval).toBeDefined();
-
-    expect(wrapper.vm.holdInhaleCount).toBe(0);
-
-    jest.runTimersToTime(1000);
-    expect(wrapper.vm.holdInhaleCount).toBe(1);
-  });
-
-  it('clearHoldInhale sets holdInhaleCount to 0 and clears holdInhaleInterval', () => {
-    const store = new Vuex.Store({
-      state: {
-        inhale: 5,
-        exhale: 5,
-        holdInhale: 5,
-        holdExhale: 5,
-      },
-      getters,
-    });
-
-    const wrapper = mount(Timer, {
-      store,
-      localVue,
-    });
-
-    wrapper.vm.startHoldInhaleCount();
-
-    expect(wrapper.vm.inhaleInterval).toBeDefined();
-
-    wrapper.vm.clearHoldInhale();
-
-    expect(wrapper.vm.holdInhaleInterval).toBeNull();
-    expect(wrapper.vm.holdInhaleCount).toBe(0);
   });
 
   it('when the countDown is done, the correct methods should be called', () => {
@@ -368,5 +234,95 @@ describe('Timer.vue', () => {
     expect(wrapper.vm.playClick).toBeCalled();
     expect(wrapper.vm.clearHoldExhale).toBeCalled();
     expect(wrapper.vm.startInhaleCount).toBeCalled();
+  });
+});
+
+describe('Timer.vue Methods', () => {
+  let localVue;
+  let store;
+  let wrapper;
+
+  beforeEach(() => {
+    // Stub for click sound being played
+    window.HTMLMediaElement.prototype.play = () => {};
+
+    localVue = createLocalVue();
+    localVue.use(Vuex);
+    localVue.component('font-awesome-icon', FontAwesomeIcon);
+
+    store = new Vuex.Store({
+      state: {
+        inhale: 5,
+        exhale: 5,
+        holdInhale: 5,
+        holdExhale: 5,
+      },
+      getters,
+    });
+
+    wrapper = mount(Timer, {
+      store,
+      localVue,
+    });
+  });
+
+  it('clearCountDown will clear the countDown interval and toggles showCountDown', () => {
+    expect(wrapper.vm.showCountDown).toBe.true;
+    expect(wrapper.vm.countDownInterval).toBeDefined();
+
+    wrapper.vm.clearCountDown();
+
+    expect(wrapper.vm.showCountDown).toBe.false;
+    expect(wrapper.vm.countDownInterval).toBeNull();
+  });
+
+  it('startInhaleCount will set the inhale interval and trigger events in the App component', () => {
+    expect(wrapper.vm.inhaleInterval).toBeNull();
+
+    wrapper.vm.startInhaleCount();
+
+    expect(wrapper.vm.inhaleInterval).toBeDefined();
+
+    jest.runTimersToTime(1000);
+    expect(wrapper.vm.inhaleCount).toBe(1);
+
+    expect(wrapper.emitted().updateTransition).toBeTruthy();
+    expect(wrapper.emitted().updateTransition[0]).toEqual([store.state.inhale + 1]);
+
+    expect(wrapper.emitted().toggleInhaleOrExhale).toBeTruthy();
+    expect(wrapper.emitted().toggleInhaleOrExhale[0]).toEqual([true]);
+  });
+
+  it('clearInhale sets inhaleCount to 0 and clears inhaleInterval', () => {
+    wrapper.vm.startInhaleCount();
+
+    expect(wrapper.vm.inhaleInterval).toBeDefined();
+
+    wrapper.vm.clearInhale();
+
+    expect(wrapper.vm.inhaleInterval).toBeNull();
+    expect(wrapper.vm.inhaleCount).toBe(0);
+  });
+
+  it('startHoldInhaleCount sets holdInhaleInterval', () => {
+    wrapper.vm.startHoldInhaleCount();
+
+    expect(wrapper.vm.holdInhaleInterval).toBeDefined();
+
+    expect(wrapper.vm.holdInhaleCount).toBe(0);
+
+    jest.runTimersToTime(1000);
+    expect(wrapper.vm.holdInhaleCount).toBe(1);
+  });
+
+  it('clearHoldInhale sets holdInhaleCount to 0 and clears holdInhaleInterval', () => {
+    wrapper.vm.startHoldInhaleCount();
+
+    expect(wrapper.vm.inhaleInterval).toBeDefined();
+
+    wrapper.vm.clearHoldInhale();
+
+    expect(wrapper.vm.holdInhaleInterval).toBeNull();
+    expect(wrapper.vm.holdInhaleCount).toBe(0);
   });
 });
