@@ -16,6 +16,11 @@ describe('Counter.vue', () => {
     const spy = jest.spyOn(global.console, 'error').mockImplementation(() => {});
     const wrapper = shallowMount(Counter, {
       propsData: {},
+      computed: {
+        totalRange() {
+          return Array.from(Array(propsData.total + 1).keys());
+        }
+      }
     });
     expect(spy).toBeCalled();
     expect(spy.mock.calls[0][0]).toContain('[Vue warn]: Missing required prop');
@@ -30,5 +35,29 @@ describe('Counter.vue', () => {
     const spans = wrapper.findAll('span');
 
     expect(spans.length).toBe(1);
+  });
+
+  it('should have a `totalRange` computed property that creates an array with the numbers 0 to props total', () => {
+    const wrapper = shallowMount(Counter, {
+      propsData: {
+        ...propsData,
+        total: 4,
+      },
+    });
+
+    expect(wrapper.vm.totalRange).toEqual([0,1,2,3,4]);
+  });
+
+  it('should show the name when the `count` prop is 0', () => {
+    const wrapper = shallowMount(Counter, {
+      propsData: {
+        ...propsData,
+        count: 0,
+      },
+    });
+
+    const span = wrapper.find('span');
+
+    expect(span.text()).toBe(propsData.name);
   });
 });
