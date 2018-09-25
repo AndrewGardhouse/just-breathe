@@ -13,24 +13,16 @@
     </div>
     <div class="my-auto" v-else>
       <div class="inhale" v-if="inhaleInterval">
-        <p class="h1">
-          {{ inhaleCount === 0 ? 'Inhale' : inhaleCount }}
-        </p>
+        <Counter name="Inhale" :count="inhaleCount" :total="inhale" />
       </div>
       <div class="hold-inhale" v-if="holdInhaleInterval">
-        <p class="h1">
-          {{ holdInhaleCount === 0 ? 'Hold' : holdInhaleCount }}
-        </p>
+        <Counter name="Hold Inhale" :count="holdInhaleCount" :total="holdInhale" />
       </div>
       <div class="exhale" v-if="exhaleInterval">
-        <p class="h1">
-          {{ exhaleCount === 0 ? 'Exhale' : exhaleCount }}
-        </p>
+        <Counter name="Exhale" :count="exhaleCount" :total="exhale" />
       </div>
       <div class="hold-exhale" v-if="holdExhaleInterval">
-        <p class="h1">
-          {{ holdExhaleCount === 0 ? 'Hold' : holdExhaleCount }}
-        </p>
+        <Counter name="Hold Exhale" :count="holdExhaleCount" :total="holdExhale" />
       </div>
     </div>
   </div>
@@ -38,8 +30,12 @@
 
 <script>
 import { mapState, mapGetters } from 'vuex';
+import Counter from './Counter.vue';
 
 export default {
+  components: {
+    Counter,
+  },
   data() {
     return {
       showCountDown: true,
