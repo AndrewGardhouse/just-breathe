@@ -16,13 +16,13 @@
         <Counter name="Inhale" :count="inhaleCount" :total="inhale" />
       </div>
       <div class="hold-inhale" v-if="holdInhaleInterval">
-        <Counter name="Hold Inhale" :count="holdInhaleCount" :total="holdInhale" />
+        <Counter name="Hold" :count="holdInhaleCount" :total="holdInhale" />
       </div>
       <div class="exhale" v-if="exhaleInterval">
         <Counter name="Exhale" :count="exhaleCount" :total="exhale" />
       </div>
       <div class="hold-exhale" v-if="holdExhaleInterval">
-        <Counter name="Hold Exhale" :count="holdExhaleCount" :total="holdExhale" />
+        <Counter name="Hold" :count="holdExhaleCount" :total="holdExhale" />
       </div>
     </div>
   </div>
