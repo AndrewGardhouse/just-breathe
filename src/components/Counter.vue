@@ -27,8 +27,8 @@ export default {
   computed: {
     totalRange() {
       return Array.from(Array(this.total + 1).keys());
-    }
-  }
+    },
+  },
 };
 </script>
 
