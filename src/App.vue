@@ -2,8 +2,8 @@
   <div id="app">
     <div class="wrapper flex flex-column"
          v-bind:class="{
-          'timer-is-running': isTimerRunning,
-          'inhale-background': isInhale && isTimerRunning,
+          'wrapper--timer-running': isTimerRunning,
+          'wrapper--inhale': isInhale && isTimerRunning,
          }"
          v-bind:style="{ transitionDuration: `${transitonSpeed}s` }">
       <Clock />
@@ -13,7 +13,7 @@
                v-on:toggleInhaleOrExhale="toggleInhale" />
         <div class="my-auto" v-else>
           <p class="h1 m0">Just Breathe</p>
-          <button class="open-options" v-on:click="openOptions">
+          <button class="wrapper__open-options" v-on:click="openOptions">
             <font-awesome-icon icon="cog" size="3x" />
           </button>
         </div>
@@ -118,15 +118,15 @@ button {
   background-color: #faf5ef;
   transition-timing-function: linear;
   transition-property: background-color;
-  &.timer-is-running {
+  &--timer-running {
     // background-color: rgba(35,206,235,0.1);
     background-color: #f3fafd;
   }
-  &.inhale-background {
+  &--inhale {
     // background-color: rgba(35,206,235,1);
     background-color: #45b3e0;
   }
-  .open-options {
+  &__open-options {
     position: absolute;
     padding: 0;
     bottom: @button-position;
