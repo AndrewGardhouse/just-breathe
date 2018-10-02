@@ -8,7 +8,6 @@ describe('Counter.vue', () => {
   const propsData = {
     count: 4,
     total: 12,
-    name: 'Inhale',
   };
 
   it('should required props', () => {
@@ -32,7 +31,7 @@ describe('Counter.vue', () => {
       propsData,
     });
 
-    const spans = wrapper.findAll('span');
+    const spans = wrapper.findAll('.counter__number');
 
     expect(spans.length).toBe(1);
   });
@@ -48,16 +47,18 @@ describe('Counter.vue', () => {
     expect(wrapper.vm.totalRange).toEqual([0,1,2,3,4]);
   });
 
-  it('should show the name when the `count` prop is 0', () => {
+  it('should show the name when there is a `name` prop and the `count` prop is 0', () => {
+    const name = 'Inhale';
     const wrapper = shallowMount(Counter, {
       propsData: {
         ...propsData,
         count: 0,
+        name,
       },
     });
 
     const span = wrapper.find('span');
 
-    expect(span.text()).toBe(propsData.name);
+    expect(span.text()).toBe(name);
   });
 });

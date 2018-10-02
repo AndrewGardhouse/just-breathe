@@ -7,9 +7,7 @@
       <source src="@/assets/click.mp3" type="audio/mpeg">
     </audio>
     <div class="my-auto" v-if="showCountDown">
-      <p class="h1">
-        {{ countDown }}
-      </p>
+      <Counter :count="countDown" :total="5" />
     </div>
     <div class="my-auto" v-else>
       <div class="inhale" v-if="inhaleInterval">

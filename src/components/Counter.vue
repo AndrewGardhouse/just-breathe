@@ -1,8 +1,8 @@
 <template>
   <div class="counter my-auto">
     <transition-group name="new-number" tag="p">
-      <span class="number" v-for="n in totalRange" :key="n" v-if="n === count">
-        {{ n === 0 ? name : n }}
+      <span class="counter__number" v-for="n in totalRange" :key="n" v-if="n === count">
+        {{ n === 0 && name ? name : n }}
       </span>
     </transition-group>
   </div>
@@ -20,7 +20,7 @@ export default {
       type: Number,
     },
     name: {
-      required: true,
+      required: false,
       type: String,
     },
   },
@@ -36,14 +36,14 @@ export default {
 .counter {
   p {
     font-size: 2rem;
-    .number {
-      height: 6%;
-      position: absolute;
-      left: 0;
-      right: 0;
-      top: 47%;
-      margin: auto;
-    }
+  }
+  &__number {
+    height: 6%;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 47%;
+    margin: auto;
   }
 }
 .new-number-enter-active, .new-number-leave-active {
