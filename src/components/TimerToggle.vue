@@ -1,7 +1,7 @@
 <template lang="html">
   <button class="start-stop"
           v-on:click="toggleTimer"
-          v-bind:class="{ 'hide-button' : !showButton }"
+          v-bind:class="{ 'start-stop--hidden' : !showButton }"
           v-bind:disabled="!showButton">
     <font-awesome-icon icon="pause" size="3x" v-if="this.isTimerRunning" />
     <font-awesome-icon icon="play" size="3x" v-else />
@@ -62,7 +62,7 @@ export default {
   transition: opacity 0.5s;
   opacity: 1;
   user-select: none;
-  &.hide-button {
+  &--hidden {
     opacity: 0;
   }
 }
