@@ -1,7 +1,7 @@
 <template>
   <div class="timer flex flex-column">
-    <div class="breath-circle my-auto absolute"
-         v-bind:class="{ 'grow': inhaleInterval || holdInhaleInterval }"
+    <div class="timer__breath-circle my-auto absolute"
+         v-bind:class="{ 'timer__breath-circle--grow': inhaleInterval || holdInhaleInterval }"
          v-bind:style="{ transitionDuration: `${transitionSpeed}s` }"></div>
     <audio class="click" ref="click">
       <source src="@/assets/click.mp3" type="audio/mpeg">
@@ -10,16 +10,16 @@
       <Counter :count="countDown" :total="5" />
     </div>
     <div class="my-auto" v-else>
-      <div class="inhale" v-if="inhaleInterval">
+      <div v-if="inhaleInterval">
         <Counter name="Inhale" :count="inhaleCount" :total="inhale" />
       </div>
-      <div class="hold-inhale" v-if="holdInhaleInterval">
+      <div v-if="holdInhaleInterval">
         <Counter name="Hold" :count="holdInhaleCount" :total="holdInhale" />
       </div>
-      <div class="exhale" v-if="exhaleInterval">
+      <div v-if="exhaleInterval">
         <Counter name="Exhale" :count="exhaleCount" :total="exhale" />
       </div>
-      <div class="hold-exhale" v-if="holdExhaleInterval">
+      <div v-if="holdExhaleInterval">
         <Counter name="Hold" :count="holdExhaleCount" :total="holdExhale" />
       </div>
     </div>
@@ -188,7 +188,7 @@ export default {
   position: absolute;
   height: 100vh;
   width: 100vw;
-  .breath-circle {
+  &__breath-circle {
     border-radius: 50%;
     border: 1px solid @dark;
     height: 35vw;
@@ -201,9 +201,9 @@ export default {
     transition-property: all;
     transition-timing-function: linear;
     transform: scale(1);
-    &.grow {
-      transform: scale(1.6);
-    }
+  }
+  &__breath-circle--grow {
+    transform: scale(1.6);
   }
 }
 </style>
