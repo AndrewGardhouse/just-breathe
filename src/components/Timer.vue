@@ -201,6 +201,14 @@ export default {
     transition-property: all;
     transition-timing-function: linear;
     transform: scale(1);
+    @media @breakpoint-md {
+      height: 25vw;
+      width: 25vw;
+    }
+    @media @breakpoint-lg {
+      height: 15vw;
+      width: 15vw;
+    }
   }
   &__breath-circle--grow {
     transform: scale(1.6);
