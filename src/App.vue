@@ -96,6 +96,7 @@ button {
   -webkit-font-smoothing: inherit;
   -moz-osx-font-smoothing: inherit;
   -webkit-appearance: none;
+  cursor: pointer;
   &::-moz-focus-inner {
     border: 0;
     padding: 0;
@@ -105,6 +106,15 @@ button {
   }
   svg > path {
     fill: @dark;
+  }
+}
+
+.btn {
+  color: #0F3C7B;
+  border-color: #0F3C7B;
+  &:focus {
+    border-color: inherit;
+    box-shadow: none;
   }
 }
 

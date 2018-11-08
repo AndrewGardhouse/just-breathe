@@ -12,8 +12,7 @@
                 :sliderStyle="sliderStyle"
                 :bgStyle="bgStyle"
                 :processStyle="processStyle"
-                @callback="updateValue"
-                @drag-end="emitShowSaved"></vue-slider>
+                @callback="updateValue"></vue-slider>
   </div>
 </template>
 
@@ -92,9 +91,6 @@ export default {
         timeAmount: value,
         fieldProperty: this.fieldNameCapitalized,
       });
-    },
-    emitShowSaved() {
-      this.$emit('showSavedMessage');
     },
   },
 };
