@@ -14,12 +14,8 @@
         <div class="my-auto" v-else>
           <div class="wrapper__title">
             <p class="wrapper__title__just m0">Just</p>
-            <p class="wrapper__title__breathe mt2 mb0">
-              <span>
-                Breathe.
-                <hr class="line mt2">
-              </span>
-            </p>
+            <p class="wrapper__title__breathe mt2 mb0">Breathe.</p>
+            <hr class="wrapper__title__line mt2 mb0 ml0">
           </div>
           <button class="wrapper__open-options" v-on:click="openOptions">
             <font-awesome-icon icon="cog" size="3x" />
@@ -155,28 +151,25 @@ button {
     display: flex;
     flex-direction: column;
     padding: 0 @button-position;
+    &__just, &__breathe, &__line {
+      display: flex;
+      line-height: 1;
+    }
     &__just {
       color: #efe4cb;
-      display: flex;
       font-weight: bold;
       font-size: 1.8rem;
     }
     &__breathe {
       color: #d8c3a1;
-      display: flex;
       font-size: 2.3rem;
       letter-spacing: 0.5rem;
-      span {
-        position: relative;
-      }
-      .line {
-        position: absolute;
-        margin-bottom: 0;
-        width: 96%;
-        border: 0;
-        background-color: @light;
-        height: 2px;
-      }
+    }
+    &__line {
+      width: 212px;
+      border: 0;
+      background-color: @light;
+      height: 2px;
     }
   }
 }
