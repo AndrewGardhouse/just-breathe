@@ -3,8 +3,8 @@
           v-on:click="toggleTimer"
           v-bind:class="{ 'start-stop--hidden' : !showButton }"
           v-bind:disabled="!showButton">
-    <font-awesome-icon icon="pause" size="3x" v-if="this.isTimerRunning" />
-    <font-awesome-icon icon="play" size="3x" v-else />
+    <font-awesome-icon icon="pause" size="2x" v-if="this.isTimerRunning" />
+    <font-awesome-icon icon="play" size="2x" v-else />
   </button>
 </template>
 
@@ -62,8 +62,25 @@ export default {
   transition: opacity 0.5s;
   opacity: 1;
   user-select: none;
+  border-radius: 100%;
+  border: 2px solid #918f8d;
+  height: calc(@button-position * 4);
+  width: calc(@button-position * 4);
   &--hidden {
     opacity: 0;
+  }
+  svg {
+    &.fa-play {
+      margin: auto;
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      right: 0;
+      left: 5px;
+    }
+    path {
+      fill: #918f8d;
+    }
   }
 }
 </style>

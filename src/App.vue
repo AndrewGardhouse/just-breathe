@@ -104,9 +104,6 @@ button {
   &:focus {
     outline:0;
   }
-  svg > path {
-    fill: @dark;
-  }
 }
 
 .btn {
