@@ -159,12 +159,12 @@ button {
       color: #efe4cb;
       display: flex;
       font-weight: bold;
-      font-size: 2.5rem;
+      font-size: 1.8rem;
     }
     &__breathe {
       color: #d8c3a1;
       display: flex;
-      font-size: 3rem;
+      font-size: 2.3rem;
       letter-spacing: 0.5rem;
       span {
         position: relative;
