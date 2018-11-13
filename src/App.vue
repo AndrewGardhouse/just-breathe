@@ -12,7 +12,15 @@
                v-on:updateTransition="updateTransition"
                v-on:toggleInhaleOrExhale="toggleInhale" />
         <div class="my-auto" v-else>
-          <p class="h1 m0">Just Breathe</p>
+          <div class="wrapper__title">
+            <p class="wrapper__title__just m0">Just</p>
+            <p class="wrapper__title__breathe mt2 mb0">
+              <span class="pb2">
+                Breathe.
+                <hr class="line">
+              </span>
+            </p>
+          </div>
           <button class="wrapper__open-options" v-on:click="openOptions">
             <font-awesome-icon icon="cog" size="3x" />
           </button>
@@ -141,6 +149,34 @@ button {
     user-select: none;
     svg > path {
       fill: @light;
+    }
+  }
+  &__title {
+    display: flex;
+    flex-direction: column;
+    padding: 0 @button-position;
+    &__just {
+      color: #efe4cb;
+      display: flex;
+      font-weight: bold;
+      font-size: 2.5rem;
+    }
+    &__breathe {
+      color: #d8c3a1;
+      display: flex;
+      font-size: 3rem;
+      letter-spacing: 0.5rem;
+      span {
+        position: relative;
+      }
+      .line {
+        position: absolute;
+        margin-bottom: 0;
+        width: 95%;
+        border: 0;
+        background-color: @light;
+        height: 2px;
+      }
     }
   }
 }
