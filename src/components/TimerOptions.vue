@@ -1,11 +1,11 @@
 <template>
   <modal name="timer-options" :adaptive="true" height="auto">
     <div class="timer-options flex flex-column py2">
-      <div class="flex justify-end px2">
+      <!-- <div class="flex justify-end px2">
         <button class="timer-options__close my-auto" v-on:click="closeModal">
           <font-awesome-icon icon="times" size="2x" />
         </button>
-      </div>
+      </div> -->
       <div class="px2 mb2">
         <p class="h2 bold my-auto">Settings</p>
       </div>
