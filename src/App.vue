@@ -76,7 +76,7 @@ body {
 }
 
 #app {
-  font-family: 'Open Sans', sans-serif;
+  font-family: 'Comfortaa', cursive;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
@@ -136,9 +136,12 @@ button {
   &__open-options {
     position: absolute;
     padding: 0;
-    bottom: @button-position;
+    bottom: calc(@button-position + 2.5vw);
     left: @button-position;
     user-select: none;
+    svg > path {
+      fill: @light;
+    }
   }
 }
 
