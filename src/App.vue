@@ -15,9 +15,9 @@
           <div class="wrapper__title">
             <p class="wrapper__title__just m0">Just</p>
             <p class="wrapper__title__breathe mt2 mb0">
-              <span class="pb2">
+              <span>
                 Breathe.
-                <hr class="line">
+                <hr class="line mt2">
               </span>
             </p>
           </div>
@@ -172,7 +172,7 @@ button {
       .line {
         position: absolute;
         margin-bottom: 0;
-        width: 95%;
+        width: 96%;
         border: 0;
         background-color: @light;
         height: 2px;
