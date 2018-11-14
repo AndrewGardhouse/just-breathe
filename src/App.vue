@@ -156,7 +156,7 @@ button {
       line-height: 1;
     }
     &__just {
-      color: #efe4cb;
+      color: #e9dcc0;
       font-weight: bold;
       font-size: 1.8rem;
     }

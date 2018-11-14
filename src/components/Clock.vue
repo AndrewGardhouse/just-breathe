@@ -1,5 +1,5 @@
 <template lang="html">
-  <p class="h1 time m0">{{ timeRunning }}</p>
+  <p class="time m0">{{ timeRunning }}</p>
 </template>
 
 <script>
@@ -18,6 +18,7 @@ export default {
 @import  '../assets/variables';
 
 .time {
+  font-size: 1.6rem;
   position: absolute;
   z-index: 1;
   top: @button-position;
