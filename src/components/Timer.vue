@@ -6,22 +6,12 @@
     <audio class="click" ref="click">
       <source src="@/assets/click.mp3" type="audio/mpeg">
     </audio>
-    <div class="my-auto" v-if="showCountDown">
-      <Counter :count="countDown" :total="5" />
-    </div>
-    <div class="my-auto" v-else>
-      <div v-if="inhaleInterval">
-        <Counter name="Inhale" :count="inhaleCount" :total="inhale" />
-      </div>
-      <div v-if="holdInhaleInterval">
-        <Counter name="Hold" :count="holdInhaleCount" :total="holdInhale" />
-      </div>
-      <div v-if="exhaleInterval">
-        <Counter name="Exhale" :count="exhaleCount" :total="exhale" />
-      </div>
-      <div v-if="holdExhaleInterval">
-        <Counter name="Hold" :count="holdExhaleCount" :total="holdExhale" />
-      </div>
+    <div class="my-auto">
+      <Counter :count="countDown" :total="5" v-if="showCountDown" />
+      <Counter name="Inhale" :count="inhaleCount" :total="inhale" v-if="inhaleInterval" />
+      <Counter name="Hold" :count="holdInhaleCount" :total="holdInhale" v-if="holdInhaleInterval" />
+      <Counter name="Exhale" :count="exhaleCount" :total="exhale" v-if="exhaleInterval" />
+      <Counter name="Hold" :count="holdExhaleCount" :total="holdExhale" v-if="holdExhaleInterval" />
     </div>
   </div>
 </template>
@@ -190,7 +180,7 @@ export default {
   width: 100vw;
   &__breath-circle {
     border-radius: 50%;
-    border: 1px solid @dark;
+    border: 1px solid rgba(255,255,255,0.68);
     height: 35vw;
     width: 35vw;
     top: 0;

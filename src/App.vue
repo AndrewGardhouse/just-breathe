@@ -6,7 +6,7 @@
           'wrapper--inhale': isInhale && isTimerRunning,
          }"
          v-bind:style="{ transitionDuration: `${transitonSpeed}s` }">
-      <Clock />
+      <Clock :isRunning="isTimerRunning" />
       <transition name="fade">
         <Timer v-if="isTimerRunning"
                v-on:updateTransition="updateTransition"
@@ -130,12 +130,10 @@ button {
   transition-timing-function: linear;
   transition-property: background-color;
   &--timer-running {
-    // background-color: rgba(35,206,235,0.1);
-    background-color: #f3fafd;
+    background-color: #bfeaec;
   }
   &--inhale {
-    // background-color: rgba(35,206,235,1);
-    background-color: #45b3e0;
+    background-color: #bad6c9;
   }
   &__open-options {
     position: absolute;
