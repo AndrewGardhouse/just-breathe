@@ -37,6 +37,8 @@ export default {
 </script>
 
 <style lang="less">
+@import  '../assets/variables';
+
 .counter {
   p {
     font-family: 'Roboto', sans-serif;
@@ -49,7 +51,7 @@ export default {
     margin: auto;
     font-size: 3rem;
     line-height: 1;
-    color: rgba(255,255,255,0.68);
+    color: @white;
     &--is-name {
       font-size: 1.8rem;
       top: 48%;

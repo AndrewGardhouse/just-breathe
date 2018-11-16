@@ -180,7 +180,7 @@ export default {
   width: 100vw;
   &__breath-circle {
     border-radius: 50%;
-    border: 1px solid rgba(255,255,255,0.68);
+    border: 2px solid @white;
     height: 35vw;
     width: 35vw;
     top: 0;

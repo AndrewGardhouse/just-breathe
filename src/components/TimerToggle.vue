@@ -1,10 +1,13 @@
 <template lang="html">
   <button class="start-stop"
           v-on:click="toggleTimer"
-          v-bind:class="{ 'start-stop--hidden' : !showButton }"
+          v-bind:class="{ 'start-stop--hidden' : !showButton,
+                          'start-stop--pause': isTimerRunning }"
           v-bind:disabled="!showButton">
-    <Pause v-if="this.isTimerRunning" />
-    <Play v-else />
+    <transition name="button-fade" mode="out-in">
+      <Pause v-if="isTimerRunning" />
+      <Play v-else />
+    </transition>
   </button>
 </template>
 
@@ -16,7 +19,7 @@ import Pause from './Pause.vue';
 export default {
   components: {
     Play,
-    Pause
+    Pause,
   },
   data() {
     return {
@@ -65,10 +68,28 @@ export default {
   padding: 0;
   bottom: @button-position;
   right: @button-position;
-  transition: opacity 0.5s;
+  transition: all 0.5s;
   opacity: 1;
   user-select: none;
+  border-radius: 50%;
+  border: 2px solid #918f8d;
+  height: 76px;
+  width: 76px;
   &--hidden {
+    opacity: 0;
+  }
+  &--pause {
+    border-color: @white;
+  }
+  svg {
+    position: relative;
+    bottom: 2px;
+    right: 2px;
+  }
+  .button-fade-enter-active, .button-fade-leave-active {
+    transition: opacity .1s;
+  }
+  .button-fade-enter, .button-fade-leave-to /* .button-fade-leave-active below version 2.1.8 */ {
     opacity: 0;
   }
 }

@@ -36,7 +36,7 @@ export default {
   color: @light;
   font-weight: bold;
   &--is-running {
-    color: rgba(255,255,255,0.68);
+    color: @white;
   }
 }
 </style>
