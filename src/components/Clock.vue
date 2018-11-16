@@ -10,7 +10,7 @@ export default {
   props: {
     isRunning: {
       type: Boolean,
-      required: true,
+      required: false,
     },
   },
   computed: {

@@ -100,6 +100,7 @@ button {
   -webkit-font-smoothing: inherit;
   -moz-osx-font-smoothing: inherit;
   -webkit-appearance: none;
+  -webkit-tap-highlight-color:  rgba(255, 255, 255, 0); 
   cursor: pointer;
   &::-moz-focus-inner {
     border: 0;
