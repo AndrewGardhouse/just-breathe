@@ -89,7 +89,7 @@ export default {
   .button-fade-enter-active, .button-fade-leave-active {
     transition: opacity .1s;
   }
-  .button-fade-enter, .button-fade-leave-to /* .button-fade-leave-active below version 2.1.8 */ {
+  .button-fade-enter, .button-fade-leave-to {
     opacity: 0;
   }
 }
