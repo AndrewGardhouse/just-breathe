@@ -1,5 +1,10 @@
 <template>
-  <modal name="timer-options" :adaptive="true" height="auto">
+  <modal name="timer-options"
+         transition="fade"
+         overlayTransition="fade"
+         height="auto"
+         :adaptive="true"
+         :clickToClose="false">
     <div class="timer-options flex flex-column py2">
       <!-- <div class="flex justify-end px2">
         <button class="timer-options__close my-auto" v-on:click="closeModal">
