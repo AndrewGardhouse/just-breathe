@@ -139,11 +139,14 @@ button {
   &__open-options {
     position: absolute;
     padding: 0;
-    bottom: calc(@button-position + 2.5vw);
+    bottom: @button-position + 2.5vw;
     left: @button-position;
     user-select: none;
     svg > path {
       fill: @light;
+    }
+    @media @breakpoint-md, @breakpoint-lg {
+      bottom: @button-position;
     }
   }
   &__title {
