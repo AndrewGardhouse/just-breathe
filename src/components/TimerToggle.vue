@@ -84,7 +84,7 @@ export default {
   svg {
     position: relative;
     bottom: 2px;
-    right: 2px;
+    right: 1px;
   }
   .button-fade-enter-active, .button-fade-leave-active {
     transition: opacity .1s;
