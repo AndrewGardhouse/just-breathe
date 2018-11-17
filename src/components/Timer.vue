@@ -7,7 +7,7 @@
       <source src="@/assets/click.mp3" type="audio/mpeg">
     </audio>
     <div class="my-auto">
-      <Counter :count="countDown" :total="5" v-if="showCountDown" />
+      <Counter :count="countDown" :total="countDown" v-if="showCountDown" />
       <Counter name="Inhale" :count="inhaleCount" :total="inhale" v-if="inhaleInterval" />
       <Counter name="Hold" :count="holdInhaleCount" :total="holdInhale" v-if="holdInhaleInterval" />
       <Counter name="Exhale" :count="exhaleCount" :total="exhale" v-if="exhaleInterval" />
@@ -27,7 +27,7 @@ export default {
   data() {
     return {
       showCountDown: true,
-      countDown: 5,
+      countDown: 3,
       countDownInterval: null,
       inhaleCount: 0,
       inhaleInterval: null,
@@ -180,7 +180,7 @@ export default {
   width: 100vw;
   &__breath-circle {
     border-radius: 50%;
-    border: 2px solid @white;
+    border: 1px solid @white;
     height: 35vw;
     width: 35vw;
     top: 0;
