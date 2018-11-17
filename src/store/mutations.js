@@ -24,10 +24,13 @@ export default {
       state.interval = setInterval(() => {
         state.currentTime = moment();
       }, 1000);
-    }, 5000);
+    }, 3000);
   },
   stopTimer(state) {
     clearInterval(state.interval);
     state.interval = null;
+  },
+  toggleShowClock(state) {
+    state.showClock = !state.showClock;
   },
 };

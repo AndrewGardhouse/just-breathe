@@ -7,4 +7,5 @@ export default {
   interval: null,
   startTime: null,
   currentTime: null,
+  showClock: true,
 };

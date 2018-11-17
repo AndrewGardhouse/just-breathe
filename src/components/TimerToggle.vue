@@ -37,11 +37,13 @@ export default {
       'toggleIsTimerRunning',
       'startTimer',
       'stopTimer',
+      'toggleShowClock',
     ]),
     toggleTimer() {
       this.toggleIsTimerRunning();
       if (this.isTimerRunning) {
         this.startTimer();
+        this.toggleShowClock();
         this.showButton = !this.showButton;
         this.timeout = setTimeout(() => {
           this.showButton = !this.showButton;

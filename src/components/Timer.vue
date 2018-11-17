@@ -17,7 +17,7 @@
 </template>
 
 <script>
-import { mapState, mapGetters } from 'vuex';
+import { mapState, mapGetters, mapMutations } from 'vuex';
 import Counter from './Counter.vue';
 
 export default {
@@ -66,6 +66,9 @@ export default {
     }, 1000);
   },
   methods: {
+    ...mapMutations([
+      'toggleShowClock',
+    ]),
     playClick() {
       this.$refs.click.volume = 0.1;
       this.$refs.click.play();
@@ -74,6 +77,7 @@ export default {
       clearInterval(this.countDownInterval);
       this.countDownInterval = null;
       this.showCountDown = !this.showCountDown;
+      this.toggleShowClock();
     },
     startInhaleCount() {
       this.$emit('updateTransition', this.inhale + 1);

@@ -1,10 +1,13 @@
 <template lang="html">
-  <p class="time m0"
-     v-bind:class="{ 'time--is-running': isRunning }">{{ timeRunning }}</p>
+  <transition name="fade">
+    <p class="time m0"
+       v-if="showClock"
+       v-bind:class="{ 'time--is-running': isRunning }">{{ timeRunning }}</p>
+  </transition>
 </template>
 
 <script>
-import { mapGetters } from 'vuex';
+import { mapState, mapGetters } from 'vuex';
 
 export default {
   props: {
@@ -14,6 +17,9 @@ export default {
     },
   },
   computed: {
+    ...mapState([
+      'showClock',
+    ]),
     ...mapGetters([
       'timeRunning',
     ]),
