@@ -31,9 +31,6 @@ export default {
     ...mapState([
       'isTimerRunning',
     ]),
-    buttonText() {
-      return this.isTimerRunning ? 'Stop' : 'Start';
-    },
   },
   methods: {
     ...mapMutations([
