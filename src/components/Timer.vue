@@ -8,10 +8,10 @@
     </audio>
     <div class="my-auto">
       <Counter :count="countDown" :total="countDown" v-if="showCountDown" />
-      <Counter name="Inhale" :count="inhaleCount" :total="inhale" v-if="inhaleInterval" />
-      <Counter name="Hold" :count="holdInhaleCount" :total="holdInhale" v-if="holdInhaleInterval" />
-      <Counter name="Exhale" :count="exhaleCount" :total="exhale" v-if="exhaleInterval" />
-      <Counter name="Hold" :count="holdExhaleCount" :total="holdExhale" v-if="holdExhaleInterval" />
+      <Counter name="inhale" :count="inhaleCount" :total="inhale" v-if="inhaleInterval" />
+      <Counter name="hold" :count="holdInhaleCount" :total="holdInhale" v-if="holdInhaleInterval" />
+      <Counter name="exhale" :count="exhaleCount" :total="exhale" v-if="exhaleInterval" />
+      <Counter name="hold" :count="holdExhaleCount" :total="holdExhale" v-if="holdExhaleInterval" />
     </div>
   </div>
 </template>
