@@ -12,7 +12,7 @@
         </button>
       </div> -->
       <div class="px2 mb2">
-        <p class="h2 bold my-auto">Settings</p>
+        <p class="bold my-auto timer-options__title">Settings</p>
       </div>
       <Option fieldName="Inhale"
               :value="inhale"
@@ -33,8 +33,18 @@
               :value="holdExhale"
               :minTime="0"
               :maxTime="12" />
-      <div class="flex justify-end px2 mt1">
-        <button class="btn btn-outline" v-on:click="closeModal">Save</button>
+      <div class="flex px2 mt1 mb3">
+        <button class="btn timer-options__save" v-on:click="closeModal">Save</button>
+      </div>
+      <hr>
+      <div class="flex px2 timer-options__contact">
+        <p class="mt2 mb0 mx-auto">
+          Let us know what you think!
+          <span class="px1">
+            <a href="#">Feedback</a>
+          </span>
+        </p>
+        <!-- <button class="btn timer-options__save" v-on:click="closeModal">Save</button> -->
       </div>
     </div>
   </modal>
@@ -71,10 +81,24 @@ export default {
   background-color: @background-color;
   hr {
     width: 100%;
+    margin: 0;
+  }
+  &__title {
+    color: #d8c3a1;
+    font-size: 1.6rem;
   }
   &__close {
     svg > path {
       fill: #0F3C7B;
+    }
+  }
+  &__contact {
+    font-family: 'Roboto', sans-serif;
+    font-weight: normal;
+    color: #918f8d;
+    a {
+      color: #d8c3a1;
+      font-weight: bold;
     }
   }
 }

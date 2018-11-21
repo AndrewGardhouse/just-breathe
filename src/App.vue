@@ -97,6 +97,7 @@ button {
   background: transparent;
   color: inherit;
   font: inherit;
+  color: #fff;
   line-height: normal;
   -webkit-font-smoothing: inherit;
   -moz-osx-font-smoothing: inherit;
@@ -113,10 +114,14 @@ button {
 }
 
 .btn {
-  color: #0F3C7B;
-  border-color: #0F3C7B;
+  color: #fff;
+  background-color: #d8c3a1;
+  border-radius: 2px;
+  font-weight: 500;
+  font-family: 'Roboto', sans-serif;
+  padding: .5rem 1.5rem;
+  border: none;
   &:focus {
-    border-color: inherit;
     box-shadow: none;
   }
 }

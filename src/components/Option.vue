@@ -1,8 +1,8 @@
 <template>
   <div class="option my2 px2">
-    <label class="flex justify-between mb1" :for="fieldNameSlugified">
-      <span class="bold">{{ fieldName }}:</span>
-      <span>{{ value }} {{ secondPluralFilter(value) }}</span>
+    <label class="flex justify-between mb1 option__label" :for="fieldNameSlugified">
+      <span class="label__field-name">{{ fieldName }}:</span>
+      <span class="label__field-value">{{ value }} {{ secondPluralFilter(value) }}</span>
     </label>
     <vue-slider :ref="fieldNameSlugified"
                 :value.sync="value"
@@ -45,11 +45,11 @@ export default {
         height: '2px',
       },
       processStyle: {
-        backgroundColor: '#0F3C7B',
+        backgroundColor: '#918f8d',
       },
       sliderStyle: {
         boxShadow: 'none',
-        backgroundColor: '#0F3C7B',
+        backgroundColor: '#918f8d',
         top: '-7px',
       },
     };
@@ -95,3 +95,17 @@ export default {
   },
 };
 </script>
+
+<style lang="less">
+@import  '../assets/variables';
+
+.option {
+  &__label {
+    font-family: 'Roboto', sans-serif;
+    color: #918f8d;
+    .label__field-value {
+      font-weight: 300;
+    }
+  }
+}
+</style>
