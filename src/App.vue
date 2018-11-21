@@ -138,10 +138,12 @@ button {
   transition-timing-function: linear;
   transition-property: background-color;
   &--timer-running {
-    background-color: #bfeaec;
+    // background-color: #bfeaec;
+    background-color: #bad6c9;
   }
   &--inhale {
-    background-color: #bad6c9;
+    // background-color: #bad6c9;
+    background-color: #bfeaec;
   }
   &__open-options {
     position: absolute;
