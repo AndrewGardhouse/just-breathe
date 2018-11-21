@@ -22,7 +22,7 @@
           </button>
         </div>
       </transition>
-      <TimerOptions />
+      <OptionsFeedbackModal />
       <TimerToggle v-on:resetTransitionSpeed="updateTransition"
                    v-on:setIsInhaleFalse="toggleInhale" />
     </div>
@@ -32,7 +32,7 @@
 <script>
 import { mapState } from 'vuex';
 import Timer from './components/Timer.vue';
-import TimerOptions from './components/TimerOptions.vue';
+import OptionsFeedbackModal from './components/OptionsFeedbackModal.vue';
 import TimerToggle from './components/TimerToggle.vue';
 import Clock from './components/Clock.vue';
 
@@ -40,7 +40,7 @@ export default {
   name: 'app',
   components: {
     Timer,
-    TimerOptions,
+    OptionsFeedbackModal,
     TimerToggle,
     Clock,
   },
@@ -53,11 +53,12 @@ export default {
   computed: {
     ...mapState([
       'isTimerRunning',
+      'modalName',
     ]),
   },
   methods: {
     openOptions() {
-      this.$modal.show('timer-options');
+      this.$modal.show(this.modalName);
     },
     updateTransition(speed) {
       this.transitonSpeed = speed;

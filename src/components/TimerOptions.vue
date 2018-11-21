@@ -1,53 +1,45 @@
-<template>
-  <modal name="timer-options"
-         transition="fade"
-         overlayTransition="fade"
-         height="auto"
-         :adaptive="true"
-         :clickToClose="false">
-    <div class="timer-options flex flex-column py2">
-      <!-- <div class="flex justify-end px2">
-        <button class="timer-options__close my-auto" v-on:click="closeModal">
-          <font-awesome-icon icon="times" size="2x" />
-        </button>
-      </div> -->
-      <div class="px2 mb2">
-        <p class="bold my-auto timer-options__title">Settings</p>
-      </div>
-      <Option fieldName="Inhale"
-              :value="inhale"
-              :minTime="1"
-              :maxTime="12" />
-      <hr>
-      <Option fieldName="Hold Inhale"
-              :value="holdInhale"
-              :minTime="0"
-              :maxTime="12" />
-      <hr>
-      <Option fieldName="Exhale"
-              :value="exhale"
-              :minTime="1"
-              :maxTime="12" />
-      <hr>
-      <Option fieldName="Hold Exhale"
-              :value="holdExhale"
-              :minTime="0"
-              :maxTime="12" />
-      <div class="flex px2 mt1 mb3">
-        <button class="btn timer-options__save" v-on:click="closeModal">Save</button>
-      </div>
-      <hr>
-      <div class="flex px2 timer-options__contact">
-        <p class="mt2 mb0 mx-auto">
-          Let us know what you think!
-          <span class="px1">
-            <a href="#">Feedback</a>
-          </span>
-        </p>
-        <!-- <button class="btn timer-options__save" v-on:click="closeModal">Save</button> -->
-      </div>
+<template lang="html">
+  <div class="timer-options flex flex-column py2">
+    <!-- <div class="flex justify-end px2">
+      <button class="timer-options__close my-auto" v-on:click="closeModal">
+        <font-awesome-icon icon="times" size="2x" />
+      </button>
+    </div> -->
+    <div class="px2 mb2">
+      <p class="bold my-auto timer-options__title">Settings</p>
     </div>
-  </modal>
+    <Option fieldName="Inhale"
+            :value="inhale"
+            :minTime="1"
+            :maxTime="12" />
+    <hr>
+    <Option fieldName="Hold Inhale"
+            :value="holdInhale"
+            :minTime="0"
+            :maxTime="12" />
+    <hr>
+    <Option fieldName="Exhale"
+            :value="exhale"
+            :minTime="1"
+            :maxTime="12" />
+    <hr>
+    <Option fieldName="Hold Exhale"
+            :value="holdExhale"
+            :minTime="0"
+            :maxTime="12" />
+    <div class="flex px2 mt1 mb3">
+      <button class="btn timer-options__save" v-on:click="closeModal">Save</button>
+    </div>
+    <hr>
+    <div class="flex px2 timer-options__contact">
+      <p class="mt2 mb0">
+        Let us know what you think!
+        <span class="px1">
+          <a href="#">Feedback</a>
+        </span>
+      </p>
+    </div>
+  </div>
 </template>
 
 <script>
@@ -64,11 +56,12 @@ export default {
       'exhale',
       'holdInhale',
       'holdExhale',
+      'modalName',
     ]),
   },
   methods: {
     closeModal() {
-      this.$modal.hide('timer-options');
+      this.$modal.hide(this.modalName);
     },
   },
 };

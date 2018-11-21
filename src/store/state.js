@@ -8,4 +8,5 @@ export default {
   startTime: null,
   currentTime: null,
   showClock: true,
+  modalName: 'timer-options-feedback',
 };
