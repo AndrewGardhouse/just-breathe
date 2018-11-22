@@ -15,15 +15,15 @@
         and don't like about this and any suggestions you might have.
       </p>
     </div>
-    <form class="px2 feedback__form">
+    <form class="px2 feedback__form" v-on:submit.prevent="submitForm">
       <div class="feedback__form__field mb2">
-        <input type="email" name="email" placeholder="Email">
+        <input type="email" name="email" placeholder="Email" v-model="form.email">
       </div>
       <div class="feedback__form__field mb3">
-        <textarea name="comment" rows="4" cols="80" placeholder="Comments"></textarea>
+        <textarea name="comment" rows="4" cols="80" placeholder="Comments" v-model="form.message"></textarea>
       </div>
       <div class="feedback__form__field">
-        <button class="btn" type="button" name="button">Send</button>
+        <button class="btn" type="submit" name="button">Send</button>
       </div>
     </form>
   </div>
@@ -31,13 +31,36 @@
 
 <script>
 import axios from 'axios';
+import qs from 'qs';
 import Back from '@/components/Back.vue';
 
 export default {
   components: {
     Back,
   },
+  data() {
+    return {
+      formSubmitted: false,
+      form: {
+        email: '',
+        message: '',
+      }
+    }
+  },
   methods: {
+    submitForm() {
+      // console.log(this.form);
+      // https://formcarry.com/s/S8G6oaaqi7H
+      axios.post('https://formcarry.com/s/S8G6oaaqi7H', qs.stringify(this.form))
+      .then(() => {
+        this.form.email = '';
+        this.form.message = '';
+        this.formSubmitted = true;
+      })
+      .catch((err) => {
+        console.error(err);
+      })
+    },
     showOptions() {
       this.$emit('toggleShowOptions')
     },
