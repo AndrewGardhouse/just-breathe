@@ -1,8 +1,10 @@
 <template>
   <div class="feedback flex flex-column py2">
     <div class="feedback__back flex px2 mb3">
-      <Back />
-      <p class="my-auto ml1">Back to settings</p>
+      <span class="feedback__back__button flex" v-on:click="showOptions">
+        <Back />
+        <p class="my-auto ml1">Back to settings</p>
+      </span>
     </div>
     <div class="px2 mb2 feedback__title">
       <p class="bold my-auto">Settings</p>
@@ -35,7 +37,11 @@ export default {
   components: {
     Back,
   },
-  methods: {},
+  methods: {
+    showOptions() {
+      this.$emit('toggleShowOptions')
+    },
+  },
 };
 </script>
 
@@ -43,6 +49,7 @@ export default {
 @import  '../assets/variables';
 
 .feedback {
+  background-color: @background-color;
   &__back, &__description {
     font-family: 'Roboto', sans-serif;
     font-size: 1.1rem;
@@ -50,6 +57,9 @@ export default {
   &__back {
     color: #d8c3a1;
     font-weight: bold;
+    &__button {
+      cursor: pointer;
+    }
   }
   &__title {
     color: #d8c3a1;
@@ -72,6 +82,12 @@ export default {
         border-radius: 2px;
         width: 100%;
         font-size: 1.2rem;
+        &:focus {
+          outline:0;
+        }
+      }
+      textarea {
+        resize: none;
       }
     }
   }

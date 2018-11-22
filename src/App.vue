@@ -89,6 +89,10 @@ body {
   color: @dark;
 }
 
+::selection {
+  background: #f0e8db;
+}
+
 button {
   border: none;
   margin: 0;

@@ -35,7 +35,7 @@
       <p class="mt2 mb0">
         Let us know what you think!
         <span class="px1">
-          <a href="#">Feedback</a>
+          <a v-on:click.prevent="showFeedback">Feedback</a>
         </span>
       </p>
     </div>
@@ -63,6 +63,9 @@ export default {
     closeModal() {
       this.$modal.hide(this.modalName);
     },
+    showFeedback() {
+      this.$emit('toggleShowOptions')
+    }
   },
 };
 </script>
@@ -92,6 +95,8 @@ export default {
     a {
       color: #d8c3a1;
       font-weight: bold;
+      cursor: pointer;
+      text-decoration: underline;
     }
   }
 }
