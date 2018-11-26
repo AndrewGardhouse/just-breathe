@@ -55,6 +55,12 @@ export default {
     let vh = window.innerHeight * 0.01;
     // Then we set the value in the --vh custom property to the root of the document
     document.documentElement.style.setProperty('--vh', `${vh}px`);
+
+    window.addEventListener('resize', () => {
+      // We execute the same script as before
+      let vh = window.innerHeight * 0.01;
+      document.documentElement.style.setProperty('--vh', `${vh}px`);
+    });
   },
   computed: {
     ...mapState([
@@ -143,7 +149,7 @@ button {
 }
 
 .wrapper {
-  height: 100vh;
+  height: 100%;
   background-color: rgba(250, 245, 239, 1);
   transition-timing-function: linear;
   transition-property: background-color;
