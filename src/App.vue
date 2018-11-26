@@ -50,6 +50,12 @@ export default {
       isInhale: false,
     };
   },
+  beforeCreate() {
+    // First we get the viewport height and we multiple it by 1% to get a value for a vh unit
+    let vh = window.innerHeight * 0.01;
+    // Then we set the value in the --vh custom property to the root of the document
+    document.documentElement.style.setProperty('--vh', `${vh}px`);
+  },
   computed: {
     ...mapState([
       'isTimerRunning',
@@ -76,9 +82,9 @@ export default {
 body {
   margin: 0;
   position: absolute;
-  height: 100vh;
   width: 100vw;
-  // overflow: hidden;
+  height: calc(var(--vh, 1vh) * 100);
+  overflow: hidden;
 }
 
 #app {
