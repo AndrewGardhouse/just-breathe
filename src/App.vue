@@ -99,6 +99,7 @@ body {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: @dark;
+  height: 100%;
 }
 
 ::selection {
