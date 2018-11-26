@@ -51,7 +51,7 @@ export default {
     submitForm() {
       // console.log(this.form);
       // https://formcarry.com/s/S8G6oaaqi7H
-      axios.post('https://formcarry.com/s/S8G6oaaqi7H', qs.stringify(this.form))
+    axios.post('https://formcarry.com/s/S8G6oaaqi7H', qs.stringify(this.form))
       .then(() => {
         this.form.email = '';
         this.form.message = '';
@@ -59,10 +59,10 @@ export default {
       })
       .catch((err) => {
         console.error(err);
-      })
+      });
     },
     showOptions() {
-      this.$emit('toggleShowOptions')
+      this.$emit('toggleShowOptions');
     },
   },
 };

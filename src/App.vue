@@ -138,16 +138,16 @@ button {
 
 .wrapper {
   height: 100vh;
-  background-color: #faf5ef;
+  background-color: rgba(250, 245, 239, 1);
   transition-timing-function: linear;
   transition-property: background-color;
   &--timer-running {
     // background-color: #bfeaec;
-    background-color: #bad6c9;
+    background-color: rgba(186, 214, 201, 1);
   }
   &--inhale {
     // background-color: #bad6c9;
-    background-color: #bfeaec;
+    background-color: rgba(191, 234, 236, 1);
   }
   &__open-options {
     position: absolute;
