@@ -152,7 +152,7 @@ button {
   &__open-options {
     position: absolute;
     padding: 0;
-    bottom: @button-position + 2.5vw;
+    bottom: @button-position + (@button-position / 2);
     left: @button-position;
     user-select: none;
     svg > path {
