@@ -1,5 +1,5 @@
 <template>
-  <div class="option my2 px2">
+  <div class="option my2">
     <label class="flex justify-between mb1 option__label" :for="fieldNameSlugified">
       <span class="label__field-name">{{ fieldName }}:</span>
       <span class="label__field-value">{{ value }} {{ secondPluralFilter(value) }}</span>

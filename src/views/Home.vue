@@ -16,9 +16,9 @@
               <p class="wrapper__title__breathe mt2 mb0">Breathe.</p>
               <hr class="wrapper__title__line mt2 mb0 ml0">
             </div>
-            <button class="wrapper__open-options" v-on:click="openOptions">
+            <router-link to="/options" class="wrapper__open-options">
               <font-awesome-icon icon="cog" size="3x" />
-            </button>
+            </router-link>
           </div>
         </transition>
         <OptionsFeedbackModal />
