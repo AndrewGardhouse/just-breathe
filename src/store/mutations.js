@@ -14,6 +14,9 @@ export default {
   updateExhale(state, value) {
     state.exhale = value;
   },
+  updateTimerValues(state, value) {
+    Object.keys(value).forEach((key) => state[key] = value[key]);
+  },
   toggleIsTimerRunning(state) {
     state.isTimerRunning = !state.isTimerRunning;
   },

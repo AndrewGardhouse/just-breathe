@@ -10,28 +10,35 @@
         <p class="bold my-auto timer-options__title">Settings</p>
       </div>
       <Option fieldName="Inhale"
-              :value="inhale"
+              :value="options.inhale"
               :minTime="1"
-              :maxTime="12" />
+              :maxTime="12"
+              v-on:updateTimerValue="updateValue" />
       <hr>
       <Option fieldName="Hold Inhale"
-              :value="holdInhale"
+              :value="options.holdInhale"
               :minTime="0"
-              :maxTime="12" />
+              :maxTime="12"
+              v-on:updateTimerValue="updateValue" />
       <hr>
       <Option fieldName="Exhale"
-              :value="exhale"
+              :value="options.exhale"
               :minTime="1"
-              :maxTime="12" />
+              :maxTime="12"
+              v-on:updateTimerValue="updateValue" />
       <hr>
       <Option fieldName="Hold Exhale"
-              :value="holdExhale"
+              :value="options.holdExhale"
               :minTime="0"
-              :maxTime="12" />
+              :maxTime="12"
+              v-on:updateTimerValue="updateValue" />
       <div class="flex mt1 mb3">
-        <router-link to="/" class="btn timer-options__save">
+        <button type="button"
+                name="save"
+                class="btn timer-options__save"
+                v-on:click="saveOptions">
           Save
-        </router-link>
+        </button>
       </div>
       <hr>
       <div class="flex timer-options__contact">
@@ -48,20 +55,33 @@
 
 <script>
 import Option from '@/components/Option.vue';
-import { mapState } from 'vuex';
+import { mapMutations } from 'vuex';
 
 export default {
   components: {
     Option,
   },
-  computed: {
-    ...mapState([
-      'inhale',
-      'exhale',
-      'holdInhale',
-      'holdExhale',
-      'modalName',
+  data() {
+    return {
+      options: Object.assign({},
+        {inhale: this.$store.state.inhale},
+        {exhale: this.$store.state.exhale},
+        {holdInhale: this.$store.state.holdInhale},
+        {holdExhale: this.$store.state.holdExhale},
+      ),
+    };
+  },
+  methods: {
+    ...mapMutations([
+      'updateTimerValues',
     ]),
+    updateValue(value) {
+      this.options[value.fieldProperty] = value.timeAmount;
+    },
+    saveOptions() {
+      this.updateTimerValues(this.options);
+      this.$router.replace({ path: '/' });
+    },
   },
 };
 </script>
