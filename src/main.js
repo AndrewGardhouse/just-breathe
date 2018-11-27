@@ -6,6 +6,7 @@ import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import App from './App.vue';
 import store from './store';
 import './registerServiceWorker';
+import router from './router'
 
 Vue.config.productionTip = false;
 Vue.use(VModal);
@@ -14,5 +15,6 @@ Vue.component('font-awesome-icon', FontAwesomeIcon);
 
 new Vue({
   store,
-  render: h => h(App),
+  router,
+  render: h => h(App)
 }).$mount('#app');
