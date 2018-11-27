@@ -1,31 +1,33 @@
 <template>
-  <div class="feedback flex flex-column py2">
-    <div class="feedback__back flex px2 mb3">
-      <span class="feedback__back__button flex" v-on:click="showOptions">
-        <Back />
-        <p class="my-auto ml1">Back to settings</p>
-      </span>
-    </div>
-    <div class="px2 mb2 feedback__title">
-      <p class="bold my-auto">Settings</p>
-    </div>
-    <div class="px2 mb3 feedback__description">
-      <p class="my-auto">
-        We'd love to hear what you like
-        and don't like about this and any suggestions you might have.
-      </p>
-    </div>
-    <form class="px2 feedback__form" v-on:submit.prevent="submitForm">
-      <div class="feedback__form__field mb2">
-        <input type="email" name="email" placeholder="Email" v-model="form.email">
+  <div class="wrapper flex">
+    <div class="feedback flex flex-column max-width-2 mx-auto my-auto px2">
+      <div class="feedback__back flex mb3">
+        <router-link to="/options" class="feedback__back__button flex">
+          <Back />
+          <p class="my-auto ml1">Back to settings</p>
+        </router-link>
       </div>
-      <div class="feedback__form__field mb3">
-        <textarea name="comment" rows="4" cols="80" placeholder="Comments" v-model="form.message"></textarea>
+      <div class="mb2 feedback__title">
+        <p class="bold my-auto">Settings</p>
       </div>
-      <div class="feedback__form__field">
-        <button class="btn" type="submit" name="button">Send</button>
+      <div class="mb3 feedback__description">
+        <p class="my-auto">
+          We'd love to hear what you like
+          and don't like about this and any suggestions you might have.
+        </p>
       </div>
-    </form>
+      <form class="feedback__form" v-on:submit.prevent="submitForm">
+        <div class="feedback__form__field mb2">
+          <input type="email" name="email" placeholder="Email" v-model="form.email">
+        </div>
+        <div class="feedback__form__field mb3">
+          <textarea name="comment" rows="4" cols="80" placeholder="Comments" v-model="form.message"></textarea>
+        </div>
+        <div class="feedback__form__field">
+          <button class="btn" type="submit" name="button">Send</button>
+        </div>
+      </form>
+    </div>
   </div>
 </template>
 
@@ -51,7 +53,7 @@ export default {
     submitForm() {
       // console.log(this.form);
       // https://formcarry.com/s/S8G6oaaqi7H
-    axios.post('https://formcarry.com/s/S8G6oaaqi7H', qs.stringify(this.form))
+      axios.post('https://formcarry.com/s/S8G6oaaqi7H', qs.stringify(this.form))
       .then(() => {
         this.form.email = '';
         this.form.message = '';
@@ -68,28 +70,29 @@ export default {
 };
 </script>
 
-<style lang="less" scoped>
+<style lang="less">
 @import  '../assets/variables';
 
 .feedback {
-  background-color: @background-color;
   &__back, &__description {
     font-family: 'Roboto', sans-serif;
     font-size: 1.1rem;
   }
   &__back {
-    color: #d8c3a1;
-    font-weight: bold;
-    &__button {
-      cursor: pointer;
+    a {
+      color: #d8c3a1;
+      font-weight: bold;
+      text-decoration: none;
     }
   }
   &__title {
     color: #d8c3a1;
     font-size: 1.6rem;
+    text-align: left;
   }
   &__description {
     color: #918f8d;
+    text-align: left;
   }
   &__form {
     &__field {
@@ -98,6 +101,7 @@ export default {
         &::placeholder {
           color: #d8c3a1;
         }
+        font-family: 'Roboto', sans-serif;
         padding: 0.5rem;
         color: #918f8d;
         background-color: #fff;

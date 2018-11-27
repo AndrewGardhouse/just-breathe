@@ -1,7 +1,8 @@
-import Vue from 'vue'
-import Router from 'vue-router'
-import Home from './views/Home.vue'
-import Options from './views/Options.vue'
+import Vue from 'vue';
+import Router from 'vue-router';
+import Home from './views/Home.vue';
+import Options from './views/Options.vue';
+import Feedback from './views/Feedback.vue';
 
 Vue.use(Router)
 
@@ -10,12 +11,17 @@ export default new Router({
     {
       path: '/',
       name: 'home',
-      component: Home
+      component: Home,
     },
     {
       path: '/options',
       name: 'options',
-      component: Options
+      component: Options,
+    },
+    {
+      path: '/feedback',
+      name: 'feedback',
+      component: Feedback,
     },
   ]
 })

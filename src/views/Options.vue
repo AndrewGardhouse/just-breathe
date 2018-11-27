@@ -45,7 +45,8 @@
         <p class="mt2 mb0">
           Let us know what you think!
           <span class="px1">
-            <a v-on:click.prevent="showFeedback">Feedback</a>
+            <router-link to="/feedback">Feedback</router-link>
+            <!-- <a v-on:click.prevent="showFeedback">Feedback</a> -->
           </span>
         </p>
       </div>
