@@ -180,7 +180,7 @@ export default {
 
 .timer {
   position: absolute;
-  height: @viewport-height
+  height: @viewport-height;
   width: 100vw;
   &__breath-circle {
     border-radius: 50%;
