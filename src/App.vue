@@ -61,6 +61,11 @@ export default {
       let vh = window.innerHeight * 0.01;
       document.documentElement.style.setProperty('--vh', `${vh}px`);
     });
+
+    // if (window.matchMedia('(display-mode: fullscreen)').matches || window.navigator.standalone) {
+    //   alert('display-mode is standalone');
+    //   console.log('display-mode is standalone');
+    // }
   },
   computed: {
     ...mapState([
@@ -89,7 +94,10 @@ body {
   margin: 0;
   position: absolute;
   width: 100vw;
-  height: calc(var(--vh, 1vh) * 100);
+}
+
+body, #app, .wrapper {
+  height: @viewport-height;
   overflow: hidden;
 }
 
@@ -99,7 +107,6 @@ body {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: @dark;
-  height: 100%;
 }
 
 ::selection {
