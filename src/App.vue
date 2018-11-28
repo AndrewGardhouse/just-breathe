@@ -11,6 +11,7 @@ body {
   margin: 0;
   position: absolute;
   width: 100vw;
+  background-color: rgba(250, 245, 239, 1);
 }
 body, #app, .wrapper {
   height: @viewport-height;
@@ -65,5 +66,11 @@ button {
 .my-auto {
   margin-top: auto;
   margin-bottom: auto;
+}
+.fade-enter-active, .fade-leave-active {
+  transition: opacity 0.5s;
+}
+.fade-enter, .fade-leave-to {
+  opacity: 0;
 }
 </style>
