@@ -4,7 +4,7 @@ import Home from './views/Home.vue';
 import Options from './views/Options.vue';
 import Feedback from './views/Feedback.vue';
 
-Vue.use(Router)
+Vue.use(Router);
 
 export default new Router({
   routes: [
@@ -23,5 +23,5 @@ export default new Router({
       name: 'feedback',
       component: Feedback,
     },
-  ]
-})
+  ],
+});

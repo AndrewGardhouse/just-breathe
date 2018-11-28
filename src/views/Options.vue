@@ -46,7 +46,6 @@
           Let us know what you think!
           <span class="px1">
             <router-link to="/feedback">Feedback</router-link>
-            <!-- <a v-on:click.prevent="showFeedback">Feedback</a> -->
           </span>
         </p>
       </div>
@@ -64,11 +63,12 @@ export default {
   },
   data() {
     return {
-      options: Object.assign({},
-        {inhale: this.$store.state.inhale},
-        {exhale: this.$store.state.exhale},
-        {holdInhale: this.$store.state.holdInhale},
-        {holdExhale: this.$store.state.holdExhale},
+      options: Object.assign(
+        {},
+        { inhale: this.$store.state.inhale },
+        { exhale: this.$store.state.exhale },
+        { holdInhale: this.$store.state.holdInhale },
+        { holdExhale: this.$store.state.holdExhale },
       ),
     };
   },

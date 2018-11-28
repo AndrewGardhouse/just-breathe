@@ -10,7 +10,7 @@ const fakePropsData = {
   minTime: 1,
   maxTime: 12,
   fieldName: 'Hold Inhale',
-}
+};
 
 describe('Option.vue', () => {
   it('should required props', () => {
@@ -20,9 +20,9 @@ describe('Option.vue', () => {
       propsData: {},
       computed: {
         fieldNameSlugified() {
-          return 'slugified-field-name'
-        }
-      }
+          return 'slugified-field-name';
+        },
+      },
     });
     expect(spy).toBeCalled();
     expect(spy.mock.calls[0][0]).toContain('[Vue warn]: Missing required prop');
@@ -31,11 +31,11 @@ describe('Option.vue', () => {
 
   it('fieldNameSlugified should return a slugified fieldName prop', () => {
     const wrapper = shallowMount(Option, {
-      propsData: fakePropsData
+      propsData: fakePropsData,
     });
-    const label = wrapper.find('label')
+    const label = wrapper.find('label');
 
-    expect(label.attributes().for).toBe('hold-inhale')
+    expect(label.attributes().for).toBe('hold-inhale');
   });
 
   it('fieldNameCapitalized should return a string without spaces and first letter capitalized', () => {
@@ -45,7 +45,7 @@ describe('Option.vue', () => {
         minTime: 1,
         maxTime: 12,
         fieldName: 'Hold Inhale Test',
-      }
+      },
     });
 
     expect(wrapper.vm.fieldNameCapitalized).toBe('HoldInhaleTest');
@@ -53,7 +53,7 @@ describe('Option.vue', () => {
 
   it('slider label displays the correct text', () => {
     const wrapper = shallowMount(Option, {
-      propsData: fakePropsData
+      propsData: fakePropsData,
     });
     const renderedLabel = wrapper.find('label');
 
@@ -78,7 +78,7 @@ describe('Option.vue', () => {
 
     const localActions = {
       updateTimerValue: jest.fn(),
-    }
+    };
     const store = new Vuex.Store({
       state,
       actions: localActions,
@@ -94,7 +94,7 @@ describe('Option.vue', () => {
 
     slider.vm.$emit('callback', 4);
 
-    expect(localActions.updateTimerValue).toHaveBeenCalled()
+    expect(localActions.updateTimerValue).toHaveBeenCalled();
   });
 
   it('updateTimerValue action updates holdInhale state attribute', () => {
@@ -122,7 +122,7 @@ describe('Option.vue', () => {
 
     slider.vm.$emit('callback', 4);
 
-    expect(state.holdInhale).toBe(4)
+    expect(state.holdInhale).toBe(4);
   });
 
   it('updateTimerValue action updates the holdExhale state attribute', () => {
@@ -150,7 +150,7 @@ describe('Option.vue', () => {
 
     slider.vm.$emit('callback', 4);
 
-    expect(state.holdExhale).toBe(4)
+    expect(state.holdExhale).toBe(4);
   });
 
   it('updateTimerValue action updates the inhale state attribute', () => {
@@ -178,7 +178,7 @@ describe('Option.vue', () => {
 
     slider.vm.$emit('callback', 4);
 
-    expect(state.inhale).toBe(4)
+    expect(state.inhale).toBe(4);
   });
 
   it('updateTimerValue action updates the exhale state attribute', () => {
@@ -206,6 +206,6 @@ describe('Option.vue', () => {
 
     slider.vm.$emit('callback', 4);
 
-    expect(state.exhale).toBe(4)
+    expect(state.exhale).toBe(4);
   });
 });

@@ -21,7 +21,6 @@
             </router-link>
           </div>
         </transition>
-        <OptionsFeedbackModal />
         <TimerToggle v-on:resetTransitionSpeed="updateTransition"
                      v-on:setIsInhaleFalse="toggleInhale" />
       </div>
@@ -30,7 +29,6 @@
 <script>
 import { mapState } from 'vuex';
 import Timer from '../components/Timer.vue';
-import OptionsFeedbackModal from '../components/OptionsFeedbackModal.vue';
 import TimerToggle from '../components/TimerToggle.vue';
 import Clock from '../components/Clock.vue';
 
@@ -50,12 +48,12 @@ export default {
   },
   beforeCreate() {
     // First we get the viewport height and we multiple it by 1% to get a value for a vh unit
-    let vh = window.innerHeight * 0.01;
+    const vh = window.innerHeight * 0.01;
     // Then we set the value in the --vh custom property to the root of the document
     document.documentElement.style.setProperty('--vh', `${vh}px`);
     window.addEventListener('resize', () => {
       // We execute the same script as before
-      let vh = window.innerHeight * 0.01;
+      const vh = window.innerHeight * 0.01;
       document.documentElement.style.setProperty('--vh', `${vh}px`);
     });
     // if (window.matchMedia('(display-mode: fullscreen)').matches || window.navigator.standalone) {
@@ -66,13 +64,9 @@ export default {
   computed: {
     ...mapState([
       'isTimerRunning',
-      'modalName',
     ]),
   },
   methods: {
-    openOptions() {
-      this.$modal.show(this.modalName);
-    },
     updateTransition(speed) {
       this.transitonSpeed = speed;
     },

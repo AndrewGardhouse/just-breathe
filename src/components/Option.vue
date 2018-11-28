@@ -70,9 +70,9 @@ export default {
     },
     fieldNameCamelCase() {
       return this.fieldName.toString()
-        .replace(/\s(.)/g, ($1) => $1.toUpperCase())
+        .replace(/\s(.)/g, $1 => $1.toUpperCase())
         .replace(/\s/g, '')
-        .replace(/^(.)/, ($1) => $1.toLowerCase());
+        .replace(/^(.)/, $1 => $1.toLowerCase());
     },
   },
   methods: {

@@ -21,7 +21,11 @@
           <input type="email" name="email" placeholder="Email" v-model="form.email">
         </div>
         <div class="feedback__form__field mb3">
-          <textarea name="comment" rows="4" cols="80" placeholder="Comments" v-model="form.message"></textarea>
+          <textarea name="comment"
+                    rows="4"
+                    cols="80"
+                    placeholder="Comments"
+                    v-model="form.message"></textarea>
         </div>
         <div class="feedback__form__field">
           <button class="btn" type="submit" name="button">Send</button>
@@ -46,22 +50,23 @@ export default {
       form: {
         email: '',
         message: '',
-      }
-    }
+      },
+    };
   },
   methods: {
     submitForm() {
       // console.log(this.form);
       // https://formcarry.com/s/S8G6oaaqi7H
       axios.post('https://formcarry.com/s/S8G6oaaqi7H', qs.stringify(this.form))
-      .then(() => {
-        this.form.email = '';
-        this.form.message = '';
-        this.formSubmitted = true;
-      })
-      .catch((err) => {
-        console.error(err);
-      });
+        .then(() => {
+          this.form.email = '';
+          this.form.message = '';
+          this.formSubmitted = true;
+        })
+        .catch((err) => {
+          // eslint-disable-next-line
+          console.error(err);
+        });
     },
     showOptions() {
       this.$emit('toggleShowOptions');
