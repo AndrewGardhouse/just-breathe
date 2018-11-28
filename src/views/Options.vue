@@ -3,7 +3,7 @@
     <div class="timer-options flex flex-column max-width-2 mx-auto my-auto px2">
       <div class="flex justify-end">
         <router-link to="/" class="timer-options__close my-auto">
-          <font-awesome-icon icon="times" size="2x" />
+          <Close />
         </router-link>
       </div>
       <div class="mb2">
@@ -55,11 +55,13 @@
 
 <script>
 import Option from '@/components/Option.vue';
+import Close from '@/components/Close.vue';
 import { mapMutations } from 'vuex';
 
 export default {
   components: {
     Option,
+    Close,
   },
   data() {
     return {

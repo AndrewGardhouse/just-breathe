@@ -3,7 +3,7 @@
     <div class="feedback flex flex-column max-width-2 mx-auto my-auto px2">
       <div class="flex justify-end">
         <router-link to="/" class="timer-options__close my-auto">
-          <font-awesome-icon icon="times" size="2x" />
+          <Close />
         </router-link>
       </div>
       <div class="feedback__back flex mb3">
@@ -44,10 +44,12 @@
 import axios from 'axios';
 import qs from 'qs';
 import Back from '@/components/Back.vue';
+import Close from '@/components/Close.vue';
 
 export default {
   components: {
     Back,
+    Close,
   },
   data() {
     return {
