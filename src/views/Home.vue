@@ -36,7 +36,6 @@ export default {
   name: 'app',
   components: {
     Timer,
-    OptionsFeedbackModal,
     TimerToggle,
     Clock,
   },
@@ -131,11 +130,5 @@ export default {
       height: 2px;
     }
   }
-}
-.fade-enter-active, .fade-leave-active {
-  transition: opacity 0.5s;
-}
-.fade-enter, .fade-leave-to {
-  opacity: 0;
 }
 </style>
