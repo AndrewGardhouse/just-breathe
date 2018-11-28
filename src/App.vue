@@ -1,6 +1,8 @@
 <template>
   <div id="app">
-    <router-view/>
+    <transition name="page-fade" mode="out-in" appear>
+      <router-view/>
+    </transition>
   </div>
 </template>
 
@@ -71,6 +73,12 @@ button {
   transition: opacity 0.5s;
 }
 .fade-enter, .fade-leave-to {
+  opacity: 0;
+}
+.page-fade-enter-active, .page-fade-leave-active {
+  transition: opacity 0.3s;
+}
+.page-fade-enter, .page-fade-leave-to {
   opacity: 0;
 }
 </style>

@@ -48,12 +48,12 @@ export default {
   beforeCreate() {
     // First we get the viewport height and we multiple it by 1% to get a value for a vh unit
     // eslint-disable-next-line
-    const vh = window.innerHeight * 0.01;
+    let vh = window.innerHeight * 0.01;
     // Then we set the value in the --vh custom property to the root of the document
     document.documentElement.style.setProperty('--vh', `${vh}px`);
     window.addEventListener('resize', () => {
       // We execute the same script as before
-      const vh = window.innerHeight * 0.01;
+      vh = window.innerHeight * 0.01;
       document.documentElement.style.setProperty('--vh', `${vh}px`);
     });
     // if (window.matchMedia('(display-mode: fullscreen)').matches || window.navigator.standalone) {
@@ -84,7 +84,7 @@ export default {
   height: 100%;
   background-color: rgba(250, 245, 239, 1);
   transition-timing-function: linear;
-  transition-property: background-color;
+  transition-property: background-color, opacity;
   &--timer-running {
     // background-color: #bfeaec;
     background-color: rgba(186, 214, 201, 1);
@@ -99,6 +99,7 @@ export default {
     bottom: @button-position + (@button-position / 2);
     left: @button-position;
     user-select: none;
+    transition-property: opacity;
     svg > path {
       fill: @light;
     }
