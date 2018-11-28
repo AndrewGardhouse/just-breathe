@@ -113,6 +113,8 @@ export default {
         &::placeholder {
           color: #d8c3a1;
         }
+        -webkit-appearance: none;
+        box-sizing: border-box;
         font-family: 'Roboto', sans-serif;
         padding: 0.5rem;
         color: #918f8d;

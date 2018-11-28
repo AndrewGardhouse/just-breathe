@@ -32,7 +32,7 @@ export default {
 
 .time {
   transition-timing-function: linear;
-  transition-property: color;
+  transition-property: color, opacity;
   transition-duration: 0.5s;
   font-size: 1.6rem;
   position: absolute;
