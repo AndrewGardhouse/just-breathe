@@ -1,6 +1,11 @@
 <template>
   <div class="wrapper flex">
     <div class="feedback flex flex-column max-width-2 mx-auto my-auto px2">
+      <div class="flex justify-end">
+        <router-link to="/" class="timer-options__close my-auto">
+          <font-awesome-icon icon="times" size="2x" />
+        </router-link>
+      </div>
       <div class="feedback__back flex mb3">
         <router-link to="/options" class="feedback__back__button flex">
           <Back />
