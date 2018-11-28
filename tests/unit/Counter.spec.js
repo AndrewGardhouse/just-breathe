@@ -18,8 +18,8 @@ describe('Counter.vue', () => {
       computed: {
         totalRange() {
           return Array.from(Array(propsData.total + 1).keys());
-        }
-      }
+        },
+      },
     });
     expect(spy).toBeCalled();
     expect(spy.mock.calls[0][0]).toContain('[Vue warn]: Missing required prop');
@@ -44,7 +44,7 @@ describe('Counter.vue', () => {
       },
     });
 
-    expect(wrapper.vm.totalRange).toEqual([0,1,2,3,4]);
+    expect(wrapper.vm.totalRange).toEqual([0, 1, 2, 3, 4]);
   });
 
   it('should show the name when there is a `name` prop and the `count` prop is 0', () => {

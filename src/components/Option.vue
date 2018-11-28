@@ -1,5 +1,5 @@
 <template>
-  <div class="option my2 px2">
+  <div class="option my2">
     <label class="flex justify-between mb1 option__label" :for="fieldNameSlugified">
       <span class="label__field-name">{{ fieldName }}:</span>
       <span class="label__field-value">{{ value }} {{ secondPluralFilter(value) }}</span>
@@ -18,7 +18,6 @@
 
 <script>
 import VueSlider from 'vue-slider-component';
-import { mapActions } from 'vuex';
 
 export default {
   props: {
@@ -69,14 +68,14 @@ export default {
         .replace(/^-+/, '') // Trim - from start of text
         .replace(/-+$/, ''); // Trim - from end of text
     },
-    fieldNameCapitalized() {
-      return this.fieldName.toString().charAt(0).toUpperCase() + this.fieldName.toString().slice(1).replace(/[^\w]+/g, '');
+    fieldNameCamelCase() {
+      return this.fieldName.toString()
+        .replace(/\s(.)/g, $1 => $1.toUpperCase())
+        .replace(/\s/g, '')
+        .replace(/^(.)/, $1 => $1.toLowerCase());
     },
   },
   methods: {
-    ...mapActions([
-      'updateTimerValue',
-    ]),
     secondPluralFilter(time) {
       let label = '';
       if (time === 1) {
@@ -87,9 +86,9 @@ export default {
       return label;
     },
     updateValue(value) {
-      this.updateTimerValue({
+      this.$emit('updateTimerValue', {
         timeAmount: value,
-        fieldProperty: this.fieldNameCapitalized,
+        fieldProperty: this.fieldNameCamelCase,
       });
     },
   },
