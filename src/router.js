@@ -23,5 +23,10 @@ export default new Router({
       name: 'feedback',
       component: Feedback,
     },
+    {
+      path: '*',
+      name: '404',
+      component: Home,
+    },
   ],
 });
