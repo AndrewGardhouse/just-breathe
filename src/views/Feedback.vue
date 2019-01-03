@@ -21,63 +21,21 @@
           and don't like about this and any suggestions you might have.
         </p>
       </div>
-      <form class="feedback__form" v-on:submit.prevent="submitForm">
-        <div class="feedback__form__field mb2">
-          <input type="email" name="email" placeholder="Email" v-model="form.email">
-        </div>
-        <div class="feedback__form__field mb3">
-          <textarea name="comment"
-                    rows="4"
-                    cols="80"
-                    placeholder="Comments"
-                    v-model="form.message"></textarea>
-        </div>
-        <div class="feedback__form__field">
-          <button class="btn" type="submit" name="button">Send</button>
-        </div>
-      </form>
+      <FeedbackForm />
     </div>
   </div>
 </template>
 
 <script>
-import axios from 'axios';
-import qs from 'qs';
 import Back from '@/components/Back.vue';
 import Close from '@/components/Close.vue';
+import FeedbackForm from '@/components/FeedbackForm.vue';
 
 export default {
   components: {
     Back,
     Close,
-  },
-  data() {
-    return {
-      formSubmitted: false,
-      form: {
-        email: '',
-        message: '',
-      },
-    };
-  },
-  methods: {
-    submitForm() {
-      // console.log(this.form);
-      // https://formcarry.com/s/S8G6oaaqi7H
-      axios.post('https://formcarry.com/s/S8G6oaaqi7H', qs.stringify(this.form))
-        .then(() => {
-          this.form.email = '';
-          this.form.message = '';
-          this.formSubmitted = true;
-        })
-        .catch((err) => {
-          // eslint-disable-next-line
-          console.error(err);
-        });
-    },
-    showOptions() {
-      this.$emit('toggleShowOptions');
-    },
+    FeedbackForm,
   },
 };
 </script>
@@ -105,32 +63,6 @@ export default {
   &__description {
     color: #918f8d;
     text-align: left;
-  }
-  &__form {
-    &__field {
-      display: flex;
-      input, textarea {
-        &::placeholder {
-          color: #d8c3a1;
-        }
-        -webkit-appearance: none;
-        box-sizing: border-box;
-        font-family: 'Roboto', sans-serif;
-        padding: 0.5rem;
-        color: #918f8d;
-        background-color: #fff;
-        border: 1px solid #d8c3a1;
-        border-radius: 2px;
-        width: 100%;
-        font-size: 1.2rem;
-        &:focus {
-          outline:0;
-        }
-      }
-      textarea {
-        resize: none;
-      }
-    }
   }
 }
 </style>
