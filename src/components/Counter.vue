@@ -1,6 +1,5 @@
 <template>
   <div class="counter my-auto">
-    <!-- <transition-group name="new-number" tag="p" type="out-in"> -->
     <p>
       <span class="counter__number my-auto"
             v-for="n in totalRange"
@@ -10,7 +9,6 @@
         {{ n === 0 && name ? name : n }}
       </span>
     </p>
-    <!-- </transition-group> -->
   </div>
 </template>
 
@@ -49,9 +47,6 @@ export default {
     display: flex;
   }
   &__number {
-    // position: absolute;
-    // left: 0;
-    // right: 0;
     margin: auto;
     font-size: 3rem;
     line-height: 1;
@@ -59,19 +54,7 @@ export default {
     &--is-name {
       font-size: 1.8rem;
       margin: auto;
-      // position: absolute;
-      // left: 0;
-      // right: 0;
-      // top: 0;
-      // bottom: 0;
-      // top: 48%;
     }
   }
-}
-.new-number-enter-active, .new-number-leave-active {
-  transition: all .4s;
-}
-.new-number-enter, .new-number-leave-to {
-  opacity: 0;
 }
 </style>

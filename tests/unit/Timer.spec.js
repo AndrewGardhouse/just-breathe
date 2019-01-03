@@ -1,7 +1,8 @@
-import { mount, createLocalVue } from '@vue/test-utils';
+import { shallowMount, createLocalVue } from '@vue/test-utils';
 import Vuex from 'vuex';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import getters from '@/store/getters';
+import mutations from '@/store/mutations';
 import Timer from '@/components/Timer';
 
 describe('Timer.vue Watchers', () => {
@@ -25,9 +26,10 @@ describe('Timer.vue Watchers', () => {
         holdExhale: 5,
       },
       getters,
+      mutations
     });
 
-    const wrapper = mount(Timer, {
+    const wrapper = shallowMount(Timer, {
       store,
       localVue,
     });
@@ -59,9 +61,10 @@ describe('Timer.vue Watchers', () => {
         holdExhale: 5,
       },
       getters,
+      mutations
     });
 
-    const wrapper = mount(Timer, {
+    const wrapper = shallowMount(Timer, {
       store,
       localVue,
     });
@@ -90,9 +93,10 @@ describe('Timer.vue Watchers', () => {
         holdExhale: 5,
       },
       getters,
+      mutations
     });
 
-    const wrapper = mount(Timer, {
+    const wrapper = shallowMount(Timer, {
       store,
       localVue,
     });
@@ -121,9 +125,10 @@ describe('Timer.vue Watchers', () => {
         holdExhale: 5,
       },
       getters,
+      mutations
     });
 
-    const wrapper = mount(Timer, {
+    const wrapper = shallowMount(Timer, {
       store,
       localVue,
     });
@@ -152,9 +157,10 @@ describe('Timer.vue Watchers', () => {
         holdExhale: 5,
       },
       getters,
+      mutations
     });
 
-    const wrapper = mount(Timer, {
+    const wrapper = shallowMount(Timer, {
       store,
       localVue,
     });
@@ -183,9 +189,10 @@ describe('Timer.vue Watchers', () => {
         holdExhale: 0,
       },
       getters,
+      mutations
     });
 
-    const wrapper = mount(Timer, {
+    const wrapper = shallowMount(Timer, {
       store,
       localVue,
     });
@@ -214,9 +221,10 @@ describe('Timer.vue Watchers', () => {
         holdExhale: 5,
       },
       getters,
+      mutations
     });
 
-    const wrapper = mount(Timer, {
+    const wrapper = shallowMount(Timer, {
       store,
       localVue,
     });
@@ -258,9 +266,10 @@ describe('Timer.vue Methods', () => {
         holdExhale: 5,
       },
       getters,
+      mutations
     });
 
-    wrapper = mount(Timer, {
+    wrapper = shallowMount(Timer, {
       store,
       localVue,
     });

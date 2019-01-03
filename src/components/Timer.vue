@@ -6,13 +6,11 @@
     <audio class="click" ref="click">
       <source src="@/assets/click.mp3" type="audio/mpeg">
     </audio>
-    <!-- <div> -->
-      <Counter :count="countDown" :total="countDown" v-if="showCountDown" />
-      <Counter name="inhale" :count="inhaleCount" :total="inhale" v-if="inhaleInterval" />
-      <Counter name="hold" :count="holdInhaleCount" :total="holdInhale" v-if="holdInhaleInterval" />
-      <Counter name="exhale" :count="exhaleCount" :total="exhale" v-if="exhaleInterval" />
-      <Counter name="hold" :count="holdExhaleCount" :total="holdExhale" v-if="holdExhaleInterval" />
-    <!-- </div> -->
+    <Counter :count="countDown" :total="countDown" v-if="showCountDown" />
+    <Counter name="inhale" :count="inhaleCount" :total="inhale" v-if="inhaleInterval" />
+    <Counter name="hold" :count="holdInhaleCount" :total="holdInhale" v-if="holdInhaleInterval" />
+    <Counter name="exhale" :count="exhaleCount" :total="exhale" v-if="exhaleInterval" />
+    <Counter name="hold" :count="holdExhaleCount" :total="holdExhale" v-if="holdExhaleInterval" />
   </div>
 </template>
 
