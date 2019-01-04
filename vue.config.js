@@ -1,5 +1,6 @@
 module.exports = {
   pwa: {
+    name: 'Just Breathe',
     display: 'fullscreen',
     background_color: '#fffbf7',
     theme_color: '#fffbf7',
