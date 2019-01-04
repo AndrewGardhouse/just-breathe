@@ -2,7 +2,7 @@ module.exports = {
   pwa: {
     name: 'Just Breathe',
     display: 'fullscreen',
-    background_color: '#fffbf7',
+    background_color: '#fff',
     theme_color: '#fffbf7',
     iconPaths: {
       favicon32: 'img/icons/favicon-32x32.png',
