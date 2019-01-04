@@ -39,7 +39,7 @@ export default {
   methods: {
     submitForm() {
       axios.post('https://formcarry.com/s/S8G6oaaqi7H', qs.stringify(this.form))
-        .then((response) => {
+        .then(() => {
           this.form.email = '';
           this.form.comment = '';
           this.formSubmitted = true;
@@ -53,7 +53,7 @@ export default {
         });
     },
   },
-}
+};
 </script>
 
 <style lang="less">
