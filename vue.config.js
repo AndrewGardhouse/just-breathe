@@ -10,5 +10,9 @@ module.exports = {
       appleTouchIcon: 'img/icons/apple-touch-icon-152x152.png',
       msTileImage: 'img/icons/msapplication-icon-144x144.png',
     },
+    workboxPluginMode: 'InjectManifest',
+    workboxOptions: {
+      swSrc: 'src/service-worker.js'
+    }
   },
 };

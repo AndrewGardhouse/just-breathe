@@ -11,8 +11,14 @@ if (process.env.NODE_ENV === 'production') {
     cached() {
       console.log('Content has been cached for offline use.');
     },
-    updated() {
-      console.log('New content is available; please refresh.');
+    updated(registration) {
+      console.log('New content is available; please refresh.')
+      let confirmationResult = confirm("New content found! Do you want to reload the app?");
+      if (confirmationResult) {
+        registration.waiting.postMessage({
+          action: 'skipWaiting',
+        });
+      }
     },
     offline() {
       console.log('No internet connection found. App is running in offline mode.');
@@ -21,4 +27,13 @@ if (process.env.NODE_ENV === 'production') {
       console.error('Error during service worker registration:', error);
     },
   });
+
+  let refreshing
+  navigator.serviceWorker.addEventListener('controllerchange', () => {
+    if (refreshing) {
+      return;
+    }
+    window.location.reload();
+    refreshing = true;
+  })
 }
