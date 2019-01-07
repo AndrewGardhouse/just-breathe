@@ -2,7 +2,7 @@ module.exports = {
   pwa: {
     name: 'Just Breathe',
     display: 'fullscreen',
-    backgroundColor: '#fff',
+    backgroundColor: '#fffbf7',
     themeColor: '#fffbf7',
     msTileColor: '#fffbf7',
     iconPaths: {
