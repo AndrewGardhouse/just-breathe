@@ -185,6 +185,7 @@ export default {
     border: 1px solid @white;
     height: 35vw;
     width: 35vw;
+    position: fixed;
     top: 0;
     bottom: 0;
     left: 0;
