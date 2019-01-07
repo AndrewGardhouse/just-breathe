@@ -19,10 +19,16 @@ export default {
       vh = window.innerHeight * 0.01;
       document.documentElement.style.setProperty('--vh', `${vh}px`);
     });
-    // if (window.matchMedia('(display-mode: fullscreen)').matches || window.navigator.standalone) {
-    //   alert('display-mode is standalone');
-    //   console.log('display-mode is standalone');
-    // }
+
+    window.addEventListener('beforeinstallprompt', (e) => {
+      e.userChoice.then((choiceResult) => {
+        this.$ga.event({
+          eventCategory: 'A2HS',
+          eventAction: 'Click',
+          eventValue: choiceResult.outcome,
+        });
+      });
+    });
   },
 };
 </script>
@@ -51,7 +57,7 @@ body, #app, .wrapper {
   background: #f0e8db;
 }
 a, button {
-  -webkit-tap-highlight-color:  rgba(255, 255, 255, 0);  
+  -webkit-tap-highlight-color:  rgba(255, 255, 255, 0);
 }
 button {
   border: none;

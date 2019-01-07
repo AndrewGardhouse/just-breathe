@@ -1,4 +1,6 @@
 /* eslint-disable no-console */
+/* eslint-disable no-alert */
+/* eslint-disable no-restricted-globals */
 
 import { register } from 'register-service-worker';
 
@@ -12,8 +14,8 @@ if (process.env.NODE_ENV === 'production') {
       console.log('Content has been cached for offline use.');
     },
     updated(registration) {
-      console.log('New content is available; please refresh.')
-      let confirmationResult = confirm("New content found! Do you want to reload the app?");
+      console.log('New content is available; please refresh.');
+      const confirmationResult = confirm('New content found! Do you want to reload the app?');
       if (confirmationResult) {
         registration.waiting.postMessage({
           action: 'skipWaiting',
@@ -28,12 +30,12 @@ if (process.env.NODE_ENV === 'production') {
     },
   });
 
-  let refreshing
+  let refreshing;
   navigator.serviceWorker.addEventListener('controllerchange', () => {
     if (refreshing) {
       return;
     }
     window.location.reload();
     refreshing = true;
-  })
+  });
 }
