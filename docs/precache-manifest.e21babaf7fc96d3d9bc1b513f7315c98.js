@@ -4,7 +4,7 @@ self.__precacheManifest = [
     "url": "https://justbreathe.app/sitemap.xml"
   },
   {
-    "revision": "b6216d61c03e6ce0c9aea6ca7808f7ca",
+    "revision": "47634e604173c638ccb6781e2f0af5c2",
     "url": "https://justbreathe.app/robots.txt"
   },
   {
@@ -20,8 +20,12 @@ self.__precacheManifest = [
     "url": "https://justbreathe.app/js/app.60cdad92.js"
   },
   {
-    "revision": "b9af195822c504ecd1cfb65f3d43fafd",
+    "revision": "b8e1a17f875ac1c20f8023b5255b83ac",
     "url": "https://justbreathe.app/index.html"
+  },
+  {
+    "revision": "2c4235f39c59977a58c7283851e393dc",
+    "url": "https://justbreathe.app/img/open-graph.png"
   },
   {
     "revision": "0073d6059c5c3a530dde",
