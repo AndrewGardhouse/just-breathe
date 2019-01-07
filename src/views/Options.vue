@@ -40,8 +40,8 @@
           Save
         </button>
       </div>
-      <hr>
-      <div class="flex timer-options__contact">
+      <div class="flex timer-options__contact" v-if="isOnline">
+        <hr>
         <p class="mt2 mb0">
           Let us know what you think!
           <span class="px1">
@@ -72,7 +72,13 @@ export default {
         { holdInhale: this.$store.state.holdInhale },
         { holdExhale: this.$store.state.holdExhale },
       ),
+      isOnline: true,
     };
+  },
+  mounted() {
+    if (!window.navigator.onLine) {
+      this.isOnline = false;
+    }
   },
   methods: {
     ...mapMutations([
@@ -112,6 +118,8 @@ export default {
     font-family: 'Roboto', sans-serif;
     font-weight: normal;
     color: #918f8d;
+    flex-direction: column;
+    text-align: left;
     a {
       color: #d8c3a1;
       font-weight: bold;
