@@ -1,4 +1,6 @@
 module.exports = {
+  baseUrl: 'https://justbreathe.app',
+  outputDir: 'docs',
   pwa: {
     name: 'Just Breathe',
     display: 'fullscreen',
