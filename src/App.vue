@@ -50,6 +50,9 @@ body, #app, .wrapper {
 ::selection {
   background: #f0e8db;
 }
+a, button {
+  -webkit-tap-highlight-color:  rgba(255, 255, 255, 0);  
+}
 button {
   border: none;
   margin: 0;

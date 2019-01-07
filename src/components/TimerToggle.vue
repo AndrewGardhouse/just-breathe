@@ -1,5 +1,8 @@
 <template lang="html">
   <button class="start-stop"
+          type="button"
+          aria-label="Toggle Timer"
+          name="Toggle Timer"
           v-on:click="toggleTimer"
           v-bind:class="{ 'start-stop--hidden' : !showButton,
                           'start-stop--pause': isTimerRunning }"

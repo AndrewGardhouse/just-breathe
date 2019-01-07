@@ -16,7 +16,7 @@
               <p class="wrapper__title__breathe mt2 mb0">Breathe.</p>
               <hr class="wrapper__title__line mt2 mb0 ml0">
             </div>
-            <router-link to="/options" class="wrapper__open-options">
+            <router-link to="/options" class="wrapper__open-options" aria-label="Options">
               <font-awesome-icon icon="cog" size="3x" />
             </router-link>
           </div>
