@@ -79,6 +79,8 @@ export default {
     if (!window.navigator.onLine) {
       this.isOnline = false;
     }
+    window.addEventListener('online',  () => this.appIsOnline());
+    window.addEventListener('offline', () => this.appIsOffline());
   },
   methods: {
     ...mapMutations([
@@ -91,7 +93,17 @@ export default {
       this.updateTimerValues(this.options);
       this.$router.replace({ path: '/' });
     },
+    appIsOnline() {
+      this.isOnline = true;
+    },
+    appIsOffline() {
+      this.isOnline = false;
+    },
   },
+  beforeDestroy() {
+    window.addEventListener('online',  () => this.appIsOnline());
+    window.addEventListener('offline', () => this.appIsOffline());
+  }
 };
 </script>
 
