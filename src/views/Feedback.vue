@@ -13,7 +13,7 @@
         </router-link>
       </div>
       <div class="mb2 feedback__title">
-        <p class="bold my-auto">Settings</p>
+        <p class="bold my-auto">Feedback</p>
       </div>
       <div class="mb3 feedback__description">
         <p class="my-auto">
