@@ -30,5 +30,9 @@ self.__precacheManifest = [
   {
     "revision": "2787a32f74a0be958dc3",
     "url": "https://justbreathe.app/css/app.34f003f6.css"
+  },
+  {
+    "revision": "d6a05eb1b4e37f58199c874d57b582b2",
+    "url": "https://justbreathe.app/CNAME"
   }
 ];
