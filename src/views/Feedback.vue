@@ -1,15 +1,13 @@
 <template>
   <div class="wrapper flex">
     <div class="feedback flex flex-column max-width-2 mx-auto my-auto px2">
-      <div class="flex justify-end">
-        <router-link to="/" class="timer-options__close my-auto">
-          <Close />
-        </router-link>
-      </div>
-      <div class="feedback__back flex mb3">
-        <router-link to="/options" class="feedback__back__button flex">
+      <div class="feedback__link-row flex mb3">
+        <router-link to="/options" class="feedback__link-row__back flex">
           <Back />
           <p class="my-auto ml1">Back to settings</p>
+        </router-link>
+        <router-link to="/" class="feedback__link-row__close my-auto">
+          <Close />
         </router-link>
       </div>
       <div class="mb2 feedback__title">
@@ -44,15 +42,20 @@ export default {
 @import  '../assets/variables';
 
 .feedback {
-  &__back, &__description {
+  &__link-row, &__description {
     font-family: 'Roboto', sans-serif;
     font-size: 1.1rem;
   }
-  &__back {
+  &__link-row {
+    justify-content: space-between;
     a {
       color: #d8c3a1;
       font-weight: bold;
       text-decoration: none;
+    }
+    &__close {
+      height: 29px;
+      width: 29px;
     }
   }
   &__title {

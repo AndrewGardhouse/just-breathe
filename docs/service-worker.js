@@ -1,4 +1,4 @@
-importScripts("https://justbreathe.app/precache-manifest.d4d9f9beeb9f2142bf5b7701754f1f32.js", "https://storage.googleapis.com/workbox-cdn/releases/3.4.1/workbox-sw.js");
+importScripts("https://justbreathe.app/precache-manifest.f4efefbbb988b4c8eb7ad34e3bd04591.js", "https://storage.googleapis.com/workbox-cdn/releases/3.4.1/workbox-sw.js");
 
 self.__precacheManifest = [].concat(self.__precacheManifest || []);
 workbox.precaching.suppressWarnings();
