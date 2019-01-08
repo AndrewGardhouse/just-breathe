@@ -1,4 +1,6 @@
-# just-breathe
+# Just Breathe
+
+[JustBreathe.app](https://justbreathe.app)
 
 ## Project setup
 ```
