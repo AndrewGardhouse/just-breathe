@@ -79,7 +79,7 @@ export default {
     if (!window.navigator.onLine) {
       this.isOnline = false;
     }
-    window.addEventListener('online',  () => this.appIsOnline());
+    window.addEventListener('online', () => this.appIsOnline());
     window.addEventListener('offline', () => this.appIsOffline());
   },
   methods: {
@@ -101,9 +101,9 @@ export default {
     },
   },
   beforeDestroy() {
-    window.addEventListener('online',  () => this.appIsOnline());
+    window.addEventListener('online', () => this.appIsOnline());
     window.addEventListener('offline', () => this.appIsOffline());
-  }
+  },
 };
 </script>
 
