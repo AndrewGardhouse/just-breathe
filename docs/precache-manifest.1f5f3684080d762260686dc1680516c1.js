@@ -20,7 +20,7 @@ self.__precacheManifest = [
     "url": "https://justbreathe.app/js/app.4304dbc6.js"
   },
   {
-    "revision": "77626aee449a293e52388df06f62b140",
+    "revision": "7c3de1a0539126d83ba3ffac93ef6fbe",
     "url": "https://justbreathe.app/index.html"
   },
   {
