@@ -28,6 +28,10 @@ self.__precacheManifest = [
     "url": "https://justbreathe.app/img/open-graph.png"
   },
   {
+    "revision": "25ae5433803545ebbd4e0e1a23c2f4ea",
+    "url": "https://justbreathe.app/google6392760f988e4702.html"
+  },
+  {
     "revision": "e5d1c9ec1168f3d0b484",
     "url": "https://justbreathe.app/css/app.fb55f5e3.css"
   },
