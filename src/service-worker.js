@@ -1,10 +1,10 @@
 /* eslint-disable no-undef */
 /* eslint-disable no-restricted-globals */
-workbox.setConfig({
-  debug: false,
-});
-
-workbox.precaching.precacheAndRoute([]);
+/* eslint-disable no-underscore-dangle */
+self.__precacheManifest = [].concat(self.__precacheManifest || []);
+workbox.precaching.suppressWarnings();
+workbox.precaching.precacheAndRoute(self.__precacheManifest, {});
+workbox.core.setCacheNameDetails({ prefix: 'just-breathe' });
 
 workbox.routing.registerRoute(
   new RegExp('https://unpkg.com/basscss'),
