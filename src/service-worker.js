@@ -22,7 +22,7 @@ workbox.routing.registerRoute(
 );
 
 workbox.routing.registerRoute(
-  /^https:\/\/fonts.googleapis.com/,
+  /^https:\/\/fonts.googleapis.com(.*)/,
   new workbox.strategies.CacheFirst({
     cacheName: 'google-fonts-webfonts',
     plugins: [
