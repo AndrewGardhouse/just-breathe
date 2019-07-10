@@ -1,4 +1,4 @@
-importScripts("https://justbreathe.app/precache-manifest.a9bb59c1a3d20d78d0c69780d967dbf2.js", "https://storage.googleapis.com/workbox-cdn/releases/3.4.1/workbox-sw.js");
+importScripts("https://justbreathe.app/precache-manifest.cc000d369a9151e8cb57bdaba7203fe5.js", "https://storage.googleapis.com/workbox-cdn/releases/3.4.1/workbox-sw.js");
 
 /* eslint-disable no-undef */
 /* eslint-disable no-restricted-globals */

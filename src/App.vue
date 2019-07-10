@@ -47,7 +47,7 @@ body, #app, .wrapper {
   overflow: hidden;
 }
 #app {
-  font-family: 'Comfortaa', cursive;
+  font-family: 'Comfortaa', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
