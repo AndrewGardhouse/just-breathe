@@ -1,4 +1,4 @@
-importScripts("https://justbreathe.app/precache-manifest.f70df79bb10914c2c5e2d042f94d0886.js", "https://storage.googleapis.com/workbox-cdn/releases/3.4.1/workbox-sw.js");
+importScripts("https://justbreathe.app/precache-manifest.4f32e719ab04ba101ed669d9c221bc21.js", "https://storage.googleapis.com/workbox-cdn/releases/3.4.1/workbox-sw.js");
 
 /* eslint-disable no-undef */
 /* eslint-disable no-restricted-globals */
@@ -10,9 +10,12 @@ workbox.core.setCacheNameDetails({ prefix: 'just-breathe' });
 
 workbox.routing.registerRoute(
   /^https:\/\/unpkg.com/,
-  workbox.strategies.CacheFirst({
+  new workbox.strategies.CacheFirst({
     cacheName: 'basscss',
     plugins: [
+      new workbox.cacheableResponse.Plugin({
+        statuses: [0, 200],
+      }),
       new workbox.expiration.Plugin({
         maxEntries: 60,
       }),

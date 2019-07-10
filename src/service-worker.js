@@ -8,9 +8,12 @@ workbox.core.setCacheNameDetails({ prefix: 'just-breathe' });
 
 workbox.routing.registerRoute(
   /^https:\/\/unpkg.com/,
-  workbox.strategies.CacheFirst({
+  new workbox.strategies.CacheFirst({
     cacheName: 'basscss',
     plugins: [
+      new workbox.cacheableResponse.Plugin({
+        statuses: [0, 200],
+      }),
       new workbox.expiration.Plugin({
         maxEntries: 60,
       }),
