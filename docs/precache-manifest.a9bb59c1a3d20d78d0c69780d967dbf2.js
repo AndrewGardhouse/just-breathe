@@ -16,11 +16,11 @@ self.__precacheManifest = [
     "url": "https://justbreathe.app/js/chunk-vendors.83185e72.js"
   },
   {
-    "revision": "e5d1c9ec1168f3d0b484",
-    "url": "https://justbreathe.app/js/app.4304dbc6.js"
+    "revision": "17fc2322c503df6b99bd",
+    "url": "https://justbreathe.app/js/app.1a867b24.js"
   },
   {
-    "revision": "7c3de1a0539126d83ba3ffac93ef6fbe",
+    "revision": "bd4989d218dbbd1f138bf643e550549e",
     "url": "https://justbreathe.app/index.html"
   },
   {
@@ -32,7 +32,7 @@ self.__precacheManifest = [
     "url": "https://justbreathe.app/google6392760f988e4702.html"
   },
   {
-    "revision": "e5d1c9ec1168f3d0b484",
+    "revision": "17fc2322c503df6b99bd",
     "url": "https://justbreathe.app/css/app.fb55f5e3.css"
   },
   {
