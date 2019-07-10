@@ -1,4 +1,4 @@
-importScripts("https://justbreathe.app/precache-manifest.ca03767b6fac8dce9c5a4d55b75a956a.js", "https://storage.googleapis.com/workbox-cdn/releases/3.4.1/workbox-sw.js");
+importScripts("https://justbreathe.app/precache-manifest.ab519989f9301373fb4bffd9a5f82246.js", "https://storage.googleapis.com/workbox-cdn/releases/3.4.1/workbox-sw.js");
 
 /* eslint-disable no-undef */
 /* eslint-disable no-restricted-globals */
@@ -24,7 +24,7 @@ workbox.routing.registerRoute(
 );
 
 workbox.routing.registerRoute(
-  /^https:\/\/fonts.googleapis.com(.*)/,
+  /^https:\/\/fonts.(gstatic|googleapis).com(.*)/,
   new workbox.strategies.CacheFirst({
     cacheName: 'google-fonts-webfonts',
     plugins: [
