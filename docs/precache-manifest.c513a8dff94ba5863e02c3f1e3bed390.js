@@ -1,7 +1,7 @@
 self.__precacheManifest = [
   {
-    "revision": "056aa5a62bcd3312587756af99ce2046",
-    "url": "https://justbreathe.app/img/icons/apple-touch-icon-76x76.png"
+    "revision": "bbdf44e5796e1a6722d5b451b3cf72ba",
+    "url": "https://justbreathe.app/img/icons/apple-touch-icon-60x60.png"
   },
   {
     "revision": "2c4235f39c59977a58c7283851e393dc",
@@ -32,40 +32,40 @@ self.__precacheManifest = [
     "url": "https://justbreathe.app/js/app.f0d0b250.js"
   },
   {
-    "revision": "d75577979bc1a43d64913d959fc42456",
-    "url": "https://justbreathe.app/img/icons/favicon-32x32.png"
+    "revision": "73e472fcef03c344ba5ef6e7ce23cd42",
+    "url": "https://justbreathe.app/img/icons/favicon-16x16.png"
   },
   {
     "revision": "23304f9e7e631483d3ca31f873a3cdf9",
     "url": "https://justbreathe.app/img/icons/android-chrome-192x192.png"
   },
   {
-    "revision": "74fa4349bc915fd4c9dad0199b5b2c25",
-    "url": "https://justbreathe.app/img/icons/apple-touch-icon-180x180.png"
-  },
-  {
-    "revision": "bbdf44e5796e1a6722d5b451b3cf72ba",
-    "url": "https://justbreathe.app/img/icons/apple-touch-icon-60x60.png"
-  },
-  {
-    "revision": "b9e2ad8ba274e33317ad56b8c03922c0",
-    "url": "https://justbreathe.app/img/icons/mstile-150x150.png"
+    "revision": "2bd3faa49cc8e7d9a3d7c5c1d9e1a8e6",
+    "url": "https://justbreathe.app/img/icons/apple-touch-icon-152x152.png"
   },
   {
     "revision": "576fbca75c4a2650e4cf74444350fb45",
     "url": "https://justbreathe.app/img/icons/android-chrome-512x512.png"
   },
   {
-    "revision": "2bd3faa49cc8e7d9a3d7c5c1d9e1a8e6",
-    "url": "https://justbreathe.app/img/icons/apple-touch-icon-152x152.png"
-  },
-  {
-    "revision": "73e472fcef03c344ba5ef6e7ce23cd42",
-    "url": "https://justbreathe.app/img/icons/favicon-16x16.png"
+    "revision": "b9e2ad8ba274e33317ad56b8c03922c0",
+    "url": "https://justbreathe.app/img/icons/mstile-150x150.png"
   },
   {
     "revision": "1aaa3c202a7e2ae2fbb2b9c50ad1b4ac",
     "url": "https://justbreathe.app/img/icons/apple-touch-icon-120x120.png"
+  },
+  {
+    "revision": "056aa5a62bcd3312587756af99ce2046",
+    "url": "https://justbreathe.app/img/icons/apple-touch-icon-76x76.png"
+  },
+  {
+    "revision": "d75577979bc1a43d64913d959fc42456",
+    "url": "https://justbreathe.app/img/icons/favicon-32x32.png"
+  },
+  {
+    "revision": "74fa4349bc915fd4c9dad0199b5b2c25",
+    "url": "https://justbreathe.app/img/icons/apple-touch-icon-180x180.png"
   },
   {
     "revision": "d4d03aa26fc13f1d3490c7d8165c6d3f",

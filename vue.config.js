@@ -3,7 +3,7 @@ module.exports = {
   outputDir: 'docs',
   pwa: {
     name: 'Just Breathe',
-    display: 'fullscreen',
+    display: 'standalone',
     backgroundColor: '#fffbf7',
     themeColor: '#fffbf7',
     msTileColor: '#fffbf7',
