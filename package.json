@@ -35,7 +35,7 @@
     "babel-jest": "^23.0.1",
     "less": "^3.0.4",
     "less-loader": "^4.1.0",
-    "surge": "^0.20.1",
+    "surge": "^0.20.5",
     "vue-template-compiler": "^2.5.17"
   },
   "eslintConfig": {
