@@ -9,6 +9,13 @@
       <div class="mb2">
         <p class="bold my-auto timer-options__title">Settings</p>
       </div>
+      <Option fieldName="Total Time"
+              :value="options.totalTime"
+              :minTime="1"
+              :maxTime="10"
+              valueLabel="minute"
+              v-on:updateTimerValue="updateValue" />
+      <hr>
       <Option fieldName="Inhale"
               :value="options.inhale"
               :minTime="1"
@@ -67,6 +74,7 @@ export default {
     return {
       options: Object.assign(
         {},
+        { totalTime: this.$store.state.totalTime },
         { inhale: this.$store.state.inhale },
         { exhale: this.$store.state.exhale },
         { holdInhale: this.$store.state.holdInhale },

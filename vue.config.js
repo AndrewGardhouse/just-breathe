@@ -1,5 +1,5 @@
 module.exports = {
-  baseUrl: 'https://justbreathe.app',
+  baseUrl: process.env.NODE_ENV === 'production' ? 'https://justbreathe.app' : '',
   outputDir: 'docs',
   pwa: {
     name: 'Just Breathe',

@@ -2,7 +2,7 @@
   <div class="option my2">
     <label class="flex justify-between mb1 option__label" :for="fieldNameSlugified">
       <span class="label__field-name">{{ fieldName }}:</span>
-      <span class="label__field-value">{{ value }} {{ secondPluralFilter(value) }}</span>
+      <span class="label__field-value">{{ value }} {{ valueLabelPlural(value) }}</span>
     </label>
     <vue-slider :ref="fieldNameSlugified"
                 :value.sync="value"
@@ -12,7 +12,8 @@
                 :sliderStyle="sliderStyle"
                 :bgStyle="bgStyle"
                 :processStyle="processStyle"
-                @callback="updateValue"></vue-slider>
+                @callback="updateValue" 
+    />
   </div>
 </template>
 
@@ -24,6 +25,11 @@ export default {
     value: {
       required: true,
       type: Number,
+    },
+    valueLabel: {
+      required: false,
+      type: String,
+      default: 'second'
     },
     minTime: {
       required: true,
@@ -76,14 +82,8 @@ export default {
     },
   },
   methods: {
-    secondPluralFilter(time) {
-      let label = '';
-      if (time === 1) {
-        label = 'second';
-      } else if (time > 1 || time === 0) {
-        label = 'seconds';
-      }
-      return label;
+    valueLabelPlural(time) {
+      return (time > 1 || time === 0) ? `${this.valueLabel}s` : this.valueLabel;
     },
     updateValue(value) {
       this.$emit('updateTimerValue', {
