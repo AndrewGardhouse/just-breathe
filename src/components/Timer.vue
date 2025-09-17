@@ -1,11 +1,9 @@
 <template>
   <div class="timer flex flex-column">
-    <div class="timer__breath-circle my-auto absolute"
-         v-bind:class="{ 'timer__breath-circle--grow': inhaleInterval || holdInhaleInterval }"
-         v-bind:style="{ transitionDuration: `${transitionSpeed}s` }"></div>
-    <audio class="click" ref="click">
-      <source src="@/assets/click.mp3" type="audio/mpeg">
-    </audio>
+    <div 
+      class="timer__breath-circle my-auto absolute"
+      v-bind:class="{ 'timer__breath-circle--grow': inhaleInterval || holdInhaleInterval }"
+      v-bind:style="{ transitionDuration: `${transitionSpeed}s` }" />
     <Counter :count="countDown" :total="countDown" v-if="showCountDown" />
     <Counter name="inhale" :count="inhaleCount" :total="inhale" v-if="inhaleInterval" />
     <Counter name="hold" :count="holdInhaleCount" :total="holdInhale" v-if="holdInhaleInterval" />
@@ -43,6 +41,8 @@ export default {
       'holdInhale',
       'exhale',
       'holdExhale',
+      'endTime',
+      'currentTime',
     ]),
     ...mapGetters([
       'breathingCycleTime',
@@ -66,11 +66,9 @@ export default {
   methods: {
     ...mapMutations([
       'toggleShowClock',
+      'stopTimer',
+      'toggleIsTimerRunning',
     ]),
-    playClick() {
-      this.$refs.click.volume = 0.1;
-      this.$refs.click.play();
-    },
     clearCountDown() {
       clearInterval(this.countDownInterval);
       this.countDownInterval = null;
@@ -121,21 +119,26 @@ export default {
       this.holdExhaleInterval = null;
       this.holdExhaleCount = 0;
     },
-  },
+    endLoop() {
+      this.stopTimer();
+      this.toggleIsTimerRunning();
+      this.toggleShowClock();
+      this.$emit('resetTransitionSpeed', 1);
+      this.$emit('setIsInhaleFalse', false);
+    }
+   },
   watch: {
     // For all of these watchers,
     // we are watching for when the countdowns are finished
     // so we can start new ones
     countDown(newVal) {
       if (newVal === 0) {
-        this.playClick();
         this.clearCountDown();
         this.startInhaleCount();
       }
     },
     inhaleCount(newVal) {
       if (newVal === this.inhale + 1) {
-        this.playClick();
         this.clearInhale();
         if (this.holdInhale === 0) {
           this.startExhaleCount();
@@ -146,17 +149,16 @@ export default {
     },
     holdInhaleCount(newVal) {
       if (newVal === this.holdInhale + 1) {
-        this.playClick();
         this.clearHoldInhale();
         this.startExhaleCount();
       }
     },
     exhaleCount(newVal) {
       if (newVal === this.exhale + 1) {
-        this.playClick();
         this.clearExhale();
         if (this.holdExhale === 0) {
           this.startInhaleCount();
+          if (this.currentTime.isSameOrAfter(this.endTime)) { return this.endLoop(); }
         } else {
           this.startHoldExhaleCount();
         }
@@ -164,7 +166,7 @@ export default {
     },
     holdExhaleCount(newVal) {
       if (newVal === this.holdExhale + 1) {
-        this.playClick();
+        if (this.currentTime.isSameOrAfter(this.endTime)) { return this.endLoop(); }
         this.clearHoldExhale();
         this.startInhaleCount();
       }

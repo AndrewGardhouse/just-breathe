@@ -7,11 +7,11 @@ export default {
   },
   timeRunning(state) {
     let time;
-    if (state.currentTime && state.startTime) {
-      time = moment(state.currentTime.diff(state.startTime)).format('mm:ss');
+    if ((state.currentTime && state.endTime) && state.currentTime.isSameOrBefore(state.endTime)) {
+      time = moment(state.endTime.diff(state.currentTime)).format('mm:ss')
     } else {
       time = '00:00';
     }
-    return time;
+    return time
   },
 };

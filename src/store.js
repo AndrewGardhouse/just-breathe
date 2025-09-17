@@ -20,6 +20,7 @@ export default new Vuex.Store({
       'exhale',
       'holdInhale',
       'holdExhale',
+      'totalTime',
     ],
   })],
 });

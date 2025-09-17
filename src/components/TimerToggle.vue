@@ -46,13 +46,13 @@ export default {
       this.toggleIsTimerRunning();
       if (this.isTimerRunning) {
         this.startTimer();
-        this.toggleShowClock();
         this.showButton = !this.showButton;
         this.timeout = setTimeout(() => {
           this.showButton = !this.showButton;
           clearTimeout(this.timeout);
         }, 6000);
       } else {
+        this.toggleShowClock();
         this.stopTimer();
         this.$emit('resetTransitionSpeed', 1);
         this.$emit('setIsInhaleFalse', false);

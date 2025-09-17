@@ -7,6 +7,7 @@ export default {
   isTimerRunning: false,
   interval: null,
   startTime: null,
+  endTime: null,
   currentTime: null,
-  showClock: true,
+  showClock: false,
 };
