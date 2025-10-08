@@ -5,7 +5,7 @@
             'wrapper--inhale': isInhale && isTimerRunning,
            }"
            v-bind:style="{ transitionDuration: `${transitonSpeed}s` }">
-        <Clock :isRunning="isTimerRunning" />
+        <!-- <Clock :isRunning="isTimerRunning" /> -->
         <transition name="fade">
           <Timer v-if="isTimerRunning"
                  v-on:updateTransition="updateTransition"

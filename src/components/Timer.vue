@@ -33,6 +33,7 @@ export default {
       exhaleInterval: null,
       holdExhaleCount: 0,
       holdExhaleInterval: null,
+      wakeLock: null,
     };
   },
   computed: {
@@ -46,7 +47,6 @@ export default {
     ]),
     ...mapGetters([
       'breathingCycleTime',
-      'timeRunning',
     ]),
     transitionSpeed() {
       let speed;
@@ -74,6 +74,7 @@ export default {
       this.countDownInterval = null;
       this.showCountDown = !this.showCountDown;
       this.toggleShowClock();
+      this.requestWakeLock();
     },
     startInhaleCount() {
       this.$emit('updateTransition', this.inhale + 1);
@@ -125,6 +126,22 @@ export default {
       this.toggleShowClock();
       this.$emit('resetTransitionSpeed', 1);
       this.$emit('setIsInhaleFalse', false);
+      this.releaseWakeLock();
+    },
+    requestWakeLock() {
+      if ('wakeLock' in navigator) {
+        navigator.wakeLock.request('screen').then(wakeLock => {
+          this.wakeLock = wakeLock;
+        }).catch(err => {
+          console.log('Wake lock request failed:', err);
+        });
+      }
+    },
+    releaseWakeLock() {
+      if (this.wakeLock) {
+        this.wakeLock.release();
+        this.wakeLock = null;
+      }
     }
    },
   watch: {
