@@ -5,11 +5,13 @@
             'wrapper--inhale': isInhale && isTimerRunning,
            }"
            v-bind:style="{ transitionDuration: `${transitonSpeed}s` }">
-        <!-- <Clock :isRunning="isTimerRunning" /> -->
+        <Clock :isRunning="isTimerRunning" />
         <transition name="fade">
           <Timer v-if="isTimerRunning"
                  v-on:updateTransition="updateTransition"
-                 v-on:toggleInhaleOrExhale="toggleInhale" />
+                 v-on:toggleInhaleOrExhale="toggleInhale"
+                 v-on:resetTransitionSpeed="updateTransition"
+                 v-on:setIsInhaleFalse="toggleInhale" />
           <div class="my-auto" v-else>
             <div class="wrapper__title">
               <p class="wrapper__title__just m0">Just</p>

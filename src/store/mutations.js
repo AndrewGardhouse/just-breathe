@@ -1,17 +1,19 @@
+/* eslint-disable no-param-reassign */
 import moment from 'moment';
 
 export default {
   updateTimerValues(state, value) {
-    Object.keys(value).forEach(key => state[key] = value[key]);
+    Object.keys(value).forEach((key) => { state[key] = value[key]; });
   },
   toggleIsTimerRunning(state) {
     state.isTimerRunning = !state.isTimerRunning;
   },
   startTimer(state) {
     const timeout = setTimeout(() => {
-      state.startTime = moment();
-      state.currentTime = moment();
-      state.endTime = moment().add(state.totalTime, 'm');
+      const now = moment();
+      state.startTime = now.clone();
+      state.currentTime = now.clone();
+      state.endTime = now.clone().add(state.totalTime, 'm');
       state.interval = setInterval(() => {
         state.currentTime = moment();
       }, 1000);

@@ -1,9 +1,5 @@
-import { shallowMount, createLocalVue } from '@vue/test-utils';
-import Vuex from 'vuex';
-import state from '@/store/state';
-import actions from '@/store/actions';
-import mutations from '@/store/mutations';
-import Option from '@/components/Option';
+import { shallowMount } from '@vue/test-utils';
+import Option from '@/components/Option.vue';
 
 const fakePropsData = {
   value: 5,
@@ -16,7 +12,7 @@ describe('Option.vue', () => {
   it('should required props', () => {
     // https://github.com/vuejs/vue-test-utils/issues/704
     const spy = jest.spyOn(global.console, 'error').mockImplementation(() => {});
-    const wrapper = shallowMount(Option, {
+    shallowMount(Option, {
       propsData: {},
       computed: {
         fieldNameSlugified() {
@@ -70,5 +66,5 @@ describe('Option.vue', () => {
     slider.vm.$emit('callback');
 
     expect(wrapper.vm.updateValue).toBeCalled();
-  }); 
+  });
 });

@@ -3,7 +3,7 @@ import Vuex from 'vuex';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import getters from '@/store/getters';
 import mutations from '@/store/mutations';
-import Timer from '@/components/Timer';
+import Timer from '@/components/Timer.vue';
 
 describe('Timer.vue Watchers', () => {
   let localVue;
@@ -26,7 +26,7 @@ describe('Timer.vue Watchers', () => {
         holdExhale: 5,
       },
       getters,
-      mutations
+      mutations,
     });
 
     const wrapper = shallowMount(Timer, {
@@ -61,7 +61,7 @@ describe('Timer.vue Watchers', () => {
         holdExhale: 5,
       },
       getters,
-      mutations
+      mutations,
     });
 
     const wrapper = shallowMount(Timer, {
@@ -93,7 +93,7 @@ describe('Timer.vue Watchers', () => {
         holdExhale: 5,
       },
       getters,
-      mutations
+      mutations,
     });
 
     const wrapper = shallowMount(Timer, {
@@ -125,7 +125,7 @@ describe('Timer.vue Watchers', () => {
         holdExhale: 5,
       },
       getters,
-      mutations
+      mutations,
     });
 
     const wrapper = shallowMount(Timer, {
@@ -157,7 +157,7 @@ describe('Timer.vue Watchers', () => {
         holdExhale: 5,
       },
       getters,
-      mutations
+      mutations,
     });
 
     const wrapper = shallowMount(Timer, {
@@ -189,7 +189,7 @@ describe('Timer.vue Watchers', () => {
         holdExhale: 0,
       },
       getters,
-      mutations
+      mutations,
     });
 
     const wrapper = shallowMount(Timer, {
@@ -221,7 +221,7 @@ describe('Timer.vue Watchers', () => {
         holdExhale: 5,
       },
       getters,
-      mutations
+      mutations,
     });
 
     const wrapper = shallowMount(Timer, {
@@ -266,7 +266,7 @@ describe('Timer.vue Methods', () => {
         holdExhale: 5,
       },
       getters,
-      mutations
+      mutations,
     });
 
     wrapper = shallowMount(Timer, {
@@ -276,12 +276,12 @@ describe('Timer.vue Methods', () => {
   });
 
   it('clearCountDown will clear the countDown interval and toggles showCountDown', () => {
-    expect(wrapper.vm.showCountDown).toBe.true;
+    expect(wrapper.vm.showCountDown).toBe(true);
     expect(wrapper.vm.countDownInterval).toBeDefined();
 
     wrapper.vm.clearCountDown();
 
-    expect(wrapper.vm.showCountDown).toBe.false;
+    expect(wrapper.vm.showCountDown).toBe(false);
     expect(wrapper.vm.countDownInterval).toBeNull();
   });
 

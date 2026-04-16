@@ -12,7 +12,7 @@
                 :sliderStyle="sliderStyle"
                 :bgStyle="bgStyle"
                 :processStyle="processStyle"
-                @callback="updateValue" 
+                @callback="updateValue"
     />
   </div>
 </template>
@@ -29,7 +29,7 @@ export default {
     valueLabel: {
       required: false,
       type: String,
-      default: 'second'
+      default: 'second',
     },
     minTime: {
       required: true,

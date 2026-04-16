@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import state from '@/store/state';
 import mutations from '@/store/mutations';
 import getters from '@/store/getters';
-import TimerToggle from '@/components/TimerToggle';
+import TimerToggle from '@/components/TimerToggle.vue';
 
 describe('Timer.vue', () => {
   let localVue;

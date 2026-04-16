@@ -1,8 +1,5 @@
-import { shallowMount, createLocalVue } from '@vue/test-utils';
-import Vuex from 'vuex';
-import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
-import getters from '@/store/getters';
-import Counter from '@/components/Counter';
+import { shallowMount } from '@vue/test-utils';
+import Counter from '@/components/Counter.vue';
 
 describe('Counter.vue', () => {
   const propsData = {
@@ -13,7 +10,7 @@ describe('Counter.vue', () => {
   it('should required props', () => {
     // https://github.com/vuejs/vue-test-utils/issues/704
     const spy = jest.spyOn(global.console, 'error').mockImplementation(() => {});
-    const wrapper = shallowMount(Counter, {
+    shallowMount(Counter, {
       propsData: {},
       computed: {
         totalRange() {

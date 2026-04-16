@@ -1,6 +1,6 @@
 <template>
   <div class="timer flex flex-column">
-    <div 
+    <div
       class="timer__breath-circle my-auto absolute"
       v-bind:class="{ 'timer__breath-circle--grow': inhaleInterval || holdInhaleInterval }"
       v-bind:style="{ transitionDuration: `${transitionSpeed}s` }" />
@@ -130,9 +130,10 @@ export default {
     },
     requestWakeLock() {
       if ('wakeLock' in navigator) {
-        navigator.wakeLock.request('screen').then(wakeLock => {
+        navigator.wakeLock.request('screen').then((wakeLock) => {
           this.wakeLock = wakeLock;
-        }).catch(err => {
+        }).catch((err) => {
+          // eslint-disable-next-line no-console
           console.log('Wake lock request failed:', err);
         });
       }
@@ -142,8 +143,8 @@ export default {
         this.wakeLock.release();
         this.wakeLock = null;
       }
-    }
-   },
+    },
+  },
   watch: {
     // For all of these watchers,
     // we are watching for when the countdowns are finished
@@ -174,8 +175,11 @@ export default {
       if (newVal === this.exhale + 1) {
         this.clearExhale();
         if (this.holdExhale === 0) {
-          this.startInhaleCount();
-          if (this.currentTime.isSameOrAfter(this.endTime)) { return this.endLoop(); }
+          if (this.endTime && this.currentTime.isSameOrAfter(this.endTime)) {
+            this.endLoop();
+          } else {
+            this.startInhaleCount();
+          }
         } else {
           this.startHoldExhaleCount();
         }
@@ -183,9 +187,12 @@ export default {
     },
     holdExhaleCount(newVal) {
       if (newVal === this.holdExhale + 1) {
-        if (this.currentTime.isSameOrAfter(this.endTime)) { return this.endLoop(); }
-        this.clearHoldExhale();
-        this.startInhaleCount();
+        if (this.endTime && this.currentTime.isSameOrAfter(this.endTime)) {
+          this.endLoop();
+        } else {
+          this.clearHoldExhale();
+          this.startInhaleCount();
+        }
       }
     },
   },
